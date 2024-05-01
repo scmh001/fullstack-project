@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+function MapLogic() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [places, setPlaces] = useState([]);
@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="map-logic">
       <h1>Nearby Places Suggestion</h1>
       <div>
         <label htmlFor="latitude">Latitude:</label>
