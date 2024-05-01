@@ -7,37 +7,41 @@ app = Flask(__name__)
 @app.route('/suggest-places')
 def suggest_places():
     try:
-        lat = request.args.get('lat')
-        lng = request.args.get('lng')
+        latitudes = request.args.getlist('lat')
+        longitudes = request.args.getlist('lng')
 
-        if not lat or not lng:
-            return jsonify({'error': 'Latitude and longitude are required'}), 400
+        if not latitudes or not longitudes or len(latitudes) != len(longitudes):
+            return jsonify({'error': 'Latitude and longitude lists are required'}), 400
 
-        # Make a request to Google Places API to fetch nearby bars and restaurants
-        response = requests.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', params={
-            'location': f'{lat},{lng}',
-            'radius': 5000,  # Radius in meters (need to adjust)
-            'type': 'restaurant|bar',  # (placeholder example)
-            'key': 'API_KEY_HERE',  # put real key later
-        })
-
-        data = response.json()
-        places = []
-        for place in data['results']:
-            places.append({
-                'name': place['name'],
-                'vicinity': place['vicinity'],
-                'rating': place.get('rating', 'N/A'), #if we want this
-                'distance': calculate_distance(float(lat), float(lng), place['geometry']['location']['lat'], place['geometry']['location']['lng'])
+        # Make a request to Google Places API for each start point
+        all_places = []
+        for lat, lng in zip(latitudes, longitudes):
+            response = requests.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', params={
+                'location': f'{lat},{lng}',
+                'radius': 5000,  # Radius in meters (need to adjust)
+                'type': 'restaurant|bar',  # (placeholder example)
+                'key': 'API_KEY_HERE',  # put real key later
             })
 
-        # Sort places by distance
-        places.sort(key=lambda x: x['distance'])
+            data = response.json()
+            places = []
+            for place in data['results']:
+                places.append({
+                    'name': place['name'],
+                    'vicinity': place['vicinity'],
+                    'rating': place.get('rating', 'N/A'), #if we want this
+                    'distance': calculate_distances(float(lat), float(lng), place['geometry']['location']['lat'], place['geometry']['location']['lng'])
+                })
 
-        # Calculate median distance
-        median_distance = calculate_median_distance([place['distance'] for place in places])
+            all_places.extend(places)
 
-        return jsonify({'places': places, 'median_distance': median_distance}), 200
+        # Sort all places by distance
+        all_places.sort(key=lambda x: x['distance'])
+
+        # Calculate median distance for all places
+        median_distance = calculate_median_distance([place['distance'] for place in all_places])
+
+        return jsonify({'places': all_places, 'median_distance': median_distance}), 200
 
     except Exception as e:
         print('Error:', e)
