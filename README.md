@@ -1,10 +1,10 @@
-## middle meet thing 0
+# Rendezvous
 
 
 
 
 
-# Deliverables (User Stories):
+## Deliverables (User Stories):
 * User creates personal profile
 * Interact with other users
 * Make groups with other users
@@ -12,11 +12,26 @@
 * Contacts
 * Find places
 * Drop pin (name it)
+* Poll for group on activity
 
 
-# Models
+
+## Models
 * User
 * Meetup activity (venue)
 * Groups
 * Invites
 
+
+
+## Wireframe
+> Home Page
+
+<img src="planning/home screen.JPG" alt="home">
+
+
+## API Routes
+
+## Trello
+
+## Database Schema
