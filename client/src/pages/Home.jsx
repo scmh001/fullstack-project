@@ -22,9 +22,9 @@ function Home() {
     <>
     <div>This is Home page</div>
     <form>
-        <lable for="loc1">Location 1:</lable><br></br>
+        <label htmlFor="loc1">Location 1:</label><br></br>
         <input type="text" id="firstName"></input><br></br>
-        <lable for="loc2">Location 2:</lable><br></br>
+        <label htmlFor="loc2">Location 2:</label><br></br>
         <input type="text" id="firstName"></input><br></br>
         <input type="submit" value="Submit"></input><br></br>
     </form>

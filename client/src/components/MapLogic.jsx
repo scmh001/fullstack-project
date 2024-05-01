@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function MapLogic() {
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+function MapLogic({ midpoint }) {
   const [places, setPlaces] = useState([]);
   const [medianDistance, setMedianDistance] = useState(null);
   const [error, setError] = useState(null);
 
-  const suggestPlaces = async () => {
-    if (!latitude || !longitude) {
-      setError('Latitude and longitude are required');
-      return;
+  useEffect(() => {
+    if (midpoint) {
+      suggestPlaces(midpoint.lat, midpoint.lng);
     }
+  }, [midpoint]);
 
+  const suggestPlaces = async (latitude, longitude) => {
     try {
       const response = await fetch(`/suggest-places?lat=${latitude}&lng=${longitude}`);
       const data = await response.json();
@@ -28,16 +26,7 @@ function MapLogic() {
 
   return (
     <div className="map-logic">
-      <h1>Nearby Places Suggestion</h1>
-      <div>
-        <label htmlFor="latitude">Latitude:</label>
-        <input type="text" id="latitude" value={latitude} onChange={(e) => setLatitude(e.target.value)} placeholder="Latitude" />
-      </div>
-      <div>
-        <label htmlFor="longitude">Longitude:</label>
-        <input type="text" id="longitude" value={longitude} onChange={(e) => setLongitude(e.target.value)} placeholder="Longitude" />
-      </div>
-      <button onClick={suggestPlaces}>Find Nearby Places</button>
+      <h2>Nearby Places Suggestion</h2>
       {error && <p className="error">{error}</p>}
       {medianDistance && <p>Median Distance: {medianDistance.toFixed(2)} meters</p>}
       <ul>
@@ -51,4 +40,4 @@ function MapLogic() {
   );
 }
 
-export default App;
+export default MapLogic;

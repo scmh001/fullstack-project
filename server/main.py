@@ -10,7 +10,7 @@ CORS(app, origins='*')
 def users():
     return jsonify({"users": ['shukri', 'jasen', 'michael', 'kristen']})
 
-GOOGLE_MAPS_API_KEY = 'AIzaSyBS479g0-LY0lowG-sC_MOGVtNlBrv_R-s'
+GOOGLE_MAPS_API_KEY = ''
 
 def get_coordinates(address):
     """Get the latitude and longitude coordinates for an address using Google Geocoding API"""
