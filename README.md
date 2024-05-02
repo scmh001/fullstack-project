@@ -49,19 +49,23 @@ The social network for game lovers.
 <img src="planning/page 5.JPG" alt="wireframe">
 <img src="planning/page 6.JPG" alt="wireframe">
 
+## React Routes
+<img src="planning/React Routes.png" alt="routes">
+
+## React Component Tree
+<img src='planning/React Component Tree.png' alt='components'>
+
 ## Database Schema
 <img src="planning/relationtable.JPG" alt="schema">
+
+## API Routes
+<img src="planning/apiroutes.JPG" alt="routes">
+
 
 ## Trello
 <img src="planning/trello.JPG" alt="trello">
 
 https://trello.com/b/PZhjos8k/flatiron-phase-4-group-project
-
-## Routes
-<img src="" alt="routes">
-
-## API Routes
-<img src="planning/apiroutes.JPG" alt="routes">
 
 ## Collaborators
 Michael
