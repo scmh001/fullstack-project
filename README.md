@@ -38,18 +38,33 @@ The social network for game lovers.
 * recommend friends based on your filtered preferences
 * compare your interests to other users
 * Compare favorite games
+* add your own game
 
 
 ## Wireframe
-<img src="" alt="wireframe">
+<img src="planning/page1.JPG" alt="wireframe">
+<img src="planning/page2.JPG" alt="wireframe">
+<img src="planning/page 3.JPG" alt="wireframe">
+<img src="planning/page4.JPG" alt="wireframe">
+<img src="planning/page 5.JPG" alt="wireframe">
+<img src="planning/page 6.JPG" alt="wireframe">
 
 ## Database Schema
 <img src="planning/relationtable.JPG" alt="schema">
 
 ## Trello
-<img src="" alt="trello">
+<img src="planning/trello.JPG" alt="trello">
+
+https://trello.com/b/PZhjos8k/flatiron-phase-4-group-project
 
 ## Routes
 <img src="" alt="routes">
 
+## API Routes
+<img src="planning/apiroutes.JPG" alt="routes">
+
 ## Collaborators
+Michael
+Shukri
+Kristen
+Jasen
