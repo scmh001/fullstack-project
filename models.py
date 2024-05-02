@@ -10,14 +10,14 @@ metadata = MetaData(naming_convention={
 db = SQLAlchemy(metadata=metadata)
 
 
-class Users(db.Model, SerializerMixin):
+class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
     
-class Games(db.Model, SerializerMixin):
+class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
     game_id = db.Column(db.Integer, primary_key=True)
