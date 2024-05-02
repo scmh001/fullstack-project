@@ -1,26 +1,10 @@
-# project
+# Gamespace
+
+The social network for game lovers.
 
 
-## ideas
-* national parks
-* hikes
-* workout planner
-* todo planner
 
-## together app (Debate It)
-* get together app + todo planner / calendar / reminders
-* suggestions
-* populate data base
-* parks, hikes, restaurants, bars, coffee shops, book store, bakery
-* voting aspect
-* rating system
-
-
-## more social spotify
-* 
-
-
-## Games (as long as we include Manor Lords - give high rating)
+## Games (database)
 * social aspect
 * compare favorite games
 * friends
@@ -36,10 +20,25 @@
 * releases this month (stretch)
 
 
-
 ## deliverables
-* 
+* List of games
+* Filterable
+* User login
+* Comments
+* Rate games
+* Most played genre
+* Top games
+* Add to database
 
 
 
 ## stretch
+* releases this month 
+* social aspect - user interaction 
+* recommend friends based on your filtered preferences
+* compare your interests to other users
+* Compare favorite games
+
+
+## Database Schema
+ <img src="planning/relationtable.JPG">
