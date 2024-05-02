@@ -2,6 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy import MetaData
+from sqlalchemy.ext.associationproxy import association_proxy
+
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -18,7 +20,7 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.String)
     
     game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
-    
+    games = association_proxy('game_statistics', 'game')
 class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
@@ -30,6 +32,8 @@ class Game(db.Model, SerializerMixin):
     release_date = db.Column(db.String)
     
     game_statistics = db.relationship('GameStatistics', back_populates='game')
+    users = association_proxy('game_statistics', 'user')
+    
     
 class GameStatistics(db.Model, SerializerMixin):
     __tablename__ = 'gameStatistics'
@@ -41,6 +45,7 @@ class GameStatistics(db.Model, SerializerMixin):
     comments = db.Column(db.String)
     rating = db.Column(db.Integer)
     favorited = db.Column(db.Boolean, default = False)
+    wish_listed = db.Column(db.Boolean, default = False)
     
     user = db.relationship('User', back_populates = 'game_statistics')
     game = db.relationship('Game', back_populates='game_statistics')
