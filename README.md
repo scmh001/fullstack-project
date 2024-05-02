@@ -38,6 +38,7 @@ The social network for game lovers.
 * recommend friends based on your filtered preferences
 * compare your interests to other users
 * Compare favorite games
+* add your own game
 
 
 ## Wireframe
