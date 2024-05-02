@@ -21,4 +21,18 @@ class Games(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
     game_id = db.Column(db.Integer, primary_key=True)
+    game_name = db.Column(db.String)
+    genre = db.Column(db.String)
+    developer = db.Column(db.String)
+    description = db.Column(db.String)
+    release_date = db.Column(db.String)
+    
+class GameStatistics(db.Model, SerializerMixin):
+    __tablename__ = 'gameStatistics'
+    
+    game_stats_id = db.Column(db.Integer, primary_key=True) 
+    
+    comments = db.Column(db.String)
+    rating = db.Column(db.Integer)
+    favorited = db.Column(db.Boolean, default = False)
     
