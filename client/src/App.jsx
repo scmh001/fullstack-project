@@ -10,6 +10,8 @@ import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import Groups from './pages/Groups';
 import SignIn from './pages/SignIn'
+import Games from './pages/Games'
+import GameDetail from './pages/GameDetail'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/games/:id" element={<GameDetail />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/groups" element={<Groups />} />

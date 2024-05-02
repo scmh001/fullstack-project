@@ -29,6 +29,12 @@ function NavBar() {
           </Link>
           <ul>
             <li>
+              <NavLink to="/games" activeClassName="active-link">
+                <span className="link-text">Games</span>
+                <span className="link-bg"></span>
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/favorites" activeClassName="active-link">
                 <span className="link-text">Favorites</span>
                 <span className="link-bg"></span>

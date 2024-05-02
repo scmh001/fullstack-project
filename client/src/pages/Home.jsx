@@ -6,14 +6,7 @@ import GameCard from '@/components/GameCard.jsx';
 
 function Home() {
   return (
-    <div>
-      <h1>Game Cards</h1>
-      <div className="game-cards-container">
-
-          <GameCard />
-          
-      </div>
-    </div>
+   <div>Home page info</div>
   );
 }
 
