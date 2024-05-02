@@ -10,29 +10,37 @@ metadata = MetaData(naming_convention={
 db = SQLAlchemy(metadata=metadata)
 
 
-class Users(db.Model, SerializerMixin):
+class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
-    user_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
     
-class Games(db.Model, SerializerMixin):
+    game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
+    
+class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
-    game_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     game_name = db.Column(db.String)
     genre = db.Column(db.String)
     developer = db.Column(db.String)
     description = db.Column(db.String)
     release_date = db.Column(db.String)
     
+    game_statistics = db.relationship('GameStatistics', back_populates='game')
+    
 class GameStatistics(db.Model, SerializerMixin):
     __tablename__ = 'gameStatistics'
     
     game_stats_id = db.Column(db.Integer, primary_key=True) 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    game_id = db.Column(db.Integer, db.ForeignKey('games.id'), nullable=False)
     
     comments = db.Column(db.String)
     rating = db.Column(db.Integer)
     favorited = db.Column(db.Boolean, default = False)
     
+    user = db.relationship('User', back_populates = 'game_statistics')
+    game = db.relationship('Game', back_populates='game_statistics')
