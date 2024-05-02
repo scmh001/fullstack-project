@@ -1,0 +1,220 @@
+<mxfile host="65bd71144e">
+    <diagram id="jZTlHVC8xEtgquOLSLj-" name="Page-1">
+        <mxGraphModel dx="1909" dy="1059" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="157.5" width="360" height="382.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="HOME PAGE" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="302.5" y="190" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="NavBar&lt;br&gt;(Outlet in all routes)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="190" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="SearchBar" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="270" width="60" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="420" as="sourcePoint"/>
+                        <mxPoint x="450" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="267.5" y="340" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="GameImageList" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="307.5" y="260" width="110" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="367.5" y="340" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="10" source="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="409.47368421052636" y="330" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" style="edgeStyle=none;html=1;entryX=0.998;entryY=0.594;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="12" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="LinkCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="272.5" y="400" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="LinkCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="332.5" y="400" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="LinkCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="392.5" y="400" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="PopularReviewsList" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="302.5" y="460" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-105" y="130" width="220" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="AllGamesList" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="-55" y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-95" y="242.5" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="45" y="242.5" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-25" y="242.5" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;html=1;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="19">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="30" y="270" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="240" y="140"/>
+                            <mxPoint x="100" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-110" y="335" width="230" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="IndividualGame" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="380" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="ReviewsList" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="380" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="WriteReviewForm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="447.5" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="205" y="-60" width="230" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="FavoritesList" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="-41.25" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="50">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="291.0344827586207" y="18.75" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="52">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="18.75" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="51">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="348.9655172413794" y="18.75" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="61.25" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="61.25" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="GameCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="290" y="61.25" width="60" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="3" target="43">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="510" y="90"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;dashed=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-36" y="335" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=none;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="7" target="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="110" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="111.25" width="280" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Wishlist" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="635" y="130" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="59">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="666.0344827586207" y="190" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="695" y="190" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="60">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="723.9655172413795" y="190" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" value="WishlistCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="562.5" y="232.5" width="75" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="WishlistCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="735" y="232.5" width="75" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="WishlistCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="232.5" width="75" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="325" width="360" height="237.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="UserProfile" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="337.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="407.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="407.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="407.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="457.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="457.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="GameImageCard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="457.5" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="ReviewsList" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="502.5" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" style="edgeStyle=none;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="3" target="64">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" style="edgeStyle=none;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="3" target="55">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;Dotted lines indicate Routes&lt;br&gt;&lt;br&gt;Solid Lines indicate Components&lt;br&gt;&lt;br&gt;Rounded Rectangles indicate grouped Components on the same route (Page)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="525" y="-100" width="340" height="220" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
