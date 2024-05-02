@@ -53,7 +53,7 @@ The social network for game lovers.
 <img src="planning/React Routes.png" alt="routes">
 
 ## React Component Tree
-<img src='planning/React Component Tree.png' alt='components>
+<img src='planning/React Component Tree.png' alt='components'>
 
 ## Database Schema
 <img src="planning/relationtable.JPG" alt="schema">
