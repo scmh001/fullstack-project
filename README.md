@@ -40,9 +40,16 @@ The social network for game lovers.
 * Compare favorite games
 
 
+## Wireframe
+<img src="" alt="wireframe">
+
 ## Database Schema
- <img src="planning/relationtable.JPG" alt="schema">
+<img src="planning/relationtable.JPG" alt="schema">
 
- ## Trello
+## Trello
+<img src="" alt="trello">
 
- ## Routes
+## Routes
+<img src="" alt="routes">
+
+## Collaborators
