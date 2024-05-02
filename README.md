@@ -1,37 +1,55 @@
-# Rendezvous
+# Gamespace
+
+The social network for game lovers.
 
 
 
+## Games (database)
+* social aspect
+* compare favorite games
+* friends
+* recommend to friends
+* rating
+* comments
+* most played genre
+* recommend friends based on your filtered preferences
+* compare your interests to other users
+* top games
+* add to database
+* game maturity level (rating)
+* releases this month (stretch)
 
 
-## Deliverables (User Stories):
-* User creates personal profile
-* Interact with other users
-* Make groups with other users
-* User triangulate location that is centrally located between users with filterable activities
-* Contacts
-* Find places
-* Drop pin (name it)
-* Poll for group on activity
+## Deliverables
+* List of games
+* Filterable
+* User login
+* Comments
+* Rate games
+* Most played genre
+* Top games
+* Add to database
 
 
 
-## Models
-* User
-* Meetup activity (venue)
-* Groups
-* Invites
-
+## Advanced Deliverables (stretch)
+* releases this month 
+* social aspect - user interaction 
+* recommend friends based on your filtered preferences
+* compare your interests to other users
+* Compare favorite games
 
 
 ## Wireframe
-> Home Page
-
-<img src="planning/home screen.JPG" alt="home">
-
-
-## API Routes
-
-## Trello
+<img src="" alt="wireframe">
 
 ## Database Schema
+<img src="planning/relationtable.JPG" alt="schema">
+
+## Trello
+<img src="" alt="trello">
+
+## Routes
+<img src="" alt="routes">
+
+## Collaborators
