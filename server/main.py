@@ -24,18 +24,18 @@ db.init_app(app)
 
 api = Api(app)
 
-@app.route("/api/users", methods = ['GET'])
-def users():
-    return jsonify(
-        {
-            "users": [
-                'shukri',
-                'jasen',
-                'michael',
-                'kristen'
-            ]
-        }
-    )
+# @app.route("/api/users", methods = ['GET'])
+# def users():
+#     return jsonify(
+#         {
+#             "users": [
+#                 'shukri',
+#                 'jasen',
+#                 'michael',
+#                 'kristen'
+#             ]
+#         }
+#     )
 
 class Games(Resource):
     def get(self):
@@ -73,7 +73,7 @@ class GamesById(Resource):
         else:
             return make_response({'error': 'Game not found'}, 404)
     
-api.add_resource(GamesById, 'games/<int:id')
+api.add_resource(GamesById, '/games/<int:id>')
 
 class UsersById(Resource):
     def get(self, id):
@@ -109,7 +109,7 @@ class UsersById(Resource):
 
             return make_response({}, 204)
 
-api.add_resource(UsersById, 'users/<int:id>')
+api.add_resource(UsersById, '/users/<int:id>')
 
 #jasen might be wrong about how this should work and is willing to accept responsibility 
 class GameStatsByGameID(Resource):
