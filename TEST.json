@@ -1,0 +1,442 @@
+[
+    {
+      "name": "The Legend of Zelda: Breath of the Wild",
+      "genre": "Action-adventure",
+      "year": 2017,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "Nintendo Switch"
+    },
+    {
+      "name": "Red Dead Redemption 2",
+      "genre": "Action-adventure",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One"
+    },
+    {
+      "name": "The Last of Us Part II",
+      "genre": "Action-adventure, survival horror",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Grand Theft Auto V",
+      "genre": "Action-adventure",
+      "year": 2013,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 3, Xbox 360, PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "God of War",
+      "genre": "Action-adventure",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "The Witcher 3: Wild Hunt",
+      "genre": "Action role-playing",
+      "year": 2015,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Horizon Zero Dawn",
+      "genre": "Action role-playing",
+      "year": 2017,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Uncharted 4: A Thief's End",
+      "genre": "Action-adventure",
+      "year": 2016,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Bloodborne",
+      "genre": "Action role-playing",
+      "year": 2015,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Super Mario Odyssey",
+      "genre": "Platform",
+      "year": 2017,
+      "rating": null,
+      "maturity-level": "Everyone",
+      "system": "Nintendo Switch"
+    },
+    {
+      "name": "The Elder Scrolls V: Skyrim",
+      "genre": "Action role-playing",
+      "year": 2011,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 3, Xbox 360, PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Dark Souls III",
+      "genre": "Action role-playing",
+      "year": 2016,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Persona 5",
+      "genre": "Role-playing",
+      "year": 2017,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, PlayStation 3"
+    },
+    {
+      "name": "Overwatch",
+      "genre": "Hero shooter",
+      "year": 2016,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Fortnite",
+      "genre": "Battle royale",
+      "year": 2017,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC, Android, iOS"
+    },
+    {
+      "name": "Call of Duty: Modern Warfare",
+      "genre": "First-person shooter",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Minecraft",
+      "genre": "Sandbox",
+      "year": 2011,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC, Android, iOS"
+    },
+    {
+      "name": "Super Smash Bros. Ultimate",
+      "genre": "Fighting",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "Nintendo Switch"
+    },
+    {
+      "name": "Sekiro: Shadows Die Twice",
+      "genre": "Action-adventure",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Resident Evil Village",
+      "genre": "Survival horror",
+      "year": 2021,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 5, Xbox Series X/S, PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Elden Ring",
+      "genre": "Action role-playing",
+      "year": 2022,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 5, Xbox Series X/S, PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Spider-Man: Miles Morales",
+      "genre": "Action-adventure",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 5, PlayStation 4"
+    },
+    {
+      "name": "Hades",
+      "genre": "Roguelike",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "Nintendo Switch, PC"
+    },
+    {
+      "name": "Doom Eternal",
+      "genre": "First-person shooter",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Animal Crossing: New Horizons",
+      "genre": "Social simulation",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Everyone",
+      "system": "Nintendo Switch"
+    },
+    {
+      "name": "Ghost of Tsushima",
+      "genre": "Action-adventure",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Assassin's Creed Valhalla",
+      "genre": "Action-adventure",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 5, Xbox Series X/S, PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Cyberpunk 2077",
+      "genre": "Action role-playing",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Final Fantasy VII Remake",
+      "genre": "Action role-playing",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Demon's Souls",
+      "genre": "Action role-playing",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 5"
+    },
+    {
+      "name": "Valorant",
+      "genre": "Hero shooter",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PC"
+    },
+    {
+      "name": "Among Us",
+      "genre": "Social deduction",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "PC, Android, iOS"
+    },
+    {
+      "name": "Genshin Impact",
+      "genre": "Action role-playing",
+      "year": 2020,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, PC, Android, iOS"
+    },
+    {
+      "name": "Apex Legends",
+      "genre": "Battle royale",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Death Stranding",
+      "genre": "Action",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, PC"
+    },
+    {
+      "name": "Control",
+      "genre": "Action-adventure",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Star Wars Jedi: Fallen Order",
+      "genre": "Action-adventure",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Disco Elysium",
+      "genre": "Role-playing",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PC"
+    },
+    {
+      "name": "Untitled Goose Game",
+      "genre": "Puzzle",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Everyone",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Resident Evil 2",
+      "genre": "Survival horror",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Devil May Cry 5",
+      "genre": "Action-adventure",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Borderlands 3",
+      "genre": "Action role-playing, first-person shooter",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Fire Emblem: Three Houses",
+      "genre": "Tactical role-playing",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "Nintendo Switch"
+    },
+    {
+      "name": "Mortal Kombat 11",
+      "genre": "Fighting",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    },
+    {
+      "name": "Outer Wilds",
+      "genre": "Action-adventure, Puzzle",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "Xbox One, PC"
+    },
+    {
+      "name": "Slay the Spire",
+      "genre": "Roguelike deck builder",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PC"
+    },
+    {
+      "name": "Baba Is You",
+      "genre": "Puzzle",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Everyone",
+      "system": "Nintendo Switch, PC"
+    },
+    {
+      "name": "A Plague Tale: Innocence",
+      "genre": "Action-adventure",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Katana Zero",
+      "genre": "Action, Platformer",
+      "year": 2019,
+      "rating": null,
+      "maturity-level": "Mature 17+",
+      "system": "PC"
+    },
+    {
+      "name": "Gris",
+      "genre": "Platformer",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Everyone",
+      "system": "Nintendo Switch, PC"
+    },
+    {
+      "name": "Return of the Obra Dinn",
+      "genre": "Puzzle, Mystery",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PC"
+    },
+    {
+      "name": "Celeste",
+      "genre": "Platformer",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Everyone 10+",
+      "system": "Nintendo Switch, PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Monster Hunter: World",
+      "genre": "Action role-playing",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, PC"
+    },
+    {
+      "name": "Spider-Man",
+      "genre": "Action-adventure",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4"
+    },
+    {
+      "name": "Dead Cells",
+      "genre": "Roguelike, Metroidvania",
+      "year": 2018,
+      "rating": null,
+      "maturity-level": "Teen",
+      "system": "PlayStation 4, Xbox One, Nintendo Switch, PC"
+    }
+]

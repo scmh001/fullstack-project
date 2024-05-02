@@ -20,7 +20,7 @@ The social network for game lovers.
 * releases this month (stretch)
 
 
-## deliverables
+## Deliverables
 * List of games
 * Filterable
 * User login
@@ -32,7 +32,7 @@ The social network for game lovers.
 
 
 
-## stretch
+## Advanced Deliverables (stretch)
 * releases this month 
 * social aspect - user interaction 
 * recommend friends based on your filtered preferences
@@ -41,4 +41,8 @@ The social network for game lovers.
 
 
 ## Database Schema
- <img src="planning/relationtable.JPG">
+ <img src="planning/relationtable.JPG" alt="schema">
+
+ ## Trello
+
+ ## Routes
