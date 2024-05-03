@@ -1,6 +1,5 @@
 [
-  {
-  "id": 1,
+  {  
   "name": "The Legend of Zelda: Breath of the Wild",
   "genre": "Action-adventure",
   "release-date": 2017,
@@ -11,8 +10,7 @@
   "description": "An open-air adventure across vast fields, forests, and mountain ranges, with a focus on exploration and survival in a revitalized Hyrule.",
   "developer": "Nintendo EPD"
   },
-  {
-  "id": 2,
+  {  
   "name": "Super Mario 64",
   "genre": "Platform",
   "release-date": 1996,
@@ -23,8 +21,7 @@
   "description": "The first 3D platformer in the Super Mario series, allowing players to explore vast worlds filled with secrets and challenges.",
   "developer": "Nintendo EAD"
   },
-  {
-  "id": 3,
+  {  
   "name": "Tetris",
   "genre": "Puzzle",
   "release-date": 1984,
@@ -35,8 +32,7 @@
   "description": "The iconic puzzle game where players arrange falling tetromino pieces to clear lines. Simple but highly addictive gameplay.",
   "developer": "Alexey Pajitnov"
   },
-  {
-  "id": 4,
+  {  
   "name": "Portal 2",
   "genre": "Puzzle-platform",
   "release-date": 2011,
@@ -47,8 +43,7 @@
   "description": "A mind-bending puzzle game with a dark humor story, utilizing physics-defying portal mechanics and challenging spatial reasoning.",
   "developer": "Valve Corporation"
   },
-  {
-  "id": 5,
+  {  
   "name": "Super Mario Bros. 3",
   "genre": "Platform",
   "release-date": 1988,
@@ -59,8 +54,7 @@
   "description": "One of the most influential 2D platformers, introducing new power-ups, levels, and enemies to the Super Mario franchise.",
   "developer": "Nintendo EAD"
   },
-  {
-  "id": 6,
+  { 
   "name": "Pac-Man",
   "genre": "Maze",
   "release-date": 1980,
@@ -71,8 +65,7 @@
   "description": "The iconic arcade game where players navigate a maze, eating pellets and avoiding ghosts. A classic that popularized the video game industry.",
   "developer": "Namco"
   },
-  {
-  "id": 7,
+  {  
   "name": "Grand Theft Auto V",
   "genre": "Action-adventure",
   "release-date": 2013,
@@ -83,8 +76,7 @@
   "description": "An open-world action-adventure game set in a satirical recreation of modern Southern California. Allows players to switch between three protagonists.",
   "developer": "Rockstar North"
   },
-  {
-  "id": 8,
+  {  
   "name": "Super Mario World",
   "genre": "Platform",
   "release-date": 1990,
@@ -95,8 +87,7 @@
   "description": "A landmark 2D platformer for the SNES, introducing new power-ups, enemies, and the dinosaur companion Yoshi to the Mario franchise.",
   "developer": "Nintendo EAD"
   },
-  {
-  "id": 9,
+  {  
   "name": "Red Dead Redemption 2",
   "genre": "Action-adventure",
   "release-date": 2018,
@@ -108,7 +99,6 @@
   "developer": "Rockstar Studios"
   },
   {
-  "id": 10,
   "name": "The Last of Us",
   "genre": "Action-adventure, Survival horror",
   "release-date": 2013,
@@ -120,7 +110,6 @@
   "developer": "Naughty Dog"
   },
   {
-  "id": 11,
   "name": "Minecraft",
   "genre": "Sandbox, Survival",
   "release-date": 2011,
@@ -132,7 +121,6 @@
   "developer": "Mojang Studios"
   },
   {
-  "id": 12,
   "name": "Half-Life 2",
   "genre": "First-person shooter",
   "release-date": 2004,
@@ -144,7 +132,6 @@
   "developer": "Valve Corporation"
   },
   {
-  "id": 13,
   "name": "Super Smash Bros. Melee",
   "genre": "Fighting",
   "release-date": 2001,
@@ -156,7 +143,6 @@
   "developer": "HAL Laboratory"
   },
   {
-  "id": 14,
   "name": "Resident Evil 4",
   "genre": "Survival horror",
   "release-date": 2005,
@@ -168,7 +154,6 @@
   "developer": "Capcom"
   },
   {
-  "id": 15,
   "name": "Super Mario 64",
   "genre": "Platform",
   "release-date": 1996,
@@ -180,7 +165,6 @@
   "developer": "Nintendo EAD"
   },
   {
-  "id": 16,
   "name": "BioShock",
   "genre": "First-person shooter, Survival horror",
   "release-date": 2007,
@@ -192,7 +176,6 @@
   "developer": "2K Games"
   },
   {
-  "id": 17,
   "name": "The Elder Scrolls V: Skyrim",
   "genre": "Action role-playing",
   "release-date": 2011,
@@ -204,7 +187,6 @@
   "developer": "Bethesda Game Studios"
   },
   {
-  "id": 18,
   "name": "Grand Theft Auto: San Andreas",
   "genre": "Action-adventure",
   "release-date": 2004,
@@ -216,7 +198,6 @@
   "developer": "Rockstar North"
   },
   {
-  "id": 19,
   "name": "Super Mario Odyssey",
   "genre": "Platform",
   "release-date": 2017,
@@ -228,7 +209,6 @@
   "developer": "Nintendo EPD"
   },
   {
-  "id": 20,
   "name": "God of War",
   "genre": "Action-adventure",
   "release-date": 2018,
@@ -240,7 +220,6 @@
   "developer": "Santa Monica Studio"
   },
   {
-  "id": 21,
   "name": "Metal Gear Solid",
   "genre": "Stealth action",
   "release-date": 1998,
@@ -252,7 +231,6 @@
   "developer": "Konami Computer Entertainment Japan"
   },
   {
-  "id": 22,
   "name": "Call of Duty 4: Modern Warfare",
   "genre": "First-person shooter",
   "release-date": 2007,
@@ -264,7 +242,6 @@
   "developer": "Infinity Ward"
   },
   {
-  "id": 23,
   "name": "Super Mario Bros.",
   "genre": "Platform",
   "release-date": 1985,
@@ -276,7 +253,6 @@
   "developer": "Nintendo R&D4"
   },
   {
-  "id": 24,
   "name": "The Legend of Zelda: Ocarina of Time",
   "genre": "Action-adventure",
   "release-date": 1998,
@@ -288,7 +264,6 @@
   "developer": "Nintendo EAD"
   },
   {
-  "id": 25,
   "name": "Doom",
   "genre": "First-person shooter",
   "release-date": 1993,
@@ -297,10 +272,9 @@
   "system": "Multiple",
   "image": null,
   "description": "The groundbreaking first-person shooter that popularized the genre, pitting a space marine against the forces of Hell in intense, fast-paced combat.",
-  "developer": "id Software"
+  "developer": "Rare"
   },
   {
-  "id": 26,
   "name": "Super Metroid",
   "genre": "Action-adventure, Metroidvania",
   "release-date": 1994,
@@ -312,7 +286,6 @@
   "developer": "Nintendo R&D1"
   },
   {
-  "id": 27,
   "name": "Street Fighter II",
   "genre": "Fighting",
   "release-date": 1991,
