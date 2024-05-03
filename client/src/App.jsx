@@ -22,7 +22,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/groups" element={<Groups />} />
+        <Route path="/groups" element={<Groups />} /> 
         <Route path="/signin" element={<SignIn />} />
         </Routes>
       </div>
