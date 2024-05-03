@@ -54,3 +54,12 @@
   .game-details button:hover {
     text-decoration: underline;
   }
+
+  .delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 20px; 
+    color: red; 
+  }

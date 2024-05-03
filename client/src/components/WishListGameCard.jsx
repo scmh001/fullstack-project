@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom';
 
 const WishListGameCard = ({ game }) => {
 
+  const handleDelete = () => {
+    onDelete(game.id);
+  };
+
   return (
     <div className="wishlist-game-card">
+      {/* Delete button */}
+      <button className="delete-button" onClick={handleDelete}>❌</button>
       <div className="left-column">
         <img className="wishlist-game-image" src={game.image} alt={game.name} />
       </div>
