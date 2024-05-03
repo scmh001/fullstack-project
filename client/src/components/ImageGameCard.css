@@ -1,0 +1,32 @@
+
+/* TODO make css to make game name appear on hover */
+.image-game-card {
+    width: 200px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-game-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center; /* Center the cards vertically */
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .image-game-card {
+    margin-bottom: 20px; /* Add margin between rows */
+  }
