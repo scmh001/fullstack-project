@@ -16,14 +16,20 @@ def create_users(num_users):
 
 def create_games(num_games):
     games = []
+    ratings = ['Everyone', 'Teen', 'Mature']
     for _ in range(num_games):
         game_name = fake.catch_phrase()
         genre = fake.word()
         developer = fake.company()
+        maturity_level = fake.random_element(ratings)
+        system = fake.word()
         description = fake.sentence()
+        rating = fake.random_number()
+        image = None
         release_date = fake.date_between(start_date='-30y', end_date='today').strftime('%Y-%m-%d')
         game = Game(game_name=game_name, genre=genre, developer=developer,
-                    description=description, release_date=release_date)
+                    description=description, release_date=release_date, maturity_level=maturity_level,
+                    system=system, rating=rating, image=image)
         games.append(game)
     db.session.add_all(games)
     db.session.commit()

@@ -34,6 +34,9 @@ class Game(db.Model, SerializerMixin):
     release_date = db.Column(db.String)
     maturity_level = db.Column(db.String)
     release_date= db.Column(db.String)
+    system = db.Column(db.String)
+    rating = db.Column(db.Integer)
+    image = db.Column(db.String)
     
     game_statistics = db.relationship('GameStatistics', back_populates='game')
     users = association_proxy('game_statistics', 'user')
