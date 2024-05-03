@@ -21,6 +21,8 @@ class User(db.Model, SerializerMixin):
     
     game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
     games = association_proxy('game_statistics', 'game')
+    
+    serialize_rules = ('-game_statistics',)
 class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
@@ -30,10 +32,13 @@ class Game(db.Model, SerializerMixin):
     developer = db.Column(db.String)
     description = db.Column(db.String)
     release_date = db.Column(db.String)
+    maturity_level = db.Column(db.String)
+    release_date= db.Column(db.String)
     
     game_statistics = db.relationship('GameStatistics', back_populates='game')
     users = association_proxy('game_statistics', 'user')
     
+    serialize_rules = ('-game_statistics',)
     
 class GameStatistics(db.Model, SerializerMixin):
     __tablename__ = 'gameStatistics'
@@ -49,3 +54,5 @@ class GameStatistics(db.Model, SerializerMixin):
     
     user = db.relationship('User', back_populates = 'game_statistics')
     game = db.relationship('Game', back_populates='game_statistics')
+    
+    serialize_rules = ('-user', '-game',)
