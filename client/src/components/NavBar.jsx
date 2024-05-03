@@ -28,6 +28,12 @@ function NavBar() {
             </span>
           </Link>
           <ul>
+          <li>
+              <NavLink to="/" activeClassName="active-link">
+                <span className="link-text">Home</span>
+                <span className="link-bg"></span>
+              </NavLink>
+            </li>
             <li>
               <NavLink to="/games" activeClassName="active-link">
                 <span className="link-text">Games</span>
