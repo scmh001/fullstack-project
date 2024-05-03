@@ -5,10 +5,13 @@ from flask_cors import CORS
 from models import db, User, Game, GameStatistics
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 import os
 
 app = Flask(__name__)
-cors = CORS(app, origins='*')
+CORS(app)
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+jwt = JWTManager(app)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
@@ -24,18 +27,27 @@ db.init_app(app)
 
 api = Api(app)
 
-# @app.route("/api/users", methods = ['GET'])
-# def users():
-#     return jsonify(
-#         {
-#             "users": [
-#                 'shukri',
-#                 'jasen',
-#                 'michael',
-#                 'kristen'
-#             ]
-#         }
-#     )
+@app.route('/users', methods=['GET', 'POST'])
+def manage_users():
+    if request.method == 'POST':
+        data = request.get_json()
+        new_user = User(username=data['username'], password=data['password'])
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'User created successfully'}), 201
+    elif request.method == 'GET':
+        users = User.query.all()
+        return jsonify([user.to_dict() for user in users]), 200
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    user = User.query.filter_by(username=data['username']).first()
+    if user and user.password == data['password']:
+        access_token = create_access_token(identity=data['username'])
+        return jsonify(access_token=access_token), 200
+    return jsonify({'message': 'Invalid credentials'}), 401
+
 
 class Games(Resource):
     def get(self):

@@ -25,7 +25,7 @@ def create_games(num_games):
         system = fake.word()
         description = fake.sentence()
         rating = fake.random_number()
-        image = None
+        image = 'https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg'
         release_date = fake.date_between(start_date='-30y', end_date='today').strftime('%Y-%m-%d')
         game = Game(game_name=game_name, genre=genre, developer=developer,
                     description=description, release_date=release_date, maturity_level=maturity_level,
