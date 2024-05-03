@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '@/components/GameCard.jsx';
 
-const {topGames, setTopGames} = useEffect([])
+// const {topGames, setTopGames} = useEffect([])
 
-useEffect(() => {
+// useEffect(() => {
 
-},[])
+// },[])
 
 function Home() {
   return (
