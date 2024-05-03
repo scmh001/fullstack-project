@@ -1,0 +1,33 @@
+.game-card {
+    display: flex;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .game-image {
+    width: 40%; 
+    object-fit: cover;
+    border-radius: 8px 0 0 8px; 
+  }
+  
+  .game-details {
+    padding: 16px;
+    flex: 1;
+  }
+  
+  .game-details h2 {
+    margin-top: 0;
+  }
+  
+  .game-details button {
+    border: none;
+    background: none;
+    color: blue;
+    cursor: pointer;
+  }
+  
+  .game-details button:hover {
+    text-decoration: underline;
+  }
