@@ -16,7 +16,7 @@ function Games() {
   });
 
   useEffect(() => {
-    // Fetch games from the backend or use local data
+    
     setGames(gameData);
     setFilteredGames(gameData); // Initialize filteredGames with all games
   }, []);

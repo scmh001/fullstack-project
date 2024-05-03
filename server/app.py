@@ -45,6 +45,14 @@ class Games(Resource):
     
 api.add_resource(Games, '/games')
 
+class TopGames(Resource):
+    def get(self):
+        games = [game.to_dict() for game in Game.query.order_by(Game.rating).limit(5).all()]
+
+        return make_response(games)
+    
+api.add_resource(TopGames, '/top-games')
+
 class Users(Resource):
     def post(self):
         data = request.json
