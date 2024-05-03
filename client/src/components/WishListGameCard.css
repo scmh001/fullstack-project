@@ -1,4 +1,4 @@
-.game-card {
+.wishlist-game-card {
     display: flex;
     width: 100%;
     border: 1px solid #ccc;
@@ -12,17 +12,29 @@
   
   .center-column {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center horizontally */
   }
   
   .right-column {
     width: 30%;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 16px;
   }
   
-  .game-image {
+  .right-column .game-details {
+    text-align: right; /* Align text to the right */
+    margin-left: auto; /* Push text to the right */
+  }
+  
+  .right-column .game-details p {
+    margin-bottom: 8px; /* Add space between paragraphs */
+  }
+  .wishlist-game-image {
     width: 100%;
     object-fit: cover;
     border-radius: 8px 0 0 8px;

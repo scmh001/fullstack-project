@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const WishListGameCard = ({ game }) => {
 
   return (
-    <div className="game-card">
+    <div className="wishlist-game-card">
       <div className="left-column">
-        <img className="game-image" src={game.image} alt={game.name} />
+        <img className="wishlist-game-image" src={game.image} alt={game.name} />
       </div>
 
       <div className="center-column">
