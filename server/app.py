@@ -45,7 +45,9 @@ def login():
     user = User.query.filter_by(username=data['username']).first()
     if user and user.password == data['password']:
         access_token = create_access_token(identity=data['username'])
-        return jsonify(access_token=access_token), 200
+        response = jsonify(access_token=access_token)
+        response.set_cookie('token', access_token, httponly=True)  # Set httpOnly cookie
+        return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
 
