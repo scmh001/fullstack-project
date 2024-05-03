@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> shukri
 import { NavLink, Link } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar() {
+<<<<<<< HEAD
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -74,6 +79,18 @@ function NavBar() {
         </nav>
       </div>
     </div>
+=======
+  return (
+    <nav className="nav-bar">
+      <Link to="/" className="title">Rendezvouz</Link>
+      <ul>
+        <li><NavLink to="/favorites">Favorites</NavLink></li>
+        <li><NavLink to="/groups">Groups</NavLink></li>
+        <li><NavLink to="/profile">Profile</NavLink></li>
+        <li><NavLink to="/locator">Locator</NavLink></li>
+      </ul>
+    </nav>
+>>>>>>> shukri
   );
 }
 
