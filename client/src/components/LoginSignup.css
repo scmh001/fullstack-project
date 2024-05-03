@@ -1,109 +1,62 @@
 .container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: auto;
-    margin-top: 200px;
-    width: 600px;
-    background: #fff;
-    padding-bottom: 30px;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-radius: 8px;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    width: 100%;
-    margin-top: 30px;
-    }
-
-.text {
-    color: #3c009d;
-    font-size: 48px;
-    font-weight: 700;
-}
-
-.underline {
-    width: 61px;
-    height: 6px;
-    background: #3c009d;
-    border-radius: 9px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333333;
 }
 
 .inputs {
-    margin-top: 55px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .input {
-    display: flex;
-    align-items: center;
-    width: 480px;
-    height: 80px;
-    background: #eaeaea;
-    border-radius: 6px;
-}
-.input img {
-    margin: 0px 30px;
+    margin-bottom: 20px;
 }
 
-
-.input input { 
-    height: 50px;
-    width: 400px;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #797979;
-    font-size: 19px;
-}
-
-.forgot-password {
-    padding-left: 62px;
-    margin-top: 27px;
-    color: #797979;
-    font-size: 18px;
-}
-
-.forgot-password span {
-    color: #4c00b4;
-    cursor: pointer;
-}
-
-.submit-container {
-    display: flex;
-    gap: 30px;
-    margin: 60px auto;
+.input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px;
-    height: 59px;
-    color: #fff;
-    background: #4c00b4;
-    border-radius: 50px;
-    font-size: 19px;
-    font-weight: 700;
+    width: 100%;
+    padding: 10px;
+    background-color: #4c00b4;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-}
-
-.submit-post {
-    
-}
-
-.gray {
-    background: #eaeaea;
-    color: #676767;
 }
 
 .error {
     color: red;
     font-size: 14px;
-    margin-top: 5px;
-  }
+}
+
+.input, .submit {
+    transition: all 0.3s ease;
+}
+
+.input:focus-within {
+    box-shadow: 0 0 0 2px #4c00b4;
+}
+
+.submit:hover {
+    background-color: #35008f;
+}

@@ -5,7 +5,7 @@ from flask_cors import CORS
 from models import db, User, Game, GameStatistics
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token
 import os
 
 app = Flask(__name__)
@@ -46,10 +46,22 @@ def login():
     if user and user.password == data['password']:
         access_token = create_access_token(identity=data['username'])
         response = jsonify(access_token=access_token)
-        response.set_cookie('token', access_token, httponly=True)  # Set httpOnly cookie
+        response.set_cookie('auth_token', access_token, httponly=True)  
         return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
+
+def check_auth():
+    auth_token = request.cookies.get('auth_token')
+    if auth_token and decode_auth_token(auth_token):  # Assuming a function to decode and verify token
+        return True
+    return False
+
+@app.route('/protected-route')
+def protected():
+    if not check_auth():
+        return redirect('/login')
+    return jsonify({'message': 'Access granted'})
 
 class Games(Resource):
     def get(self):

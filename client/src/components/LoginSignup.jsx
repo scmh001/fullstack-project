@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'js-cookie';
+import "./LoginSignup.css"
+import { GoogleLoginButton, FacebookLoginButton } from 'react-social-login-buttons';
 
 // Validation schemas
 const LoginSchema = Yup.object().shape({
@@ -49,29 +51,42 @@ const LoginSignup = () => {
 };
 
   return (
+    <>
     <div className="container">
       <button onClick={() => setIsSignup(!isSignup)}>
         Switch to {isSignup ? 'Login' : 'Signup'}
       </button>
       <Formik
         initialValues={{
-          name: '',
           email: '',
           password: '',
         }}
         validationSchema={isSignup ? SignupSchema : LoginSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <Form>
-            {isSignup && <div><label>Name</label><Field name="name" type="text" /><ErrorMessage name="name" component="div" /></div>}
-            <div><label>Email</label><Field name="email" type="email" /><ErrorMessage name="email" component="div" /></div>
-            <div><label>Password</label><Field name="password" type="password" /><ErrorMessage name="password" component="div" /></div>
-            <button type="submit" disabled={isSubmitting}>{isSignup ? 'Signup' : 'Login'}</button>
-          </Form>
-        )}
+        {({ isSubmitting, errors, touched }) => (
+    <Form>
+        <div className="input">
+            <Field name="email" type="email" placeholder="Email" />
+            <ErrorMessage name="email" component="div" className="error" />
+        </div>
+        <div className="input">
+            <Field name="password" type="password" placeholder="Password" />
+            <ErrorMessage name="password" component="div" className="error" />
+        </div>
+        <button type="submit" className="submit" disabled={isSubmitting}>
+            {isSignup ? 'Sign Up' : 'Log In'}
+        </button>
+        {isSubmitting && <p>Loading...</p>}
+    </Form>
+                    )}
       </Formik>
+      <div className="social-login-buttons">
+          <GoogleLoginButton onClick={() => console.log("Login with Google")} />
+          <FacebookLoginButton onClick={() => console.log("Login with Facebook")} />
+      </div>
     </div>
+    </>
   );
 };
 
