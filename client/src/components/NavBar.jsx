@@ -47,6 +47,12 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/wishlist" activeClassName="active-link">
+                <span className="link-text">Wishlist</span>
+                <span className="link-bg"></span>
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/groups" activeClassName="active-link">
                 <span className="link-text">Groups</span>
                 <span className="link-bg"></span>

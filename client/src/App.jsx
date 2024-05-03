@@ -12,6 +12,7 @@ import Groups from './pages/Groups';
 import SignIn from './pages/SignIn'
 import Games from './pages/Games'
 import GameDetail from './pages/GameDetail'
+import WishList from './pages/WishList'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/games" element={<Games />} />
         <Route path="/games/:id" element={<GameDetail />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="/signin" element={<SignIn />} />
