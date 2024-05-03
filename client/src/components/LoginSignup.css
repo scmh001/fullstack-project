@@ -93,7 +93,17 @@
     cursor: pointer;
 }
 
+.submit-post {
+    
+}
+
 .gray {
     background: #eaeaea;
     color: #676767;
 }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
