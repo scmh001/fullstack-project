@@ -21,6 +21,8 @@ class User(db.Model, SerializerMixin):
     
     game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
     games = association_proxy('game_statistics', 'game')
+    
+    
 class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
     
