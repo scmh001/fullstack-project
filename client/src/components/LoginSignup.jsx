@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Cookies from 'js-cookie';
 
 // Validation schemas
 const LoginSchema = Yup.object().shape({
@@ -27,25 +28,25 @@ const LoginSignup = () => {
   const handleSubmit = (values) => {
     const url = isSignup ? 'http://localhost:8080/users' : 'http://localhost:8080/login';
     fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: values.email,
-        password: values.password,
-        ...(isSignup && { name: values.name }),
-      }),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: values.email,
+            password: values.password,
+            ...(isSignup && { name: values.name }),
+        }),
     })
     .then(response => response.json())
     .then(data => {
-      localStorage.setItem('token', data.token); // Save the token to localStorage
-      console.log('Success:', data);
+        Cookies.set('token', data.token, { expires: 1 }); // Save the token to cookies
+        console.log('Success:', data);
     })
     .catch((error) => {
-      console.error('Error:', error);
+        console.error('Error:', error);
     });
-  };
+};
 
   return (
     <div className="container">
