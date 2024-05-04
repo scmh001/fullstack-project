@@ -6,7 +6,7 @@ const ImageGameCard = ({ game }) => {
     return (
       <div className="image-game-card">
        <Link to={`/games/${game.id}`}>
-         <img src={game.image} alt={game.name} />
+         <img src={game.image} alt={game.game_name} />
         </Link>
        
         <div className="name-box">

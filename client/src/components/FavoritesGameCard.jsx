@@ -14,9 +14,9 @@ const FavoritesGameCard = ({ game }) => {
     <div className="favorites-game-card">
         {/* Delete button */}
       <button className="delete-button" onClick={handleDelete}>❌</button>
-      <img src={game.image} alt={game.name} />
+      <img src={game.image} alt={game.game_name} />
       <Link to={`/games/${game.id}`}>
-        <h2>{game.name}</h2>
+        <h2>{game.game_name}</h2>
       </Link>
       <p>Rating: {game.rating ? game.rating : 'N/A'} ⭐</p>
       <p>Genre: {game.genre}</p>

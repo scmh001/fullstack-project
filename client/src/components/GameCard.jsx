@@ -11,7 +11,7 @@ const GameCard = ({ game }) => {
 
   return (
     <div className="game-card">
-      <img src={game.image} alt={game.name} />
+      <img src={game.image} alt={game.game_name} />
       <Link to={`/games/${game.id}`}>
         <h2>{game.name}</h2>
       </Link>
