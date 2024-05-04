@@ -23,7 +23,10 @@ const NavBar = () => {
         <ul className="nav-links">
           {['/', '/games', '/favorites', '/wishlist', '/profile', '/signin'].map((path, index) => (
             <li key={index}>
-              <NavLink to={path} activeClassName="active-link">
+              <NavLink 
+                to={path} 
+                className={({ isActive }) => isActive ? 'active-link' : ''}
+              >
                 <span className="link-text">{path.substring(1) || 'Home'}</span>
                 <span className="link-bg"></span>
               </NavLink>

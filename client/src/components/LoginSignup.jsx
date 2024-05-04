@@ -6,6 +6,12 @@ import "./LoginSignup.css"
 import { GoogleLoginButton, FacebookLoginButton } from 'react-social-login-buttons';
 
 // Validation schemas
+
+const userSchema = Yup.object().shape({
+  username: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+});
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
@@ -35,20 +41,23 @@ const LoginSignup = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            username: values.email,
+            username: values.username,
             password: values.password,
-            ...(isSignup && { name: values.name }),
         }),
     })
     .then(response => response.json())
     .then(data => {
-        Cookies.set('token', data.token, { expires: 1 }); // Save the token to cookies
-        console.log('Success:', data);
+        if (data.access_token) {
+            Cookies.set('token', data.access_token, { expires: 1 });
+            console.log('Success:', data);
+        } else {
+            console.error('Error:', data.message);
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
     });
-};
+  };
 
   return (
     <>

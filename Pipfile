@@ -15,7 +15,6 @@ flask-cors = "*"
 faker = "*"
 flask-jwt-extended = "*"
 flask-login = "*"
-formik = "*"
 
 [requires]
 python_full_version = "3.8.13"
@@ -23,3 +22,4 @@ python_full_version = "3.8.13"
 [dev-packages]
 flask-login = "*"
 flask-jwt-extended = "*"
+flask-bcrypt = "*"

@@ -5,7 +5,7 @@ from flask_cors import CORS
 from models import db, User, Game, GameStatistics
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 import os
 
 app = Flask(__name__)
@@ -42,26 +42,21 @@ def manage_users():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    user = User.query.filter_by(username=data['username']).first()
-    if user and user.password == data['password']:
-        access_token = create_access_token(identity=data['username'])
-        response = jsonify(access_token=access_token)
-        response.set_cookie('auth_token', access_token, httponly=True)  
-        return response, 200
-    return jsonify({'message': 'Invalid credentials'}), 401
+    # Safely access 'username' and 'password' keys
+    username = data.get('username')
+    password = data.get('password')
 
+    if not username or not password:
+        # Respond with an error if either 'username' or 'password' is missing
+        return jsonify({'message': 'Missing username or password'}), 400
 
-def check_auth():
-    auth_token = request.cookies.get('auth_token')
-    if auth_token and decode_auth_token(auth_token):  # Assuming a function to decode and verify token
-        return True
-    return False
+    user = User.query.filter_by(username=username).first()
+    if user and user.password == password:
+        # Proceed with your login logic here
+        return jsonify({'message': 'Login successful'}), 200
+    else:
+        return jsonify({'message': 'Invalid credentials'}), 401
 
-@app.route('/protected-route')
-def protected():
-    if not check_auth():
-        return redirect('/login')
-    return jsonify({'message': 'Access granted'})
 
 class Games(Resource):
     def get(self):
