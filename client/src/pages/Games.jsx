@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '@/components/GameCard.jsx';
 
-import gameData from '@/assets/TEST.json';
-
 function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
@@ -16,9 +14,18 @@ function Games() {
   });
 
   useEffect(() => {
-    
-    setGames(gameData);
-    setFilteredGames(gameData); // Initialize filteredGames with all games
+    fetch('http://localhost:8080/games')
+    .then(res => {
+      if (res.ok){
+        return res.json()
+      }else{
+        return console.error("Something went wrong with your GET request")
+      }
+  })
+    .then(gameData => {
+      setGames(gameData);
+      setFilteredGames(gameData); // Initialize filteredGames with all games
+    })
   }, []);
 
   // Pagination

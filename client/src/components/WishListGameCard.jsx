@@ -13,13 +13,13 @@ const WishListGameCard = ({ game }) => {
       {/* Delete button */}
       <button className="delete-button" onClick={handleDelete}>❌</button>
       <div className="left-column">
-        <img className="wishlist-game-image" src={game.image} alt={game.name} />
+        <img className="wishlist-game-image" src={game.image} alt={game.game_name} />
       </div>
 
       <div className="center-column">
         <div className="game-details">
           <Link to={`/games/${game.id}`}>
-            <h2>{game.name}</h2>
+            <h2>{game.game_name}</h2>
           </Link>
           <p>Reviews: {game.reviews ? game.reviews : 'N/A'}</p>
           <p>Description: {game.description ? game.description :'N/A'}</p>

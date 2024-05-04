@@ -36,14 +36,18 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
+  display:flex;
+  justify-content: center;
 }
 
-/* Styling for individual game cards */
+/* Styling for individual link cards */
 .link-card {
   background-color: #262626; /* Slightly lighter card background for contrast */
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s;
+  width: 400px;
+  height: 500px;
 }
 
 .link-card:hover {

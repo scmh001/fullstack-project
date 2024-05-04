@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import gameData from '@/assets/TEST.json';
+
 
 // THIS ENTIRE PAGE COULD ALSO BE A POP UP-PAGE ON GAMES ??
 
@@ -9,9 +9,17 @@ function GameDetail() {
   const [game, setGame] = useState(null);
 
   useEffect(() => {
-    // find the game with the corresponding ID
-    const selectedGame = gameData.find(game => game.id === parseInt(id));
-    setGame(selectedGame);
+    fetch(`http://localhost:8080/games/${id}`)
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        // Logging error to the console if the response is not ok
+        return console.error("Something went wrong...");
+      }
+    })
+    .then(selectedGame => setGame(selectedGame))
+    .catch(error => console.error(error))
     // scrolls to the top when the component mounts
     window.scrollTo(0, 0);
   }, [id]);
@@ -23,9 +31,9 @@ function GameDetail() {
   return (
     <div className="game-detail-container">
       {/* title w/ minor css*/}
-      <h1 style={{ fontWeight: 'bold' }}>{game.name}</h1>
+      <h1 style={{ fontWeight: 'bold' }}>{game.game_name}</h1>
       {/* image to match location of figma// can be changed however */}
-      <img src={game.image} alt={game.name} style={{ width: '50%', maxWidth: '300px' }} />
+      <img src={game.image} alt={game.game_name} style={{ width: '50%', maxWidth: '300px' }} />
       {/* Rating in its own small rectangular container */}
       <div className="rating-container">
         <p style={{ marginBottom: '5px' }}>Rating</p>
