@@ -26,7 +26,7 @@ function WishListGames({user}) {
   // Pagination
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-  const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
+  const currentGames = Array.isArray(games) ? games.slice(indexOfFirstGame, indexOfLastGame) : [];
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);

@@ -162,7 +162,7 @@ api.add_resource(UsersById, '/users/<int:id>')
 class GameStatsByGameID(Resource):
     #this gets ALL comments, reviews for a specific game NOT BY USER
     def get(self,game_id): 
-        gamestats = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
+        gamestats = [gamestat.to_dict(only=['rating', 'comments']) for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
         if gamestats:
             return make_response(gamestats)
         else:

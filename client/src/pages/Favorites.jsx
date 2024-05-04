@@ -25,33 +25,42 @@ function Favorites({user}) {
     }
   }, [user]);
 
+  
   // Pagination
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-  const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
+  const currentGames = Array.isArray(games) ? games.slice(indexOfFirstGame, indexOfLastGame) : [];
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  
   return (
     <div>
-      {/* Game cards container */}
-      <div className="game-cards-container">
-        {currentGames.map((game) => (
-          <FavoritesGameCard key={game.id} game={game} />
-        ))}
+    {!games ? (
+      <div className="no-favorites-message">
+        <h2>You haven't favorited any games yet</h2>
       </div>
-      {/* Pagination */}
-      <div className="pagination">
-        {currentPage > 1 && (
-          <button onClick={() => paginate(currentPage - 1)}>Previous Page</button>
-        )}
-        {currentPage < Math.ceil(games.length / gamesPerPage) && (
-          <button onClick={() => paginate(currentPage + 1)}>Next Page</button>
-        )}
-      </div>
-    </div>
-  );
+    ) : (
+      <>
+        {/* Game cards container */}
+        <div className="game-cards-container">
+          {currentGames.map((game) => (
+            <FavoritesGameCard key={game.id} game={game} />
+          ))}
+        </div>
+        {/* Pagination */}
+        <div className="pagination">
+          {currentPage > 1 && (
+            <button onClick={() => paginate(currentPage - 1)}>Previous Page</button>
+          )}
+          {currentPage < Math.ceil(games.length / gamesPerPage) && (
+            <button onClick={() => paginate(currentPage + 1)}>Next Page</button>
+          )}
+        </div>
+      </>
+    )}
+  </div>
+);
 }
 
 export default Favorites;

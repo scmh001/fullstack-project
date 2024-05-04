@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<Games />} />
-        <Route path="/games/:id" element={<GameDetail />} />
+        <Route path="/games/:id" element={<GameDetail user={user}/>} />
         <Route path="/favorites/" element={<Favorites user={user}/>} />
         <Route path="/wishlist" element={<WishList user={user}/>} />
         <Route path="/profile" element={<Profile user={user}/>} />
