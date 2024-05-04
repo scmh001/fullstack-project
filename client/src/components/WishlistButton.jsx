@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 function WishlistButton({ gameId, userId }) {
+  
+  //TODO Lift state to app and pass down props 
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [gameStatId, setGameStatId] = useState(null);
 
   useEffect(() => {
     // Fetch game statistics for the current user and game
-    fetch(`http://localhost:8080/game-statstics/${gameId}/${userId}`)
+    fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.game_stats_id) {
