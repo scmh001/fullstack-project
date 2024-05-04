@@ -35,7 +35,7 @@ fake = Faker()
 def create_users(num_users):
     users = []
     for _ in range(num_users):
-        username = fake.user_name()
+        username = fake.email()
         password = fake.password()
         user = User(username=username, password=password)
         users.append(user)

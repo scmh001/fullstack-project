@@ -5,7 +5,7 @@ import ImageGameCard from '../components/ImageGameCard';
 
 function Home() {
   const [topGames, setTopGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     fetch('http://localhost:8080/top-games')
@@ -18,15 +18,13 @@ function Home() {
     })
       .then(data => {
         setTopGames(data);
-        setIsLoading(false);
       })
       .catch(error => {
         console.error('Failed to fetch games:', error);
-        setIsLoading(false);
       });
   }, []);
 
-  if (isLoading) {
+  if (!topGames) {
     return <div>Loading...</div>;
   }
 
