@@ -10,7 +10,16 @@ function Favorites() {
   const [gamesPerPage] = useState(12); //initial value of 12 games per page
 
   useEffect(() => {
-    setGames(gameData);
+    fetch('http://localhost:8080/games')
+    .then(res => {
+      if (res.ok){
+        return res.json()
+      }else{
+        return console.error("Something went wrong with your GET request")
+      }
+  })
+    .then(gameData => {
+    setGames(gameData);})
   }, []);
 
   // Pagination
