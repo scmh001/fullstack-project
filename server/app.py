@@ -160,7 +160,7 @@ api.add_resource(UsersById, '/users/<int:id>')
 
 #jasen might be wrong about how this should work and is willing to accept responsibility 
 class GameStatsByGameID(Resource):
-    #this gets ALL comments, reviews for a specific game NOT BY USER
+    #this gets ALL comments, ratings for a specific game NOT BY USER
     def get(self,game_id): 
         gamestats = [gamestat.to_dict(only=['rating', 'comments']) for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
         if gamestats:
@@ -172,6 +172,13 @@ api.add_resource(GameStatsByGameID, '/game-statistic/<int:game_id>')
 
 class GameStatsByUserAndGameIDs(Resource):
     #this allows a user to patch, passing both ids in (i think)
+    def get(self, game_id, user_id):
+        gamestat = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id == user_id).first()
+        if gamestat:
+            return make_response(gamestat.to_dict())
+        else:
+            return make_response({'error': ['Game statistics not found']}, 404)
+    
     def patch(self, game_id, user_id):
         gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id and GameStatistics.user_id==user_id).first()
         if not gamestats:
@@ -188,7 +195,7 @@ class GameStatsByUserAndGameIDs(Resource):
             except:
                 return make_response({"errors": ["validation errors"]}, 400)
 
-api.add_resource(GameStatsByUserAndGameIDs, '/game-statstics/<int:game_id>/<int:user_id>')
+api.add_resource(GameStatsByUserAndGameIDs, '/game-statistics/<int:game_id>/<int:user_id>')
 
 class GameStats(Resource):
     #is this right???
@@ -201,18 +208,19 @@ class GameStats(Resource):
                 comments = data.get('comments'),
                 rating = data.get('rating'),
                 favorited = data.get('favorited'),
-                wishlisted = data.get('wishlisted')
+                wish_listed = data.get('wish_listed')
             )
             if new_gamestats:
                 db.session.add(new_gamestats)
                 db.session.commit()
 
-                return make_response(new_gamestats, 201)
+                return make_response(new_gamestats.to_dict(), 201)
             else:
                 return make_response({'error': 'Review could not be made'}, 400) #TODO check code 
         except:
             return make_response({'error': ['validation errors']}, 400)
-        
+    
+api.add_resource(GameStats, '/game-statistics')
 class FavoritesByUser(Resource):
     def get(self, user_id):
         favorites = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.favorited==1).all()]
