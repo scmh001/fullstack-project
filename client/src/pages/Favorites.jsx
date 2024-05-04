@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useParams } from 'react';
 import { Link } from 'react-router-dom';
 import FavoritesGameCard from '@/components/FavoritesGameCard.jsx';
 
-import gameData from '@/assets/TEST.json';
 
-function Favorites() {
+function Favorites({user}) {
   const [games, setGames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); //initialize current page state with initial value of 1 for page 1
   const [gamesPerPage] = useState(12); //initial value of 12 games per page
 
+  
   useEffect(() => {
-    fetch('http://localhost:8080/games')
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      }else{
-        return console.error("Something went wrong with your GET request")
-      }
-  })
-    .then(gameData => {
-    setGames(gameData);})
-  }, []);
+    if (user && user.id) {
+      fetch(`http://localhost:8080/favorites/${user.id}`)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            return console.error("Something went wrong with your GET request");
+          }
+        })
+        .then((gameData) => {
+          setGames(gameData);
+        });
+    }
+  }, [user]);
 
   // Pagination
   const indexOfLastGame = currentPage * gamesPerPage;
