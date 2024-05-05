@@ -34,7 +34,6 @@ function FavoriteButton({ gameId, userId }) {
         .then((res) => res.json())
         .then((data) => {
             setIsFavorited(data.favorited)
-            console.log(data)
         });
     } else {
       fetch(`http://localhost:8080/game-statistics`, {
