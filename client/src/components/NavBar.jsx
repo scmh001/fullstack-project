@@ -13,7 +13,7 @@ const NavBar = ({user, updateUser}) => {
 		fetch('http://localhost:8080/logout')
 		.then(res => res.json())
 		.then(data => updateUser(null))
-    navigate('http://localhost:8080/signin')
+    navigate('/signin', { relative: 'path' });
 	}
 
   return (
@@ -34,7 +34,7 @@ const NavBar = ({user, updateUser}) => {
             <>
               {['/', '/games', '/favorites', '/wishlist', '/profile'].map((path, index) => (
                 <li key={index}>
-                  <NavLink to={path} activeClassName="active-link">
+                  <NavLink to={path} className="active-link">
                     <span className="link-text">{path.substring(1) || 'home'}</span>
                     <span className="link-bg"></span>
                   </NavLink>
@@ -60,14 +60,14 @@ const NavBar = ({user, updateUser}) => {
             <>
               {['/', '/games'].map((path, index) => (
                 <li key={index}>
-                  <NavLink to={path} activeClassName="active-link">
+                  <NavLink to={path} className="active-link">
                     <span className="link-text">{path.substring(1) || 'home'}</span>
                     <span className="link-bg"></span>
                   </NavLink>
                 </li>
               ))}
               <li>
-                <NavLink to="/signin" activeClassName="active-link">
+                <NavLink to="/signin" className="active-link">
                   <span className="link-text">sign in</span>
                   <span className="link-bg"></span>
                 </NavLink>

@@ -30,7 +30,7 @@ function GameDetail({ user }) {
     window.scrollTo(0, 0);
   }, [id]);
 
-  if (!game) {
+  if (!game || !gameStats) {
     return <div>Loading...</div>;
   }
 
@@ -58,9 +58,13 @@ function GameDetail({ user }) {
         </>
       )}
       <div className="reviews-container">
-        {gameStats.map((stat) => (
+      {gameStats && gameStats.length > 0 ? (
+        gameStats.map((stat) => (
           <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
-        ))}
+        ))
+      ) : (
+      <p>No reviews available.</p>
+      )}
       </div>
       <Link to="/games">Back</Link>
     </div>

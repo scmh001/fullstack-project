@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function FavoriteButton({ gameId, userId }) {
-    //TODO LIFT THIS STATE TO APP
+
   const [isFavorited, setIsFavorited] = useState(false);
   const [gameStatId, setGameStatId] = useState(null);
 
@@ -24,7 +24,7 @@ function FavoriteButton({ gameId, userId }) {
     // If a GameStatistics instance exists, update the favorited status
     // If not, create a new GameStatistics instance with favorited set to true
     if (gameStatId) {
-      fetch(`http://localhost:8080/game-statstics/${gameId}/${userId}`, {
+      fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

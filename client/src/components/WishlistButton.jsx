@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 function WishlistButton({ gameId, userId }) {
   
-  //TODO Lift state to app and pass down props 
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [gameStatId, setGameStatId] = useState(null);
 
@@ -24,8 +23,8 @@ function WishlistButton({ gameId, userId }) {
   const handleWishlist = () => {
     // If a GameStatistics instance exists, update the wish_listed status
     // If not, create a new GameStatistics instance with wish_listed set to true
-    if (gameStatId) {
-      fetch(`http://localhost:8080/game-statstics/${gameId}/${userId}`, {
+    if (gameStatId !== null) {
+      fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
