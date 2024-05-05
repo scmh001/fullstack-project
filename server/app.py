@@ -63,6 +63,7 @@ def protected():
         return redirect('/login')
     return jsonify({'message': 'Access granted'})
 
+
 class Games(Resource):
     def get(self):
         games = [game.to_dict() for game in Game.query.all()]
