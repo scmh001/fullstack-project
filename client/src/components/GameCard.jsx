@@ -11,9 +11,9 @@ const GameCard = ({ game }) => {
 
   return (
     <div className="game-card">
-      <img src={game.image} alt={game.name} />
+      <img src={game.image} alt={game.game_name} />
       <Link to={`/games/${game.id}`}>
-        <h2>{game.name}</h2>
+        <h2>{game.game_name}</h2>
       </Link>
       <p>Genre: {game.genre}</p>
       <p>Rating: {game.rating ? game.rating : 'N/A'} ⭐</p> 

@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request, session
 from flask_cors import CORS
 from models import db, User, Game, GameStatistics
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-from flask_jwt_extended import JWTManager, create_access_token
 import os
 
 app = Flask(__name__)
 CORS(app)
-app.config['JWT_SECRET_KEY'] = 'super-secret'
-jwt = JWTManager(app)
+
+app.secret_key = b'\x9c\x8a\xc3\xdd\xce\x9e\xb9\x99\xdb!8"w\xd5~\xde'
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
@@ -27,41 +26,43 @@ db.init_app(app)
 
 api = Api(app)
 
-@app.route('/users', methods=['GET', 'POST'])
+@app.route('/users', methods=['POST'])
 def manage_users():
-    if request.method == 'POST':
-        data = request.get_json()
-        new_user = User(username=data['username'], password=data['password'])
+        data = request.json
+        new_user = User(username=data.get('username'), password=data.get('password'))
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({'message': 'User created successfully'}), 201
-    elif request.method == 'GET':
-        users = User.query.all()
-        return jsonify([user.to_dict() for user in users]), 200
+        session['user_id'] = new_user.id
+        response = make_response(new_user.to_dict())
+        response.set_cookie('user_id', str(new_user.id))
+        return response, 201
+
+@app.route('/logout', methods=["GET"])
+def logout():
+    session['user_id'] = None 
+    response = make_response({})
+    response.delete_cookie('user_id')
+    return response, 200
+
+@app.route('/authenticate-session')
+def authorize():
+    cookie_id = request.cookies.get('user_id')
+    if cookie_id:
+        user = User.query.filter_by(id=cookie_id).first()
+        if user:
+            return make_response(user.to_dict(only=['id', 'username'])), 200
+    return make_response({'message': 'failed to authenticate'}), 401
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    user = User.query.filter_by(username=data['username']).first()
+    user = User.query.filter_by(username=data.get('username')).first()
     if user and user.password == data['password']:
-        access_token = create_access_token(identity=data['username'])
-        response = jsonify(access_token=access_token)
-        response.set_cookie('auth_token', access_token, httponly=True)  
+        session['user_id'] = user.id
+        response = make_response(user.to_dict(only=['id', 'username']))
+        response.set_cookie('user_id', str(user.id))
         return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
-
-
-def check_auth():
-    auth_token = request.cookies.get('auth_token')
-    if auth_token and decode_auth_token(auth_token):  # Assuming a function to decode and verify token
-        return True
-    return False
-
-@app.route('/protected-route')
-def protected():
-    if not check_auth():
-        return redirect('/login')
-    return jsonify({'message': 'Access granted'})
 
 
 class Games(Resource):
@@ -80,26 +81,6 @@ class TopGames(Resource):
     
 api.add_resource(TopGames, '/top-games')
 
-class Users(Resource):
-    def post(self):
-        data = request.json
-        try:
-            new_user = User(
-                username = data.get('username'),
-                password = data.get('password')
-            )
-            if new_user:
-                db.session.add(new_user)
-                db.session.commit()
-
-                return make_response(new_user, 201)
-            else:
-                return make_response({'error': 'user could not be made'}, 400) #TODO check code 
-        except:
-            return make_response({'error': ['validation errors']}, 400)
-        
-api.add_resource(Users, '/users')
-        
 class GamesById(Resource):
     def get(self, id):
         game = Game.query.filter(Game.id==id).first()
@@ -148,9 +129,9 @@ api.add_resource(UsersById, '/users/<int:id>')
 
 #jasen might be wrong about how this should work and is willing to accept responsibility 
 class GameStatsByGameID(Resource):
-    #this gets ALL comments, reviews for a specific game NOT BY USER
+    #this gets ALL comments, ratings for a specific game NOT BY USER
     def get(self,game_id): 
-        gamestats = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
+        gamestats = [gamestat.to_dict(only=['rating', 'comments']) for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
         if gamestats:
             return make_response(gamestats)
         else:
@@ -160,10 +141,17 @@ api.add_resource(GameStatsByGameID, '/game-statistic/<int:game_id>')
 
 class GameStatsByUserAndGameIDs(Resource):
     #this allows a user to patch, passing both ids in (i think)
+    def get(self, game_id, user_id):
+        gamestat = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id == user_id).first()
+        if gamestat:
+            return make_response(gamestat.to_dict())
+        else:
+            return make_response({'error': ['Game statistics not found']}, 404)
+    
     def patch(self, game_id, user_id):
-        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id and GameStatistics.user_id==user_id).first()
+        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id==user_id).first()
         if not gamestats:
-            return make_response({"error": "User not found"}, 404)
+            return make_response({"error": "Statistics not found"}, 404)
         else:
             try:
                 for attr in request.json:
@@ -176,7 +164,7 @@ class GameStatsByUserAndGameIDs(Resource):
             except:
                 return make_response({"errors": ["validation errors"]}, 400)
 
-api.add_resource(GameStatsByUserAndGameIDs, '/game-statstics/<int:game_id>/<int:user_id>')
+api.add_resource(GameStatsByUserAndGameIDs, '/game-statistics/<int:game_id>/<int:user_id>')
 
 class GameStats(Resource):
     #is this right???
@@ -189,17 +177,38 @@ class GameStats(Resource):
                 comments = data.get('comments'),
                 rating = data.get('rating'),
                 favorited = data.get('favorited'),
-                wishlisted = data.get('wishlisted')
+                wish_listed = data.get('wish_listed')
             )
             if new_gamestats:
                 db.session.add(new_gamestats)
                 db.session.commit()
 
-                return make_response(new_gamestats, 201)
+                return make_response(new_gamestats.to_dict(), 201)
             else:
                 return make_response({'error': 'Review could not be made'}, 400) #TODO check code 
         except:
             return make_response({'error': ['validation errors']}, 400)
+    
+api.add_resource(GameStats, '/game-statistics')
+class FavoritesByUser(Resource):
+    def get(self, user_id):
+        favorites = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.favorited==True).all()]
+        if favorites:
+            return make_response(favorites)
+        else:
+            return make_response({'error': ['No games favorited yet']})
+        
+api.add_resource(FavoritesByUser, '/favorites/<int:user_id>')
+
+class WishlistByUser(Resource):
+    def get(self, user_id):
+        wishlisted = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.wish_listed==True).all()]
+        if wishlisted:
+            return make_response(wishlisted)
+        else:
+            return make_response({'error': ['No games in your wishlist yet']})
+        
+api.add_resource(WishlistByUser, '/wishlist/<int:user_id>')
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)

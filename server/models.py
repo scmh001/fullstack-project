@@ -50,8 +50,8 @@ class GameStatistics(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), nullable=False)
     
-    comments = db.Column(db.String)
-    rating = db.Column(db.Integer)
+    comments = db.Column(db.String, nullable=True)
+    rating = db.Column(db.Integer, nullable=True)
     favorited = db.Column(db.Boolean, default = False)
     wish_listed = db.Column(db.Boolean, default = False)
     

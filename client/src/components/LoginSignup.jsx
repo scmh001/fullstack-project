@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Cookies from 'js-cookie';
 import "./LoginSignup.css"
 import { GoogleLoginButton, FacebookLoginButton } from 'react-social-login-buttons';
+import { useNavigate } from 'react-router-dom';
 
 // Validation schemas
 const LoginSchema = Yup.object().shape({
@@ -12,38 +13,44 @@ const LoginSchema = Yup.object().shape({
 });
 
 const SignupSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
 });
 
-const LoginSignup = () => {
+const LoginSignup = ({updateUser, user}) => {
   const [isSignup, setIsSignup] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Perform validation check or automatically log in
-    }
-  }, []);
+  const navigate = useNavigate()
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     // Perform validation check or automatically log in
+  //   }
+  // }, []);
 
   const handleSubmit = (values) => {
-    const url = isSignup ? 'http://localhost:8080/users' : 'http://localhost:8080/login';
+    const url = isSignup? 'http://localhost:8080/users' : 'http://localhost:8080/login';
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            username: values.email,
-            password: values.password,
-            ...(isSignup && { name: values.name }),
+            username: values.email,//TODO make this .tolower or whatever so it's not case sensitive
+            password: values.password
         }),
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok){
+        return response.json()
+      }else{
+        console.error('Error')
+      }
+    })
     .then(data => {
-        Cookies.set('token', data.token, { expires: 1 }); // Save the token to cookies
+        updateUser(data)
         console.log('Success:', data);
+        navigate('/', { relative: 'path' });
     })
     .catch((error) => {
         console.error('Error:', error);

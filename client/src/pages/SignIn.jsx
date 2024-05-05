@@ -1,10 +1,10 @@
 import React from 'react';
 import LoginSignup from '@/components/LoginSignup'; 
 
-function SignIn() {
+function SignIn({updateUser}) {
   return (
     <div>
-      <LoginSignup />
+      <LoginSignup updateUser={updateUser}/>
     </div>
   );
 }
