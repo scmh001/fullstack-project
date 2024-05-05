@@ -34,7 +34,7 @@ const NavBar = ({user, updateUser}) => {
             <>
               {['/', '/games', '/favorites', '/wishlist', '/profile'].map((path, index) => (
                 <li key={index}>
-                  <NavLink to={path} className="active-link">
+                  <NavLink to={path} activeClassName="active-link">
                     <span className="link-text">{path.substring(1) || 'home'}</span>
                     <span className="link-bg"></span>
                   </NavLink>
@@ -60,14 +60,14 @@ const NavBar = ({user, updateUser}) => {
             <>
               {['/', '/games'].map((path, index) => (
                 <li key={index}>
-                  <NavLink to={path} className="active-link">
+                  <NavLink to={path} activeClassName="active-link">
                     <span className="link-text">{path.substring(1) || 'home'}</span>
                     <span className="link-bg"></span>
                   </NavLink>
                 </li>
               ))}
               <li>
-                <NavLink to="/signin" className="active-link">
+                <NavLink to="/signin" activeClassName="active-link">
                   <span className="link-text">sign in</span>
                   <span className="link-bg"></span>
                 </NavLink>

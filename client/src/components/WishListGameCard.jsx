@@ -2,10 +2,23 @@ import React, { useState } from 'react';
 import './WishListGameCard.css';
 import { Link } from 'react-router-dom';
 
-const WishListGameCard = ({ game }) => {
+const WishListGameCard = ({ game, user, handleUnwishlist }) => {
 
   const handleDelete = () => {
-    onDelete(game.id);
+    fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ wish_listed: false }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        handleUnwishlist(data.id);
+      })
+      .catch((error) => {
+        console.error('Error deleting game from wishlist:', error);
+      });
   };
 
   return (

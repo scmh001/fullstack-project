@@ -6,6 +6,7 @@ function WishListGames({user}) {
   const [games, setGames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); //initialize current page state with initial value of 1 for page 1
   const [gamesPerPage] = useState(12); //initial value of 12 games per page
+  const [deleteGame, setDeleteGame] = useState(false);
 
   useEffect(() => {
     if (user && user.id) {
@@ -21,7 +22,12 @@ function WishListGames({user}) {
           setGames(gameData);
         });
     }
-  }, [user]);
+  }, [user, deleteGame]);
+
+  const handleUnwishlist = (gameId) => {
+    setGames(games.filter((game) => game.id !== gameId));
+    setDeleteGame(prev => !prev)
+  }
 
   // Pagination
   const indexOfLastGame = currentPage * gamesPerPage;
@@ -36,7 +42,7 @@ function WishListGames({user}) {
       {/* Game cards container */}
       <div className="game-cards-container">
         {currentGames.map((game) => (
-          <WishListGameCard key={game.id} game={game} />
+          <WishListGameCard key={game.id} game={game} handleUnwishlist={handleUnwishlist} user={user}/>
         ))}
       </div>
       {/* Pagination */}

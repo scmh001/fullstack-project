@@ -5,13 +5,10 @@ from flask_cors import CORS
 from models import db, User, Game, GameStatistics
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-# from flask_jwt_extended import JWTManager, create_access_token
 import os
 
 app = Flask(__name__)
 CORS(app)
-# app.config['JWT_SECRET_KEY'] = 'super-secret'
-# jwt = JWTManager(app)
 
 app.secret_key = b'\x9c\x8a\xc3\xdd\xce\x9e\xb9\x99\xdb!8"w\xd5~\xde'
 
@@ -35,7 +32,6 @@ def manage_users():
         new_user = User(username=data.get('username'), password=data.get('password'))
         db.session.add(new_user)
         db.session.commit()
-        # access_token = create_access_token(identity=data['username'])
         session['user_id'] = new_user.id
         response = make_response(new_user.to_dict())
         response.set_cookie('user_id', str(new_user.id))
@@ -68,14 +64,6 @@ def login():
         return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
-
-# def check_auth():
-#     auth_token = request.cookies.get('auth_token')
-#     if auth_token and decode_auth_token(auth_token):  # Assuming a function to decode and verify token
-#         return True
-#     return False
-
-
 class Games(Resource):
     def get(self):
         games = [game.to_dict() for game in Game.query.all()]
@@ -92,26 +80,6 @@ class TopGames(Resource):
     
 api.add_resource(TopGames, '/top-games')
 
-# class Users(Resource):
-#     def post(self):
-#         data = request.json
-#         try:
-#             new_user = User(
-#                 username = data.get('username'),
-#                 password = data.get('password')
-#             )
-#             if new_user:
-#                 db.session.add(new_user)
-#                 db.session.commit()
-
-#                 return make_response(new_user, 201)
-#             else:
-#                 return make_response({'error': 'user could not be made'}, 400) #TODO check code 
-#         except:
-#             return make_response({'error': ['validation errors']}, 400)
-        
-# api.add_resource(Users, '/users')
-        
 class GamesById(Resource):
     def get(self, id):
         game = Game.query.filter(Game.id==id).first()
@@ -180,9 +148,9 @@ class GameStatsByUserAndGameIDs(Resource):
             return make_response({'error': ['Game statistics not found']}, 404)
     
     def patch(self, game_id, user_id):
-        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id and GameStatistics.user_id==user_id).first()
+        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id==user_id).first()
         if not gamestats:
-            return make_response({"error": "User not found"}, 404)
+            return make_response({"error": "Statistics not found"}, 404)
         else:
             try:
                 for attr in request.json:
@@ -223,7 +191,7 @@ class GameStats(Resource):
 api.add_resource(GameStats, '/game-statistics')
 class FavoritesByUser(Resource):
     def get(self, user_id):
-        favorites = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.favorited==1).all()]
+        favorites = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.favorited==True).all()]
         if favorites:
             return make_response(favorites)
         else:
@@ -233,7 +201,7 @@ api.add_resource(FavoritesByUser, '/favorites/<int:user_id>')
 
 class WishlistByUser(Resource):
     def get(self, user_id):
-        wishlisted = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.wish_listed==1).all()]
+        wishlisted = [gamestat.game.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.wish_listed==True).all()]
         if wishlisted:
             return make_response(wishlisted)
         else:
