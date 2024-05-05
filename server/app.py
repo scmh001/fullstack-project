@@ -64,7 +64,6 @@ def login():
         return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
-
 class Games(Resource):
     def get(self):
         games = [game.to_dict() for game in Game.query.all()]
