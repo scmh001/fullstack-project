@@ -1,65 +1,67 @@
 .wishlist-game-card {
-    display: flex;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .left-column {
-    width: 40%;
-  }
-  
-  .center-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    text-align: center; /* Center horizontally */
-  }
-  
-  .right-column {
-    width: 30%;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .right-column .game-details {
-    text-align: right; /* Align text to the right */
-    margin-left: auto; /* Push text to the right */
-  }
-  
-  .right-column .game-details p {
-    margin-bottom: 8px; /* Add space between paragraphs */
-  }
-  .wishlist-game-image {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 8px 0 0 8px;
-  }
-  
-  .game-details h2 {
-    margin-top: 0;
-  }
-  
-  .game-details button {
-    border: none;
-    background: none;
-    color: blue;
-    cursor: pointer;
-  }
-  
-  .game-details button:hover {
-    text-decoration: underline;
-  }
+  display: flex;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative; /* Added for delete confirmation positioning */
+}
 
-  .delete-icon {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    font-size: 20px; 
-    color: red; 
-  }
+.left-column {
+  width: 40%;
+}
+
+.center-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.right-column {
+  width: 30%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wishlist-game-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+}
+
+.game-details h2 {
+  margin-top: 0;
+}
+
+.delete-confirmation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  border-radius: 8px;
+}
+
+.delete-confirmation button {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.delete-confirmation button:hover {
+  background-color: #d32f2f;
+}

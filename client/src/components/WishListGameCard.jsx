@@ -2,15 +2,27 @@ import React, { useState } from 'react';
 import './WishListGameCard.css';
 import { Link } from 'react-router-dom';
 
-const WishListGameCard = ({ game }) => {
+const WishListGameCard = ({ game, onDelete }) => {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const handleDelete = () => {
+    setShowDeleteConfirmation(true);
+  };
+
+  const confirmDelete = () => {
     onDelete(game.id);
+    setShowDeleteConfirmation(false);
   };
 
   return (
     <div className="wishlist-game-card">
-      {/* Delete button */}
+      {showDeleteConfirmation && (
+        <div className="delete-confirmation">
+          <p>Are you sure you want to delete this game from your wishlist?</p>
+          <button onClick={confirmDelete}>Yes</button>
+          <button onClick={() => setShowDeleteConfirmation(false)}>No</button>
+        </div>
+      )}
       <button className="delete-button" onClick={handleDelete}>❌</button>
       <div className="left-column">
         <img className="wishlist-game-image" src={game.image} alt={game.game_name} />
@@ -39,6 +51,5 @@ const WishListGameCard = ({ game }) => {
     </div>
   );
 };
-
 
 export default WishListGameCard;

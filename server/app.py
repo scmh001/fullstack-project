@@ -69,6 +69,7 @@ def login():
     return jsonify({'message': 'Invalid credentials'}), 401
 
 
+
 # def check_auth():
 #     auth_token = request.cookies.get('auth_token')
 #     if auth_token and decode_auth_token(auth_token):  # Assuming a function to decode and verify token

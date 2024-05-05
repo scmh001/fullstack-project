@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Cookies from 'js-cookie';
 import "./LoginSignup.css"
 import { GoogleLoginButton, FacebookLoginButton } from 'react-social-login-buttons';
 import { useNavigate } from 'react-router-dom';
