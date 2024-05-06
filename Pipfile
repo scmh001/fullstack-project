@@ -15,6 +15,7 @@ flask-cors = "*"
 faker = "*"
 flask-jwt-extended = "*"
 flask-login = "*"
+flask-bcrypt = "*"
 
 
 [requires]
