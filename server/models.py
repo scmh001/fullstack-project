@@ -58,4 +58,4 @@ class GameStatistics(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates = 'game_statistics')
     game = db.relationship('Game', back_populates='game_statistics')
     
-    serialize_rules = ('-user', '-game',)
+    # serialize_rules = ('-user', '-game',)

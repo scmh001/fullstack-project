@@ -60,7 +60,6 @@ body {
   object-fit: cover;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .banner {
     padding: 30px 10px;
@@ -73,4 +72,47 @@ body {
   .banner p {
     font-size: 1rem;
   }
+}
+
+.review-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px;
+}
+
+.review-card-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+}
+
+.game-image {
+  width: 100%; 
+  height: auto; 
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.rating {
+  margin-bottom: 10px;
+}
+
+.comment-user-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  margin-bottom: 5px;
+}
+
+.user {
+  margin-top: auto; /* Push user to the bottom */
 }
