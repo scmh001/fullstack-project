@@ -48,6 +48,15 @@ def login():
         return response, 200
     return jsonify({'message': 'Invalid username or password'}), 401
 
+
+class RecentReviews(Resource):
+    def get(self):
+        games = [game.to_dict() for game in GameStatistics.query.order_by(GameStatistics.rating).limit(5).all()]
+
+        return make_response(games)
+    
+api.add_resource(RecentReviews, '/recent_reviews')
+
 class Games(Resource):
     def get(self):
         games = [game.to_dict() for game in Game.query.all()]
@@ -114,7 +123,7 @@ api.add_resource(UsersById, '/users/<int:id>')
 class GameStatsByGameID(Resource):
     #this gets ALL comments, ratings for a specific game NOT BY USER
     def get(self,game_id): 
-        gamestats = [gamestat.to_dict(only=['rating', 'comments']) for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
+        gamestats = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.game_id==game_id).all()]
         if gamestats:
             return make_response(gamestats)
         else:
