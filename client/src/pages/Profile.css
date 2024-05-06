@@ -1,0 +1,15 @@
+.favorites-container {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    margin-bottom: 20px; 
+  }
+  
+  .favorites-container > * {
+    flex: 0 0 calc(33.33% - 20px); 
+    margin: 10px; 
+  }
+  
+  .favorites-container > *:last-child {
+    margin-right: 0; 
+  }

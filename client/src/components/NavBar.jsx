@@ -13,7 +13,7 @@ const NavBar = ({user, updateUser}) => {
 		fetch('http://localhost:8080/logout')
 		.then(res => res.json())
 		.then(data => updateUser(null))
-    navigate('http://localhost:8080/signin')
+    navigate('/signin', { relative: 'path' });
 	}
 
   return (

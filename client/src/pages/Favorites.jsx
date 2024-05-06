@@ -7,6 +7,7 @@ function Favorites({user}) {
   const [games, setGames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); //initialize current page state with initial value of 1 for page 1
   const [gamesPerPage] = useState(12); //initial value of 12 games per page
+  const [deleteGame, setDeleteGame] = useState(false)
 
   
   useEffect(() => {
@@ -23,9 +24,12 @@ function Favorites({user}) {
           setGames(gameData);
         });
     }
-  }, [user]);
+  }, [user, deleteGame]);
 
-  
+  const handleUnfavorite = (gameId) => {
+    setGames(games.filter((game) => game.id !== gameId));
+    setDeleteGame(prev => !prev)
+  }
   // Pagination
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
@@ -45,7 +49,7 @@ function Favorites({user}) {
         {/* Game cards container */}
         <div className="game-cards-container">
           {currentGames.map((game) => (
-            <FavoritesGameCard key={game.id} game={game} />
+            <FavoritesGameCard key={game.id} game={game} user={user} handleUnfavorite={handleUnfavorite}/>
           ))}
         </div>
         {/* Pagination */}
