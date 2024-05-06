@@ -37,7 +37,8 @@ def create_users(num_users):
     for _ in range(num_users):
         username = fake.email()
         password = fake.password()
-        user = User(username=username, password=password)
+        user = User(username=username)
+        user.password_hash = password
         users.append(user)
     db.session.add_all(users)
     db.session.commit()
