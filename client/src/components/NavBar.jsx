@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
+import SearchBar from './SearchBar';
 
 const NavBar = ({user, updateUser}) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -74,7 +75,9 @@ const NavBar = ({user, updateUser}) => {
               </li>
             </>
           )}
+          <SearchBar />
         </ul>
+        
       </nav>
     </div>
   );

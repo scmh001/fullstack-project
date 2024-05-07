@@ -202,5 +202,11 @@ class WishlistByUser(Resource):
         
 api.add_resource(WishlistByUser, '/wishlist/<int:user_id>')
 
+@app.route('/search', methods=['GET'])
+def search_games():
+    query = request.args.get('q')
+    games = Game.query.filter(Game.game_name.ilike(f'%{query}%')).limit(10).all()
+    return make_response([game.to_dict() for game in games])
+
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
