@@ -1,41 +1,48 @@
 import React, { useState, useEffect } from 'react';
 
+// Define a functional component WishlistButton that takes gameId and userId as props
 function WishlistButton({ gameId, userId }) {
   
+  // State to track if the game is wishlisted
   const [isWishlisted, setIsWishlisted] = useState(false);
+  // State to store the game statistics ID
   const [gameStatId, setGameStatId] = useState(null);
 
+  // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
   useEffect(() => {
     // Fetch game statistics for the current user and game
     fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`)
       .then((res) => res.json())
       .then((data) => {
+        // If game statistics exist, update state with the fetched data
         if (data.game_stats_id) {
           setIsWishlisted(data.wish_listed);
           setGameStatId(data.game_stats_id);
         } else {
+          // If no game statistics exist, set default state
           setIsWishlisted(false);
           setGameStatId(null);
         }
       });
-  }, [gameId, userId]);
+  }, [gameId, userId]); // Dependencies array for useEffect
 
+  // Function to handle wishlist button click
   const handleWishlist = () => {
     // If a GameStatistics instance exists, update the wish_listed status
-    // If not, create a new GameStatistics instance with wish_listed set to true
     if (gameStatId !== null) {
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
-        method: 'PATCH',
+        method: 'PATCH', // Use PATCH method to update existing data
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ wish_listed: !isWishlisted }),
+        body: JSON.stringify({ wish_listed: !isWishlisted }), // Toggle wish_listed status
       })
         .then((res) => res.json())
-        .then((data) => setIsWishlisted(data.wish_listed));
+        .then((data) => setIsWishlisted(data.wish_listed)); // Update state with new wish_listed status
     } else {
+      // If not, create a new GameStatistics instance with wish_listed set to true
       fetch(`http://localhost:8080/game-statistics`, {
-        method: 'POST',
+        method: 'POST', // Use POST method to create new data
         headers: {
           'Content-Type': 'application/json',
         },
@@ -47,22 +54,24 @@ function WishlistButton({ gameId, userId }) {
       })
         .then((res) => res.json())
         .then((data) => {
+          // Update state with new game statistics data
           setIsWishlisted(true);
           setGameStatId(data.game_stats_id);
         });
     }
   };
 
+  // Render the wishlist button with dynamic text and icon based on isWishlisted state
   return (
     <div className="wishlist-container">
       <button className="wishlist-button" onClick={handleWishlist}>
         <span role="img" aria-label="star">
-          {isWishlisted ? '⭐' : '☆'}
+          {isWishlisted ? '⭐' : '☆'} {/* Display star icon based on isWishlisted state */}
         </span>{' '}
-        {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
+        {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'} {/* Display dynamic button text */}
       </button>
     </div>
   );
 }
 
-export default WishlistButton;
+export default WishlistButton; // Export WishlistButton component for use in other parts of the application
