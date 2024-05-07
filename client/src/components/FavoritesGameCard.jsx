@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardMedia, CardContent, Typography, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { makeStyles } from '@mui/styles';
+import { Link } from 'react-router-dom';
 
 // Custom styles for the component
 const useStyles = makeStyles((theme) => ({
@@ -58,9 +59,11 @@ const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
         title={game.game_name}
       />
       <CardContent className={classes.content}>
+      <Link to={`/games/${game.id}`}>
         <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
           {game.game_name}
         </Typography>
+      </Link>
         <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
           Rating: {game.rating ? game.rating : 'N/A'} ⭐
         </Typography>
