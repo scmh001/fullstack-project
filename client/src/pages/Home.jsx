@@ -74,7 +74,7 @@ function Home() {
           {//TODO make link to new page that populates based on most recently released??
           }
           <Link to={'/recentlyreleased'}>
-            <img src='https://i.imgur.com/EowlAak.jpeg' alt='recently-released' />
+            <img src='https://imgur.com/EowlAak' alt='recently-released' />
           </Link>
         </div>
         <div className='link-card'>
