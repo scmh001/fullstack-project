@@ -1,24 +1,38 @@
 import React from 'react';
+import { Card, CardContent, Typography, Box } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 function GameReviewCard({ gameStats }) {
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
-      stars.push(<span key={i} className={i <= rating ? 'star gold-star' : 'star'}>&#9733;</span>);
+      stars.push(
+        i <= rating ? <StarIcon key={i} color="warning" /> : <StarBorderIcon key={i} />
+      );
     }
     return stars;
   };
-  
+
   return (
-    <div className="review-item">
-      {gameStats.rating && (
-        <div className="rating-container">
-          <p>Rating: {gameStats.rating}</p>
-          <p>User: {gameStats.user.username}</p>
-          <p>Comment: {gameStats.comments}</p>
-        </div>
-      )}
-    </div>
+    <Card sx={{ marginBottom: 2 }}>
+      <CardContent>
+        {gameStats.rating && (
+          <Box>
+            <Typography variant="subtitle1" component="div">
+              Rating: {gameStats.rating}
+              <Box sx={{ display: 'flex' }}>{renderStars(gameStats.rating)}</Box>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              User: {gameStats.user.username}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Comment: {gameStats.comments}
+            </Typography>
+          </Box>
+        )}
+      </CardContent>
+    </Card>
   );
 }
 
