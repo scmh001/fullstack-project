@@ -4,6 +4,7 @@ import GameReviewCard from '../components/GameReviewCard';
 import FavoriteButton from '../components/FavoriteButton';
 import WishlistButton from '../components/WishlistButton';
 import ReviewForm from '../components/ReviewForm';
+import './GameDetail.css';
 
 function GameDetail({ user }) {
   const { id } = useParams();
