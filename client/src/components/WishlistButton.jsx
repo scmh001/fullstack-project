@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button'; // Import Button from Material-UI
+import StarIcon from '@mui/icons-material/Star'; // Import Material-UI icon for starred
+import StarBorderIcon from '@mui/icons-material/StarBorder'; // Import Material-UI icon for unstarred
 
 // Define a functional component WishlistButton that takes gameId and userId as props
 function WishlistButton({ gameId, userId }) {
@@ -64,12 +67,14 @@ function WishlistButton({ gameId, userId }) {
   // Render the wishlist button with dynamic text and icon based on isWishlisted state
   return (
     <div className="wishlist-container">
-      <button className="wishlist-button" onClick={handleWishlist}>
-        <span role="img" aria-label="star">
-          {isWishlisted ? '⭐' : '☆'} {/* Display star icon based on isWishlisted state */}
-        </span>{' '}
-        {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'} {/* Display dynamic button text */}
-      </button>
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={isWishlisted ? <StarIcon /> : <StarBorderIcon />}
+        onClick={handleWishlist}
+      >
+        {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
+      </Button>
     </div>
   );
 }
