@@ -64,6 +64,14 @@ def login():
         return response, 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
+@app.route('/reviews/<int:user_id>', methods=['GET'])
+def get_reviews(user_id):
+    reviews = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id).all()]
+    if reviews:
+        return make_response(reviews)
+    else:
+        return make_response({'error': ['No games reviewed yet']})
+
 
 class RecentReviews(Resource):
     def get(self):
