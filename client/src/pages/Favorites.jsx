@@ -21,6 +21,7 @@ function Favorites({user}) {
         })
         .then((gameData) => {
           setGames(gameData);
+          console.log(gameData)
         });
     }
   }, [user]);
