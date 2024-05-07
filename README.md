@@ -4,22 +4,6 @@ The social network for game lovers.
 
 
 
-## Games (database)
-* social aspect
-* compare favorite games
-* friends
-* recommend to friends
-* rating
-* comments
-* most played genre
-* recommend friends based on your filtered preferences
-* compare your interests to other users
-* top games
-* add to database
-* game maturity level (rating)
-* releases this month (stretch)
-
-
 ## Deliverables
 * List of games
 * Filterable
