@@ -66,7 +66,7 @@ function Home() {
         <div className='link-card'>
           {//TODO make link to new page that populates based on highest review??
           }
-          <Link to={'/games'}>
+          <Link to={'/mostpopular'}>
             <img src='https://i.imgur.com/Zc9EmpV.jpeg' alt='most-popular' />
           </Link>
         </div>

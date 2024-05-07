@@ -34,6 +34,7 @@ const WishListGameCard = ({ game, user, handleUnwishlist }) => {
           <Link to={`/games/${game.id}`}>
             <h2>{game.game_name}</h2>
           </Link>
+          
           <p>Reviews: {game.reviews ? game.reviews : 'N/A'}</p>
           <p>Description: {game.description ? game.description :'N/A'}</p>
         </div>
@@ -47,6 +48,14 @@ const WishListGameCard = ({ game, user, handleUnwishlist }) => {
           <p>Release Date: {game.releaseDate ? game.releaseDate : 'N/A'}</p>
           <p>Maturity Level: {game.maturityLevel ? game.maturityLevel : 'N/A'}</p>
           <p>Platforms: {game.platform ? game.platform : 'N/A'}</p>
+          <a
+            href={`https://www.amazon.com/s?k=${encodeURIComponent(game.game_name)}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="amazon-link"
+          >
+          Buy Now
+          </a>
         </div>
       </div>
     </div>
