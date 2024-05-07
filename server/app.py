@@ -50,7 +50,7 @@ def login():
 
 @app.route('/reviews/<int:user_id>', methods=['GET'])
 def get_reviews(user_id):
-    reviews = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id).all()]
+    reviews = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.comments != None ).all()]
     if reviews:
         return make_response(reviews)
     else:
