@@ -46,32 +46,39 @@ function GameDetail({ user }) {
     <div className="game-detail-container">
       <h1 className="h1-dp">{game.game_name}</h1>
       <div className="details-container">
-        <img className="details-image" src={game.image} alt={game.game_name} />
-        <div className="details-list-dp">
-          <p>Genre: {game.genre}</p>
-          <p>System: {game.system}</p>
-          <p>Developer: {game.developer}</p>
-          <p>Release Date: {game.release_date}</p>
-          <p>Maturity Level: {game.maturity_level}</p>
+        <div className="image-column">
+          <img className="details-image" src={game.image} alt={game.game_name} />
         </div>
-      </div>
-      {user && (
-        <div className="favorite-wishlist-container">
-          <FavoriteButton gameId={game.id} userId={user.id} />
-          <WishlistButton gameId={game.id} userId={user.id} />
+        <div className="details-column">
+          <div className="details-list-dp">
+            <p className="game-detail-text">Genre: {game.genre}</p>
+            <p className="game-detail-text">System: {game.system}</p>
+            <p className="game-detail-text">Developer: {game.developer}</p>
+            <p className="game-detail-text">Release Date: {game.release_date}</p>
+            <p className="game-detail-text">Maturity Level: {game.maturity_level}</p>
+            <p className="game-detail-text">Description: {game.description}</p>
+          </div>
+          {user && (
+            <div className="favorite-wishlist-container">
+              <FavoriteButton gameId={game.id} userId={user.id} />
+              <WishlistButton gameId={game.id} userId={user.id} />
+            </div>
+          )}
+          {user && game && (
+            <div className="review-form-container">
+              <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
+            </div>
+          )}
+          <div className="reviews-container-detailpage">
+            {gameStats && gameStats.length > 0 ? (
+              gameStats.map((stat) => (
+                <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
+              ))
+            ) : (
+              <p>No reviews available.</p>
+            )}
+          </div>
         </div>
-      )}
-      {user && game && (
-        <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
-      )}
-      <div className="reviews-container-detailpage">
-        {gameStats && gameStats.length > 0 ? (
-          gameStats.map((stat) => (
-            <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
-          ))
-        ) : (
-          <p>No reviews available.</p>
-        )}
       </div>
       <Link className="link-back" to="/games">
         Back

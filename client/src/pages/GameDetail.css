@@ -1,55 +1,57 @@
 .game-detail-container {
-    position: relative; /* Set the container as a positioning context */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 40px;
 }
 
 .h1-dp {
-    margin-top: 0;
-    position: absolute;
-    top: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-}
-.details-image {
-    width: 50%; /* Adjust as needed */
-    max-width: 400px;
-    margin-bottom: 30px; /* Add space below the image */
+    font-size: 42px;
 }
 
-.rating-container {
-    margin-top: 10px;
-}
-
-.details-list-dp {
+.details-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Set a maximum width for the details container */
     margin-top: 20px;
-    text-align: right;
+    padding: 30px; /* Add padding around the details */
+}
+
+.details-image {
+    width: 700px; /* Set a specific width for the image */
+    max-width: 100%; /* Ensure the image doesn't overflow its container */
+    margin-right: 70px;
 }
 
 .favorite-wishlist-container {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
-    gap: 10px; /* Add space between buttons */
+    gap: 10px;
+}
+
+.game-detail-text {
+    font-size: 18px;
+}
+
+.review-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start of the column */
+    margin-top: 50px;
+    width: 100%;
 }
 
 .review-form-container {
-    margin-top: 30px;
-    text-align: center;
+    margin-top: 60px;
+    width: 50%;
+}
+
+.reviews-container-detailpage {
+    width: 50%;
 }
 
 .link-back {
     margin-top: 20px;
-}
-
-  /* Side-by-Side Layout */
-.details-container {
-    display: flex;
-    justify-content: space-between; /* Distribute items evenly */
-    width: 100%;
-}
-
-.details-image,
-.details-list-dp {
-    width: calc(50% - 10px); /* Calculate width for side-by-side layout with gap */
 }
