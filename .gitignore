@@ -60,6 +60,7 @@ jspm_packages
 __pycache__
 
 # database
+.db
 *.db
 instance
 .vscode
