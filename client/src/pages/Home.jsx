@@ -2,31 +2,53 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import ImageGameCard from '../components/ImageGameCard';
+import HomeGameReviewCard from '../components/HomeGameReviewCard';
+
 
 function Home() {
   const [topGames, setTopGames] = useState([]);
+  const [recentReviews, setRecentReviews] = useState([]);
+
 
 
   useEffect(() => {
     fetch('http://localhost:8080/top-games')
       .then(res => {
-        if (res.ok){
-          return res.json()
-        }else{
-          return console.error("Something went wrong with your GET request")
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Something went wrong with your GET request');
         }
-    })
+      })
       .then(data => {
         setTopGames(data);
       })
       .catch(error => {
         console.error('Failed to fetch games:', error);
       });
+
+    // Fetch recent reviews
+    fetch('http://localhost:8080/recent_reviews')
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Something went wrong with your GET request');
+        }
+      })
+      .then(data => {
+        console.log('Fetched recent reviews data:', data);
+        setRecentReviews(data);
+      })
+      .catch(error => {
+        console.error('Failed to fetch recent reviews:', error);
+      });
   }, []);
 
-  if (!topGames) {
+  if (!topGames || !recentReviews) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <div className='home-page'>
@@ -62,13 +84,17 @@ function Home() {
           </Link>
         </div>
       </div>
-      <div className='reviews-container'>
-          <h1 style={{ textAlign: 'center', fontFamily: "'Poppins', sans-serif" }}>Recent Reviews</h1>
-          {//TODO make a reivew card and .map
-          }
+      <div className="game-card-container">
+        {recentReviews.map(review => (
+          <div key={review.game_stats_id} className="game-card">
+            <HomeGameReviewCard gameStats={review} />
       </div>
+    ))}
   </div>
-);
-}
-
+</div>
+  );
+          }
 export default Home;
+
+
+

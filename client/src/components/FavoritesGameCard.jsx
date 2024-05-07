@@ -2,12 +2,25 @@ import React, { useState } from 'react';
 import './FavoritesGameCard.css';
 import { Link } from 'react-router-dom';
 
-const FavoritesGameCard = ({ game }) => {
+const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
 
     const topThreeComments = game.comments ? game.comments.slice(0, 3) : [];
 
     const handleDelete = () => {
-        onDelete(game.id);
+      fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ favorited: false }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          handleUnfavorite(data.id);
+        })
+        .catch((error) => {
+          console.error('Error deleting game from favorites:', error);
+        });
       };
 
     return (
