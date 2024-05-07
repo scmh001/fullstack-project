@@ -29,7 +29,7 @@ function WishlistButton({ gameId, userId }) {
   // Function to handle wishlist button click
   const handleWishlist = () => {
     // If a GameStatistics instance exists, update the wish_listed status
-    if (gameStatId !== null) {
+    if (gameStatId) {
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH', // Use PATCH method to update existing data
         headers: {
