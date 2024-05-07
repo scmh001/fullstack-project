@@ -12,6 +12,7 @@ import GameDetail from './pages/GameDetail'
 import WishList from './pages/WishList'
 import SignIn from './pages/SignIn';
 import MostPopular from './pages/MostPopular'
+import RecentlyReleased from './pages/RecentlyReleased';
 
 function App() {
   // State hook to manage user state
@@ -48,6 +49,7 @@ function App() {
           <Route path="/favorites/" element={<Favorites user={user}/>} />
           <Route path="/wishlist" element={<WishList user={user}/>} />
           <Route path="/mostpopular" element={<MostPopular user={user}/>} />
+          <Route path="/recentlyreleased" element={<RecentlyReleased user={user}/>} />
           <Route path="/profile" element={<Profile user={user}/>} />
           <Route path="/groups" element={<Groups />} /> 
           <Route path="/signin" element={<SignIn updateUser={updateUser} user={user}/>} />
