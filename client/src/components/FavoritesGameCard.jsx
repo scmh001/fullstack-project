@@ -1,58 +1,79 @@
 import React from 'react';
-import './FavoritesGameCard.css';
-import { Link } from 'react-router-dom';
+import { Card, CardMedia, CardContent, Typography, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { makeStyles } from '@mui/styles';
 
-// Component for displaying a single game card in the favorites list
+// Custom styles for the component
+const useStyles = makeStyles((theme) => ({
+  card: {
+    maxWidth: '100vw', // Set the maximum width to 100% of the viewport width
+    height: '80vh', // Set the height to 100% of the viewport height
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  media: {
+    height: '100%', // Allocate 60% of the card height to the image
+    width: '100%', // Ensure the image spans the full width of the card
+    objectFit: 'cover', // Cover the area without distorting the aspect ratio
+  },
+  content: {
+    height: '40%', // Allocate the remaining 40% of the card height to content
+    overflow: 'auto' // Add scroll to content if it overflows
+  },
+  typography: {
+    // Increase font size for all Typography components within this card
+    fontSize: '2rem',
+  }
+}));
+
 const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
-    // Extract the top three comments from the game object or set to empty if none exist
-    const topThreeComments = game.comments ? game.comments.slice(0, 3) : [];
+  const classes = useStyles();
 
-    // Function to handle the removal of a game from favorites
-    const handleDelete = () => {
-      // Make a PATCH request to update the favorited status of the game
-      fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ favorited: false }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // Call the handleUnfavorite function passed as a prop with the game id
-          handleUnfavorite(data.id);
-        })
-        .catch((error) => {
-          // Log any errors to the console
-          console.error('Error deleting game from favorites:', error);
-        });
-    };
+  // Function to handle the removal of a game from favorites
+  const handleDelete = () => {
+    fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ favorited: false }),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      handleUnfavorite(data.id);
+    })
+    .catch((error) => {
+      console.error('Error deleting game from favorites:', error);
+    });
+  };
 
-    return (
-    <div className="favorites-game-card">
-        {/* Button to remove the game from favorites */}
-        <button className="delete-button" onClick={handleDelete}>❌</button>
-        {/* Game image */}
-        <img src={game.image} alt={game.game_name} />
-        {/* Link to the game's detailed page */}
-        <Link to={`/games/${game.id}`}>
-          <h2>{game.game_name}</h2>
-        </Link>
-        {/* Display the game rating or 'N/A' if not available */}
-        <p>Rating: {game.rating ? game.rating : 'N/A'} ⭐</p>
-        {/* Display the game genre */}
-        <p>Genre: {game.genre}</p>
-        {/* Map through the top three comments and display them */}
-        {topThreeComments.map((comment, index) => (
-          <p key={index}>Comment {index + 1}: {comment}</p>
+  return (
+    <Card className={classes.card}>
+      <IconButton aria-label="delete" onClick={handleDelete}>
+        <DeleteIcon />
+      </IconButton>
+      <CardMedia
+        className={classes.media}
+        image={game.image}
+        title={game.game_name}
+      />
+      <CardContent className={classes.content}>
+        <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
+          {game.game_name}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
+          Rating: {game.rating ? game.rating : 'N/A'} ⭐
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
+          Genre: {game.genre}
+        </Typography>
+        {game.comments && game.comments.slice(0, 3).map((comment, index) => (
+          <Typography key={index} variant="body2" color="textSecondary" component="p" className={classes.typography}>
+            Comment {index + 1}: {comment}
+          </Typography>
         ))}
-        {/* Display placeholders for missing comments if less than 3 exist */}
-        {game.comments && game.comments.length < 3 &&
-          Array.from({ length: 3 - game.comments.length }).map((_, index) => (
-            <p key={index + game.comments.length}>Comment {index + game.comments.length + 1}: N/A</p>
-          ))
-        }
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
