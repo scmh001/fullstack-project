@@ -1,157 +1,135 @@
 import React, { useState, useEffect } from 'react';
-import GameCard from '@/components/GameCard.jsx';
+import GameCard from '@/components/GameCard';
+import { Box, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import './Games.css';
 
 function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [gamesPerPage] = useState(12);
   const [filter, setFilter] = useState({
-    releaseDate: null,
-    ratingOrder: null,
-    genre: null,
-    system: null
+    releaseDate: '',
+    ratingOrder: '',
+    genre: '',
+    system: '',
+    developer: '', 
   });
 
+  // New state variables for dropdown options
+  const [genres, setGenres] = useState([]);
+  const [systems, setSystems] = useState([]);
+  const [developers, setDevelopers] = useState([]);
+
   useEffect(() => {
+    // Fetch games and extract unique genres, systems, and developers
     fetch('http://localhost:8080/games')
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      }else{
-        return console.error("Something went wrong with your GET request")
-      }
-  })
-    .then(gameData => {
-      setGames(gameData);
-      setFilteredGames(gameData); // Initialize filteredGames with all games
-    })
+      .then(res => res.json())
+      .then(gameData => {
+        setGames(gameData);
+        setFilteredGames(gameData);
+
+        // Extract unique genres, systems, and developers
+        const uniqueGenres = [...new Set(gameData.map(game => game.genre))];
+        const uniqueSystems = [...new Set(gameData.map(game => game.system))];
+        const uniqueDevelopers = [...new Set(gameData.map(game => game.developer))];
+
+        setGenres(uniqueGenres);
+        setSystems(uniqueSystems);
+        setDevelopers(uniqueDevelopers);
+      })
+      .catch(error => console.error("Failed to fetch games", error));
   }, []);
 
-  // Pagination
-  const indexOfLastGame = currentPage * gamesPerPage;
-  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-  const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame);
-
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // Filter games
   const applyFilters = () => {
-    let filtered = [...games];
-
-    // Apply filters
-    if (filter.releaseDate) {
-      switch (filter.releaseDate) {
-        case 'before1990':
-          filtered = filtered.filter(game => game['release-date'] < 1990);
-          break;
-        case 'before2000':
-          filtered = filtered.filter(game => game['release-date'] < 2000);
-          break;
-        case 'before2010':
-          filtered = filtered.filter(game => game['release-date'] < 2010);
-          break;
-        case 'before2020':
-          filtered = filtered.filter(game => game['release-date'] < 2020);
-          break;
-        default:
-          break;
-      }
-    }
-    if (filter.ratingOrder) {
-      filtered.sort((a, b) => {
-        if (filter.ratingOrder === 'lowestToHighest') {
-          return a.rating - b.rating;
-        } else {
-          return b.rating - a.rating;
-        }
-      });
-    }
+    let updatedGames = games;
+  
+    // Filter by genre
     if (filter.genre) {
-      filtered = filtered.filter(game => game.genre === filter.genre);
+      updatedGames = updatedGames.filter(game => game.genre === filter.genre);
     }
+  
+    // Filter by system
     if (filter.system) {
-      filtered = filtered.filter(game => game.system === filter.system);
+      updatedGames = updatedGames.filter(game => game.system === filter.system);
     }
-
-    setFilteredGames(filtered);
-    setCurrentPage(1); // Reset to first page when filters are applied
+  
+    // Filter by developer
+    if (filter.developer) {
+      updatedGames = updatedGames.filter(game => game.developer === filter.developer);
+    }
+  
+    // Update the filteredGames state
+    setFilteredGames(updatedGames);
   };
 
-  // Reset filters
   const resetFilters = () => {
     setFilter({
-      releaseDate: null,
-      ratingOrder: null,
-      genre: null,
-      system: null
+      releaseDate: '',
+      ratingOrder: '',
+      genre: '',
+      system: '',
+      developer: '',
     });
     setFilteredGames(games);
-    setCurrentPage(1); // Reset to first page when filters are reset
   };
 
   return (
-    <div>
-        <br></br>
-      {/* Filter bar */}
-      <div className="filter-bar">
-        {/* Release Date */}
-        <label>Release Date:</label>
-        <select value={filter.releaseDate} onChange={(e) => setFilter({ ...filter, releaseDate: e.target.value })}>
-          <option value="">All</option>
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
-          <option value="before1990">Before 1990</option>
-          <option value="before2000">Before 2000</option>
-          <option value="before2010">Before 2010</option>
-          <option value="before2020">Before 2020</option>
-        </select>
-        {/* Rating Order */}
-        <label>Rating:</label>
-        <select value={filter.ratingOrder} onChange={(e) => setFilter({ ...filter, ratingOrder: e.target.value })}>
-          <option value="">All</option>
-          <option value="lowestToHighest">Lowest First</option>
-          <option value="highestToLowest">Highest First</option>
-        </select>
-        {/* Genre */}
-        <label>Genre:</label>
-        <select value={filter.genre} onChange={(e) => setFilter({ ...filter, genre: e.target.value })}>
-          <option value="">All</option>
-          {/* Add options dynamically from data based on existing genres within data */}
-          {Array.from(new Set(games.map(game => game.genre))).map((genre, index) => (
-            <option key={index} value={genre}>{genre}</option>
-          ))}
-        </select>
-        {/* System */}
-        <label>System:</label>
-        <select value={filter.system} onChange={(e) => setFilter({ ...filter, system: e.target.value })}>
-          <option value="">All</option>
-          {/* Add options dynamically from data based on existing systems within data*/}
-          {Array.from(new Set(games.map(game => game.system))).map((system, index) => (
-            <option key={index} value={system}>{system}</option>
-          ))}
-        </select>
-        {/* Apply and reset buttons */}
-        <button onClick={applyFilters}>Apply Filters</button>
-        <button onClick={resetFilters}>Reset Filters</button>
-      </div>
-      {/* Game cards container */}
-      <div className="game-cards-container">
-        {currentGames.map((game) => (
+    <Box className="games-container">
+      <Box className="filter-bar">
+        {/* Genre dropdown */}
+        <FormControl variant="filled" sx={{ m: 0.1, minWidth: 100 }}>
+          <InputLabel>Genre</InputLabel>
+          <Select
+            value={filter.genre}
+            onChange={(e) => setFilter({ ...filter, genre: e.target.value })}
+          >
+            {genres.map((genre, index) => (
+              <MenuItem key={index} value={genre}>
+                {genre}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {/* System dropdown */}
+        <FormControl variant="filled" sx={{ m: -.5, minWidth: 100, minHeight: 0.5 }}>
+          <InputLabel>System</InputLabel>
+          <Select
+            value={filter.system}
+            onChange={(e) => setFilter({ ...filter, system: e.target.value })}
+          >
+            {systems.map((system, index) => (
+              <MenuItem key={index} value={system}>
+                {system}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {/* Developer dropdown */}
+        <FormControl variant="filled" sx={{ m: -.5, minWidth: 120, minHeight: 0.5 }}>
+          <InputLabel>Developer</InputLabel>
+          <Select
+            value={filter.developer}
+            onChange={(e) => setFilter({ ...filter, developer: e.target.value })}
+          >
+            {developers.map((developer, index) => (
+              <MenuItem key={index} value={developer}>
+                {developer}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Button variant="contained" color="primary" onClick={applyFilters}>
+          Apply Filters
+        </Button>
+        <Button variant="outlined" onClick={resetFilters}>
+          Reset Filters
+        </Button>
+      </Box>
+      <Box className="game-cards-container">
+        {filteredGames.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
-      </div>
-      {/* Pagination */}
-      <div className="pagination">
-        {currentPage > 1 && (
-          <button onClick={() => paginate(currentPage - 1)}>Previous Page</button>
-        )}
-        {currentPage < Math.ceil(filteredGames.length / gamesPerPage) && (
-          <button onClick={() => paginate(currentPage + 1)}>Next Page</button>
-        )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
