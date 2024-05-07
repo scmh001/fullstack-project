@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SearchBar.css';
+import { Link } from 'react-router-dom';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,7 +46,9 @@ const SearchBar = () => {
         <ul className="suggestions-list">
           {suggestions.map((game) => (
             <li key={game.id}>
-              <a href={`/games/${game.id}`}>{game.game_name}</a>
+               <Link to={`/games/${game.id}`}>
+                {game.game_name}
+                </Link>
             </li>
           ))}
         </ul>

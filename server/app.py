@@ -3,6 +3,7 @@
 from flask import jsonify, make_response, request, session
 from models import User, Game, GameStatistics
 from flask_restful import  Resource
+from sqlalchemy import desc
 
 from config import app, db, api
 
@@ -50,7 +51,7 @@ def login():
 
 @app.route('/reviews/<int:user_id>', methods=['GET'])
 def get_reviews(user_id):
-    reviews = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id).all()]
+    reviews = [gamestat.to_dict() for gamestat in GameStatistics.query.filter(GameStatistics.user_id==user_id, GameStatistics.rating != None).all()]
     if reviews:
         return make_response(reviews)
     else:
@@ -59,7 +60,7 @@ def get_reviews(user_id):
 
 class RecentReviews(Resource):
     def get(self):
-        games = [game.to_dict() for game in GameStatistics.query.order_by(GameStatistics.rating).limit(5).all()]
+        games = [game.to_dict() for game in GameStatistics.query.filter(GameStatistics.comments != None).order_by(GameStatistics.rating.desc()).limit(5).all()]
 
         return make_response(games)
     
