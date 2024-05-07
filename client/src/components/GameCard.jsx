@@ -21,7 +21,7 @@ const GameCard = ({ game }) => {
           Genre: {game.genre}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Rating: {game.rating ? game.rating : 'N/A'} ⭐
+          Rating: {game.rating ? game.rating : game.rating} ⭐
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Description: {game.description}

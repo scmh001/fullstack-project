@@ -19,7 +19,7 @@ function HomeGameReviewCard({ gameStats }) {
         {/* Right section */}
         <div className="right-section">
           {/* Comments */}
-          <p className="comments">{gameStats.comments}</p>
+          <p className="comments">{gameStats.user.comments}</p>
           {/* User name */}
           <p className="user">User: {gameStats.user.username}</p>
         </div>

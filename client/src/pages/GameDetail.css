@@ -1,0 +1,55 @@
+.game-detail-container {
+    position: relative; /* Set the container as a positioning context */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+}
+
+.h1-dp {
+    margin-top: 0;
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+}
+.details-image {
+    width: 50%; /* Adjust as needed */
+    max-width: 400px;
+    margin-bottom: 30px; /* Add space below the image */
+}
+
+.rating-container {
+    margin-top: 10px;
+}
+
+.details-list-dp {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.favorite-wishlist-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px; /* Add space between buttons */
+}
+
+.review-form-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.link-back {
+    margin-top: 20px;
+}
+
+  /* Side-by-Side Layout */
+.details-container {
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly */
+    width: 100%;
+}
+
+.details-image,
+.details-list-dp {
+    width: calc(50% - 10px); /* Calculate width for side-by-side layout with gap */
+}
