@@ -1,0 +1,77 @@
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax value */
+    gap: 15px; /* Reduced gap */
+    padding: 20px;
+}
+
+.games-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.filter-bar {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.filter-select:hover, .filter-select:focus {
+    border-color: #555;
+}
+
+.filter-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.filter-button.apply {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.filter-button.reset {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.filter-button:hover {
+    opacity: 0.8;
+}
+
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+.new-filter {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 5px;
+    cursor: pointer;
+}
