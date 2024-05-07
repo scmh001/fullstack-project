@@ -9,7 +9,7 @@ function HomeGameReviewCard({ gameStats }) {
           {/* Game title */}
           <h2 className="game-title">{gameStats.game.game_name}</h2>
           {/* Image */}
-          <img src={gameStats.game.image_url} alt={gameStats.game.game_name} className="game-image" />
+          <img src={gameStats.game.image} alt={gameStats.game.game_name} className="game-image" />
           {/* Rating */}
           {gameStats.rating && (
             <p className="rating">Rating: {gameStats.rating}</p>
@@ -19,7 +19,7 @@ function HomeGameReviewCard({ gameStats }) {
         {/* Right section */}
         <div className="right-section">
           {/* Comments */}
-          <p className="comments">{gameStats.user.comments}</p>
+          <p className="comments">{gameStats.comments}</p>
           {/* User name */}
           <p className="user">User: {gameStats.user.username}</p>
         </div>
