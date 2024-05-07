@@ -6,7 +6,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Nintendo Switch, Wii U",
-  "image": "The Legend of Zelda: Breath of the Wild",
+  "image": "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
   "description": "An open-air adventure across vast fields, forests, and mountain ranges, with a focus on exploration and survival in a revitalized Hyrule.",
   "developer": "Nintendo EPD"
   },
@@ -17,7 +17,7 @@
   "rating": null,
   "maturity-level": "Kids to Adults",
   "system": "Nintendo 64",
-  "image": null,
+  "image": "https://m.media-amazon.com/images/M/MV5BNjQzZmQzNWMtZTVmOS00NjU4LTlmNjktOTM2MDQwMjgxMmY0XkEyXkFqcGdeQXVyMTA3NjAwMDc4._V1_.jpg",
   "description": "The first 3D platformer in the Super Mario series, allowing players to explore vast worlds filled with secrets and challenges.",
   "developer": "Nintendo EAD"
   },
@@ -28,7 +28,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Multiple",
-  "image": "Tetris",
+  "image": "https://m.media-amazon.com/images/I/71hV2ffEnEL.png",
   "description": "The iconic puzzle game where players arrange falling tetromino pieces to clear lines. Simple but highly addictive gameplay.",
   "developer": "Alexey Pajitnov"
   },
@@ -39,7 +39,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Windows, Mac, Linux, PS3, Xbox 360",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/f/f9/Portal2cover.jpg",
   "description": "A mind-bending puzzle game with a dark humor story, utilizing physics-defying portal mechanics and challenging spatial reasoning.",
   "developer": "Valve Corporation"
   },
@@ -50,7 +50,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Nintendo Entertainment System",
-  "image": "Super Mario Bros. 3",
+  "image": "https://m.media-amazon.com/images/M/MV5BYjRjZmFhZjctNjI0MC00MGI1LTk2N2UtZWU1ZTgyYWIwYWY2XkEyXkFqcGdeQXVyMTQ4NTcxNTI0._V1_FMjpg_UX1000_.jpg",
   "description": "One of the most influential 2D platformers, introducing new power-ups, levels, and enemies to the Super Mario franchise.",
   "developer": "Nintendo EAD"
   },
@@ -61,7 +61,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Arcade",
-  "image": "Pac-Man",
+  "image": "https://thelogicalindian.com/h-upload/2021/03/17/1600x960_192284-thelogicalindianfb1000x600-1.jpg",
   "description": "The iconic arcade game where players navigate a maze, eating pellets and avoiding ghosts. A classic that popularized the video game industry.",
   "developer": "Namco"
   },
@@ -72,7 +72,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 3, Xbox 360, PlayStation 4, Xbox One, Microsoft Windows",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
   "description": "An open-world action-adventure game set in a satirical recreation of modern Southern California. Allows players to switch between three protagonists.",
   "developer": "Rockstar North"
   },
@@ -83,7 +83,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Super Nintendo Entertainment System",
-  "image": "Super Mario World",
+  "image": "https://m.media-amazon.com/images/M/MV5BMGVlOGI0OTctZGZmOC00ZGE5LWE4YzUtOGVjZjVkYTcyY2Q3XkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_FMjpg_UX1000_.jpg",
   "description": "A landmark 2D platformer for the SNES, introducing new power-ups, enemies, and the dinosaur companion Yoshi to the Mario franchise.",
   "developer": "Nintendo EAD"
   },
@@ -94,7 +94,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 4, Xbox One, Microsoft Windows",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
   "description": "An epic western open-world game with a gripping story about the outlaw Van der Linde gang's tragic downfall.",
   "developer": "Rockstar Studios"
   },
@@ -105,7 +105,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 3, PlayStation 4",
-  "image": "The Last of Us",
+  "image": "https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg",
   "description": "A gripping post-apocalyptic story following survivors Joel and Ellie as they trek across a ravaged United States. Acclaimed for its storytelling and characters.",
   "developer": "Naughty Dog"
   },
@@ -116,7 +116,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Multiple",
-  "image": "Minecraft",
+  "image": "https://image.api.playstation.com/vulcan/img/cfn/11307uYG0CXzRuA9aryByTHYrQLFz-HVQ3VVl7aAysxK15HMpqjkAIcC_R5vdfZt52hAXQNHoYhSuoSq_46_MT_tDBcLu49I.png",
   "description": "An open-world sandbox game where players can build, explore and survive in a blocky, procedurally generated world. One of the best-selling games of all time.",
   "developer": "Mojang Studios"
   },
@@ -127,7 +127,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "Microsoft Windows, Xbox, Xbox 360, PlayStation 3",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg",
   "description": "A revolutionary first-person shooter praised for its advanced physics, graphics, and narrative, following the rebel scientist Gordon Freeman.",
   "developer": "Valve Corporation"
   },
@@ -138,7 +138,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Nintendo GameCube",
-  "image": "Super Smash Bros. Melee",
+  "image": "https://m.media-amazon.com/images/M/MV5BMzY2YzdjMmYtMDBjNS00OGRlLTlhNDctMGRmNjRmNWQ0MDZmXkEyXkFqcGdeQXVyNzczNzE5MTg@._V1_.jpg",
   "description": "A beloved fighting game featuring characters from various Nintendo franchises battling across iconic stages. Praised for its depth and competitive scene.",
   "developer": "HAL Laboratory"
   },
@@ -149,7 +149,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "GameCube, PlayStation 2, Microsoft Windows, Wii, Xbox 360, PlayStation 3, Xbox One, Nintendo Switch",
-  "image": null,
+  "image": "https://m.media-amazon.com/images/M/MV5BNmRjNzkzMWMtMGJhNy00MDZjLThkOWItNjRjMWQ4YWI1MDFiXkEyXkFqcGdeQXVyMTgwNDM0Nzc0._V1_.jpg",
   "description": "A genre-defining survival horror game that revolutionized over-the-shoulder third-person shooter gameplay. Follows Leon S. Kennedy's mission to rescue the President's daughter.",
   "developer": "Capcom"
   },
@@ -160,7 +160,7 @@
   "rating": null,
   "maturity-level": "Kids to Adults",
   "system": "Nintendo 64",
-  "image": null,
+  "image": "https://m.media-amazon.com/images/M/MV5BNjQzZmQzNWMtZTVmOS00NjU4LTlmNjktOTM2MDQwMjgxMmY0XkEyXkFqcGdeQXVyMTA3NjAwMDc4._V1_.jpg",
   "description": "The first 3D platformer in the Super Mario series, allowing players to explore vast worlds filled with secrets and challenges.",
   "developer": "Nintendo EAD"
   },
@@ -171,7 +171,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "Xbox 360, PlayStation 3, Microsoft Windows, Xbox One, PlayStation 4",
-  "image": "BioShock",
+  "image": "https://upload.wikimedia.org/wikipedia/en/6/6d/BioShock_cover.jpg",
   "description": "A critically acclaimed first-person shooter set in the underwater city of Rapture, blending thrilling combat with a gripping narrative and exploration.",
   "developer": "2K Games"
   },
@@ -182,7 +182,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "Microsoft Windows, Xbox 360, PlayStation 3, Xbox One, PlayStation 4, Nintendo Switch",
-  "image": null,
+  "image": "https://assets-prd.ignimgs.com/2021/08/19/elder-scrolls-skyrim-button-2017-1629409446732.jpg",
   "description": "An epic open-world fantasy RPG set in the province of Skyrim, allowing players to forge their own path with countless quests and customization options.",
   "developer": "Bethesda Game Studios"
   },
@@ -193,7 +193,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 2, Xbox, Microsoft Windows, Xbox 360, iOS, Android, Xbox Cloud Gaming",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/GTASABOX.jpg",
   "description": "An influential open-world action game set in a satirical recreation of early 1990s Los Angeles, following the story of Carl Johnson returning to his old gang life.",
   "developer": "Rockstar North"
   },
@@ -204,7 +204,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Nintendo Switch",
-  "image": null,
+  "image": "https://m.media-amazon.com/images/I/91SF0Tzmv4L.jpg",
   "description": "An open-world 3D platformer where Mario explores various kingdoms aided by his new companion Cappy, who allows him to capture and control objects and enemies.",
   "developer": "Nintendo EPD"
   },
@@ -215,7 +215,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 4",
-  "image": "God of War",
+  "image": "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg",
   "description": "A soft reboot of the God of War series, following an older Kratos and his son Atreus on a journey through the Norse realms after the death of Kratos' wife.",
   "developer": "Santa Monica Studio"
   },
@@ -226,7 +226,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation, PC",
-  "image": null,
+  "image": "https://assets-prd.ignimgs.com/2022/08/15/metal-gear-solid-1660604991900.jpg",
   "description": "The pioneering stealth action game that popularized the genre, following Solid Snake's mission to neutralize a nuclear threat on a remote island. Praised for its cinematic storytelling.",
   "developer": "Konami Computer Entertainment Japan"
   },
@@ -237,7 +237,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 3, Xbox 360, Microsoft Windows",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Call_of_Duty_4_Modern_Warfare.jpg/220px-Call_of_Duty_4_Modern_Warfare.jpg",
   "description": "The game that revitalized the Call of Duty franchise with its gripping modern-day storyline and refined first-person shooter gameplay.",
   "developer": "Infinity Ward"
   },
@@ -248,7 +248,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Nintendo Entertainment System",
-  "image": "Super Mario Bros.",
+  "image": "https://static.tvtropes.org/pmwiki/pub/images/super_mario_1.png",
   "description": "The iconic 2D platformer that helped establish the video game industry, following Mario's quest to rescue Princess Toadstool from Bowser.",
   "developer": "Nintendo R&D4"
   },
@@ -259,7 +259,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Nintendo 64",
-  "image": "The Legend of Zelda: Ocarina of Time",
+  "image": "https://assets-prd.ignimgs.com/2021/12/07/zeldaoot-ignart-1638901927766.jpg",
   "description": "The critically acclaimed and influential 3D action-adventure game that defined the Zelda franchise, following Link's journey through time to stop Ganondorf's evil plans.",
   "developer": "Nintendo EAD"
   },
@@ -270,7 +270,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "Multiple",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg",
   "description": "The groundbreaking first-person shooter that popularized the genre, pitting a space marine against the forces of Hell in intense, fast-paced combat.",
   "developer": "Rare"
   },
@@ -281,7 +281,7 @@
   "rating": null,
   "maturity-level": "Kids to Adults",
   "system": "Super Nintendo Entertainment System",
-  "image": "Super Metroid",
+  "image": "https://upload.wikimedia.org/wikipedia/en/e/e4/Smetroidbox.jpg",
   "description": "The acclaimed action-adventure game that defined the Metroidvania genre, following bounty hunter Samus Aran's mission to defeat the Space Pirates on the planet Zebes.",
   "developer": "Nintendo R&D1"
   },
@@ -292,7 +292,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Arcade, Multiple",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/1/1d/SF2_JPN_flyer.jpg",
   "description": "The iconic fighting game that revived the genre and popularized competitive multiplayer, allowing players to choose from a diverse roster of world warriors.",
   "developer": "Capcom"
   }
