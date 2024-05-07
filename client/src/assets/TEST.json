@@ -6,7 +6,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Nintendo Switch, Wii U",
-  "image": "The Legend of Zelda: Breath of the Wild",
+  "image": "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
   "description": "An open-air adventure across vast fields, forests, and mountain ranges, with a focus on exploration and survival in a revitalized Hyrule.",
   "developer": "Nintendo EPD"
   },
@@ -17,7 +17,7 @@
   "rating": null,
   "maturity-level": "Kids to Adults",
   "system": "Nintendo 64",
-  "image": null,
+  "image": "https://m.media-amazon.com/images/M/MV5BNjQzZmQzNWMtZTVmOS00NjU4LTlmNjktOTM2MDQwMjgxMmY0XkEyXkFqcGdeQXVyMTA3NjAwMDc4._V1_.jpg",
   "description": "The first 3D platformer in the Super Mario series, allowing players to explore vast worlds filled with secrets and challenges.",
   "developer": "Nintendo EAD"
   },
@@ -28,7 +28,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Multiple",
-  "image": "Tetris",
+  "image": "https://m.media-amazon.com/images/I/71hV2ffEnEL.png",
   "description": "The iconic puzzle game where players arrange falling tetromino pieces to clear lines. Simple but highly addictive gameplay.",
   "developer": "Alexey Pajitnov"
   },
@@ -50,7 +50,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Nintendo Entertainment System",
-  "image": "Super Mario Bros. 3",
+  "image": "https://m.media-amazon.com/images/M/MV5BYjRjZmFhZjctNjI0MC00MGI1LTk2N2UtZWU1ZTgyYWIwYWY2XkEyXkFqcGdeQXVyMTQ4NTcxNTI0._V1_FMjpg_UX1000_.jpg",
   "description": "One of the most influential 2D platformers, introducing new power-ups, levels, and enemies to the Super Mario franchise.",
   "developer": "Nintendo EAD"
   },
@@ -61,7 +61,7 @@
   "rating": null,
   "maturity-level": "Everyone",
   "system": "Arcade",
-  "image": "Pac-Man",
+  "image": "https://thelogicalindian.com/h-upload/2021/03/17/1600x960_192284-thelogicalindianfb1000x600-1.jpg",
   "description": "The iconic arcade game where players navigate a maze, eating pellets and avoiding ghosts. A classic that popularized the video game industry.",
   "developer": "Namco"
   },
@@ -72,7 +72,7 @@
   "rating": null,
   "maturity-level": "Mature 17+",
   "system": "PlayStation 3, Xbox 360, PlayStation 4, Xbox One, Microsoft Windows",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
   "description": "An open-world action-adventure game set in a satirical recreation of modern Southern California. Allows players to switch between three protagonists.",
   "developer": "Rockstar North"
   },
