@@ -1,0 +1,22 @@
+review-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rating-container {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #ccc; /* Add a border above the rating information */
+}
+
+.rating-container p {
+    margin: 5px 0; /* Add margin to the paragraphs inside the rating container */
+}
+
+.rating-container p:first-child {
+    font-weight: bold; /* Make the first paragraph bold (e.g., Rating) */
+}
