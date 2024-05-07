@@ -39,7 +39,7 @@
   "rating": null,
   "maturity-level": "Everyone 10+",
   "system": "Windows, Mac, Linux, PS3, Xbox 360",
-  "image": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/f/f9/Portal2cover.jpg",
   "description": "A mind-bending puzzle game with a dark humor story, utilizing physics-defying portal mechanics and challenging spatial reasoning.",
   "developer": "Valve Corporation"
   },
