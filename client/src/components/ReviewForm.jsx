@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import moment from 'moment';
 
-
-function ReviewForm({ gameId, userId, userName }) {
+function ReviewForm({ gameId, userId, userName, updateGameStats }) {
   const initialValues = {
     rating: '',
     comments: ''
   };
-  const [gameStatId, setGameStatId] = useState(null)
+  const [gameStatId, setGameStatId] = useState(null);
 
   useEffect(() => {
     // Fetch game statistics for the current user and game
@@ -29,35 +27,37 @@ function ReviewForm({ gameId, userId, userName }) {
     const reviewData = {
       game_id: gameId,
       user_id: userId,
-    //   username: userName,
-      // datePosted: moment().format('YYYY-MM-DD'),
       ...values
     };
     if (gameStatId !== null) {
-        fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(reviewData),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            setGameStatId(data.game_stats_id);
-          })
-      } else {
-        fetch(`http://localhost:8080/game-statistics`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(reviewData),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            setGameStatId(data.game_stats_id);
-          });
-      };
+      fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setGameStatId(data.game_stats_id);
+          // Call the updateGameStats function with the updated stats
+          updateGameStats();
+        });
+    } else {
+      fetch(`http://localhost:8080/game-statistics`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setGameStatId(data.game_stats_id);
+          // Call the updateGameStats function with the updated stats
+          updateGameStats();
+        });
+    }
     resetForm();
   };
 
@@ -71,9 +71,6 @@ function ReviewForm({ gameId, userId, userName }) {
     }
     return errors;
   };
-
-
-
 
   return (
     <Formik
