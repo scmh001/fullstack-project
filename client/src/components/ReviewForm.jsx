@@ -27,9 +27,9 @@ function ReviewForm({ gameId, userId, userName }) {
 
   const handleSubmit = (values, { resetForm }) => {
     const reviewData = {
-      gameId: gameId,
-      userId: userId,
-      username: userName,
+      game_id: gameId,
+      user_id: userId,
+    //   username: userName,
       // datePosted: moment().format('YYYY-MM-DD'),
       ...values
     };

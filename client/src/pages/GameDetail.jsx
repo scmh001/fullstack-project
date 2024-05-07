@@ -61,7 +61,7 @@ function GameDetail({ user }) {
           <WishlistButton gameId={game.id} userId={user.id} />
         </>
       )}
-      {user && (
+      {user && game && (
       <ReviewForm gameId={game.id} userId={user.id} userName={user.username} />
       )}
       <div className="reviews-container">
