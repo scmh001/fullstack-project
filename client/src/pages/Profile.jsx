@@ -1,7 +1,7 @@
 // Import necessary React libraries and components
 import React, { useState, useEffect } from 'react';
 import FavoritesGameCard from '@/components/FavoritesGameCard.jsx';
-import GameReviewCard from '@/components/GameReviewCard.jsx';
+import HomeGameReviewCard from '@/components/HomeGameReviewCard.jsx';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
@@ -77,7 +77,7 @@ function Profile({ user }) {
       {reviews && reviews.length > 0 ? (
     // Iterate through reviews and render a GameReviewCard for each
       reviews.slice(0, 3).map((gameStats) => (
-      <GameReviewCard key={gameStats.game_stats_id} gameStats={gameStats} />
+      <HomeGameReviewCard key={gameStats.game_stats_id} gameStats={gameStats} />
     ))
   ) : (
     <p>No reviews yet.</p>

@@ -9,7 +9,7 @@ function HomeGameReviewCard({ gameStats }) {
           {/* Game title */}
           <h2 className="game-title">{gameStats.game.game_name}</h2>
           {/* Image */}
-          <img src={gameStats.game.image_url} alt={gameStats.game.game_name} className="game-image" />
+          <img src={gameStats.game.image} alt={gameStats.game.game_name} className="game-image" />
           {/* Rating */}
           {gameStats.rating && (
             <p className="rating">Rating: {gameStats.rating}</p>
