@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import './NavBar.css'; // Importing CSS for styling
+import SearchBar from './SearchBar';
 
 // NavBar component definition accepting props
 const NavBar = ({user, updateUser}) => {
@@ -91,7 +92,9 @@ const NavBar = ({user, updateUser}) => {
               </li>
             </>
           )}
+          <SearchBar />
         </ul>
+        
       </nav>
     </div>
   );

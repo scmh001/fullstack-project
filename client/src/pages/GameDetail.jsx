@@ -3,11 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import GameReviewCard from '../components/GameReviewCard';
 import FavoriteButton from '../components/FavoriteButton';
 import WishlistButton from '../components/WishlistButton';
+import ReviewForm from '../components/ReviewForm';
 
 function GameDetail({ user }) {
   const { id } = useParams();
   const [game, setGame] = useState(null);
   const [gameStats, setGameStats] = useState([]);
+  
+  
 
   useEffect(() => {
     fetch(`http://localhost:8080/games/${id}`)
@@ -29,6 +32,7 @@ function GameDetail({ user }) {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
   }, [id]);
+  
 
   if (!game || !gameStats) {
     return <div>Loading...</div>;
@@ -56,6 +60,9 @@ function GameDetail({ user }) {
           <FavoriteButton gameId={game.id} userId={user.id} />
           <WishlistButton gameId={game.id} userId={user.id} />
         </>
+      )}
+      {user && game && (
+      <ReviewForm gameId={game.id} userId={user.id} userName={user.username} />
       )}
       <div className="reviews-container">
       {gameStats && gameStats.length > 0 ? (

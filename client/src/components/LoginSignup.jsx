@@ -47,7 +47,7 @@ const LoginSignup = ({updateUser, user}) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            username: values.email, // Convert email to lowercase to ensure case-insensitivity
+          username: values.email.toLowerCase(),  // Convert email to lowercase to ensure case-insensitivity
             password: values.password
         }),
     })

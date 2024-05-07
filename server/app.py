@@ -1,35 +1,18 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify, make_response, request, session
-from flask_cors import CORS
-from models import db, User, Game, GameStatistics
-from flask_restful import Api, Resource
-from flask_migrate import Migrate
-import os
+from flask import jsonify, make_response, request, session
+from models import User, Game, GameStatistics
+from flask_restful import  Resource
 
-app = Flask(__name__)
-CORS(app)
+from config import app, db, api
 
-app.secret_key = b'\x9c\x8a\xc3\xdd\xce\x9e\xb9\x99\xdb!8"w\xd5~\xde'
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get(
-    "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
-
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
-
-migrate = Migrate(app, db)
-
-db.init_app(app)
-
-api = Api(app)
 
 @app.route('/users', methods=['POST'])
 def manage_users():
         data = request.json
-        new_user = User(username=data.get('username'), password=data.get('password'))
+        new_user = User(username=data.get('username'))
+        new_user.password_hash = data.get('password')  # Set the password_hash using the setter
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.id
@@ -57,12 +40,13 @@ def authorize():
 def login():
     data = request.get_json()
     user = User.query.filter_by(username=data.get('username')).first()
-    if user and user.password == data['password']:
+    password = data.get('password')
+    if user and user.authenticate(password):
         session['user_id'] = user.id
-        response = make_response(user.to_dict(only=['id', 'username']))
+        response = make_response(user.to_dict())
         response.set_cookie('user_id', str(user.id))
         return response, 200
-    return jsonify({'message': 'Invalid credentials'}), 401
+    return jsonify({'message': 'Invalid username or password'}), 401
 
 @app.route('/reviews/<int:user_id>', methods=['GET'])
 def get_reviews(user_id):
@@ -225,6 +209,12 @@ class WishlistByUser(Resource):
             return make_response({'error': ['No games in your wishlist yet']})
         
 api.add_resource(WishlistByUser, '/wishlist/<int:user_id>')
+
+@app.route('/search', methods=['GET'])
+def search_games():
+    query = request.args.get('q')
+    games = Game.query.filter(Game.game_name.ilike(f'%{query}%')).limit(10).all()
+    return make_response([game.to_dict() for game in games])
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
