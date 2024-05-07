@@ -23,13 +23,7 @@ const WishListGameCard = ({ game, user, handleUnwishlist }) => {
 
   return (
     <div className="wishlist-game-card">
-      {showDeleteConfirmation && (
-        <div className="delete-confirmation">
-          <p>Are you sure you want to delete this game from your wishlist?</p>
-          <button onClick={confirmDelete}>Yes</button>
-          <button onClick={() => setShowDeleteConfirmation(false)}>No</button>
-        </div>
-      )}
+      {/* Delete button */}
       <button className="delete-button" onClick={handleDelete}>❌</button>
       <div className="left-column">
         <img className="wishlist-game-image" src={game.image} alt={game.game_name} />
@@ -58,5 +52,6 @@ const WishListGameCard = ({ game, user, handleUnwishlist }) => {
     </div>
   );
 };
+
 
 export default WishListGameCard;
