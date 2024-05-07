@@ -1,6 +1,7 @@
 // Import necessary React libraries and components
 import React, { useState, useEffect } from 'react';
 import FavoritesGameCard from '@/components/FavoritesGameCard.jsx';
+import GameReviewCard from '@/components/GameReviewCard.jsx';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
@@ -8,6 +9,8 @@ import './Profile.css';
 function Profile({ user }) {
   // useState hook to manage the favorites state, initialized as an empty array
   const [favorites, setFavorites] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [deleteGame, setDeleteGame] = useState(false);
 
   // useEffect hook to perform side effects, in this case, fetching user's favorite games
   useEffect(() => {
@@ -28,8 +31,28 @@ function Profile({ user }) {
           // Update the favorites state with the fetched data
           setFavorites(favoritesData);
         });
+      fetch(`http://localhost:8080/reviews/${user.id}`)
+        .then((res) => {
+        // Check if the response is successful
+        if (res.ok) {
+          return res.json(); // Parse JSON data from response
+        } else {
+          // Log error if the response is not successful
+          return console.error("Something went wrong with your GET request");
+        }
+      })
+      .then((reviewsData) => {
+        setReviews(reviewsData);
+      });
     }
-  }, [user]); // Dependency array with 'user', effect runs when 'user' changes
+  
+  }, [user, deleteGame]);
+
+
+  const handleUnfavorite = (gameId) => {
+    setFavorites(favorites.filter((game) => game.id !== gameId));
+    setDeleteGame(prev => !prev)
+  }; // Dependency array with 'user', effect runs when 'user' changes
 
   // Render the Profile component
   return (
@@ -39,20 +62,27 @@ function Profile({ user }) {
       <h2>Your Favorites</h2>
       <div className="favorites-container">
         {/* Map through the first three favorites and render a FavoritesGameCard for each */}
-        {favorites.slice(0, 3).map((game) => (
-          <FavoritesGameCard key={game.id} game={game} user={user} />
-        ))}
+        {favorites && favorites.length > 0 ? (
+          favorites.slice(0, 3).map((game) => (
+            <FavoritesGameCard key={game.id} game={game} user={user} handleUnfavorite={handleUnfavorite} />
+          ))
+        ) : (
+          <p>No favorites currently.</p>
+        )}
       </div>
 
-      <h2>Recently Reviewed</h2>
-      <div className="recently-reviewed-container">
-        {/* Container for recently reviewed games (not implemented) */}
-      </div>
 
       <h2>My Reviews</h2>
       <div className="my-reviews-container">
-        {/* Container for user reviews (not implemented) */}
-      </div>
+      {reviews && reviews.length > 0 ? (
+    // Iterate through reviews and render a GameReviewCard for each
+      reviews.slice(0, 3).map((gameStats) => (
+      <GameReviewCard key={gameStats.game_stats_id} gameStats={gameStats} />
+    ))
+  ) : (
+    <p>No reviews yet.</p>
+  )}
+</div>
     </div>
   );
 }
