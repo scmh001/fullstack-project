@@ -4,33 +4,37 @@ import GameReviewCard from '../components/GameReviewCard';
 import FavoriteButton from '../components/FavoriteButton';
 import WishlistButton from '../components/WishlistButton';
 import ReviewForm from '../components/ReviewForm';
-import './GameDetail.css';
+import { Box, Typography, Button, Card, CardContent, CardMedia, Grid, CircularProgress } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+// Define the GameDetail functional component with props
 function GameDetail({ user }) {
+  // Retrieve the game ID from the URL parameters
   const { id } = useParams();
+  // State to store the game details
   const [game, setGame] = useState(null);
+  // State to store game statistics
   const [gameStats, setGameStats] = useState([]);
 
+  // useEffect hook to fetch game details and statistics on component mount or when id changes
   useEffect(() => {
+    // Fetch game details from the server
     fetch(`http://localhost:8080/games/${id}`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return console.error('Something went wrong...');
-        }
-      })
+      .then((res) => res.ok ? res.json() : console.error('Something went wrong...'))
       .then((selectedGame) => setGame(selectedGame))
       .catch((error) => console.error(error));
 
+    // Fetch game statistics from the server
     fetch(`http://localhost:8080/game-statistic/${id}`)
       .then((res) => res.json())
       .then((data) => setGameStats(data))
       .catch((error) => console.error(error));
 
+    // Scroll to the top of the page when the component is rendered
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Function to update game statistics
   const updateGameStats = () => {
     fetch(`http://localhost:8080/game-statistic/${id}`)
       .then((res) => res.json())
@@ -38,52 +42,59 @@ function GameDetail({ user }) {
       .catch((error) => console.error(error));
   };
 
+  // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
-    return <div>Loading...</div>;
+    return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
   }
 
+  // Main component render
   return (
-    <div className="game-detail-container">
-      <h1 className="h1-dp">{game.game_name}</h1>
-      <div className="details-container">
-        <div className="image-column">
-          <img className="details-image" src={game.image} alt={game.game_name} />
-        </div>
-        <div className="details-column">
-          <div className="details-list-dp">
-            <p className="game-detail-text">Genre: {game.genre}</p>
-            <p className="game-detail-text">System: {game.system}</p>
-            <p className="game-detail-text">Developer: {game.developer}</p>
-            <p className="game-detail-text">Release Date: {game.release_date}</p>
-            <p className="game-detail-text">Maturity Level: {game.maturity_level}</p>
-            <p className="game-detail-text">Description: {game.description}</p>
-          </div>
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h4" gutterBottom>{game.game_name}</Typography>
+      <Grid container spacing={5}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardMedia
+              component="img"
+              height="700"
+              image={game.image}
+              alt={game.game_name}
+            />
+            <CardContent>
+              <Typography variant="body2">Genre: {game.genre}</Typography>
+              <Typography variant="body2">System: {game.system}</Typography>
+              <Typography variant="body2">Developer: {game.developer}</Typography>
+              <Typography variant="body2">Release Date: {game.release_date}</Typography>
+              <Typography variant="body2">Maturity Level: {game.maturity_level}</Typography>
+              <Typography variant="body2">Description: {game.description}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={5}>
           {user && (
-            <div className="favorite-wishlist-container">
+            <Box>
               <FavoriteButton gameId={game.id} userId={user.id} />
               <WishlistButton gameId={game.id} userId={user.id} />
-            </div>
+            </Box>
           )}
           {user && game && (
-            <div className="review-form-container">
-              <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
-            </div>
+            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
           )}
-          <div className="reviews-container-detailpage">
-            {gameStats && gameStats.length > 0 ? (
+          <Box sx={{ mt: 2 }}>
+            {gameStats.length > 0 ? (
               gameStats.map((stat) => (
                 <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
               ))
             ) : (
-              <p>No reviews available.</p>
+              <Typography>No reviews available.</Typography>
             )}
-          </div>
-        </div>
-      </div>
-      <Link className="link-back" to="/games">
+          </Box>
+        </Grid>
+      </Grid>
+      <Button variant="contained" startIcon={<ArrowBackIcon />} component={Link} to="/games">
         Back
-      </Link>
-    </div>
+      </Button>
+    </Box>
   );
 }
 

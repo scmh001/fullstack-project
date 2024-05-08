@@ -74,16 +74,16 @@ function Home() {
           {//TODO make link to new page that populates based on most recently released??
           }
           <Link to={'/recentlyreleased'}>
-            <img src='https://imgur.com/EowlAak' alt='recently-released' />
+            <img src='https://i.imgur.com/EowlAak.jpg' alt='recently-released' />
           </Link>
         </div>
-        <div className='link-card'>
+        {/* <div className='link-card'>
           {//TODO make link to new page that populates based on if hasn't been released yet??
           }
           <Link to={'/games'}>
             <img src='https://i.imgur.com/cYIKKKu.jpeg' alt='coming-soon' />
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className="game-card-container">
         {recentReviews.map(review => (

@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Box } from '@mui/material'
 import GameCard from '@/components/GameCard';
-import { Box, Button } from '@mui/material'
 
 function MostPopular() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        //fetch games sorted by rating in desc order
-        fetch('http://localhost:8080/games?sort=rating&order=desc')
+        // Fetch games sorted by rating in descending order from the server
+        fetch('http://localhost:8080/games-by-rating')
         .then(res => res.json())
         .then(gameData => {
-            // Sort games by rating in descending order
-            const sortedGames = gameData.sort((a, b) => b.rating - a.rating);
-            setGames(sortedGames);
+            // Update state with the fetched games
+            setGames(gameData);
         })
-        .catch(error => console.error("failed to fetch games", error))
+        .catch(error => console.error("Failed to fetch games", error))
     }, [])
 
     return (
         <Box className="games-container">
-        
           <Box className="game-cards-container">
             {games.map((game) => (
+              // Render each game using the GameCard component
               <GameCard key={game.id} game={game} />
             ))}
           </Box>
@@ -30,4 +28,4 @@ function MostPopular() {
       );
     }
     
-    export default MostPopular;
+export default MostPopular;

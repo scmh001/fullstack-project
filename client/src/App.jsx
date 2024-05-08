@@ -6,7 +6,6 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
-import Groups from './pages/Groups';
 import Games from './pages/Games'
 import GameDetail from './pages/GameDetail'
 import WishList from './pages/WishList'
@@ -51,7 +50,6 @@ function App() {
           <Route path="/mostpopular" element={<MostPopular user={user}/>} />
           <Route path="/recentlyreleased" element={<RecentlyReleased user={user}/>} />
           <Route path="/profile" element={<Profile user={user}/>} />
-          <Route path="/groups" element={<Groups />} /> 
           <Route path="/signin" element={<SignIn updateUser={updateUser} user={user}/>} />
         </Routes>
       </div>

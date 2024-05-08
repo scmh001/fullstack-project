@@ -4,8 +4,10 @@ import { Box, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/mat
 import './Games.css';
 
 function Games() {
+  // State for storing all games and filtered games
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
+  // State for storing current filter selections
   const [filter, setFilter] = useState({
     releaseDate: '',
     ratingOrder: '',
@@ -14,20 +16,20 @@ function Games() {
     developer: '', 
   });
 
-  // New state variables for dropdown options
+  // State variables for dropdown options
   const [genres, setGenres] = useState([]);
   const [systems, setSystems] = useState([]);
   const [developers, setDevelopers] = useState([]);
 
   useEffect(() => {
-    // Fetch games and extract unique genres, systems, and developers
+    // Fetch games from the server and set state with fetched data
     fetch('http://localhost:8080/games')
       .then(res => res.json())
       .then(gameData => {
         setGames(gameData);
         setFilteredGames(gameData);
 
-        // Extract unique genres, systems, and developers
+        // Extract unique genres, systems, and developers for filter dropdowns
         const uniqueGenres = [...new Set(gameData.map(game => game.genre))];
         const uniqueSystems = [...new Set(gameData.map(game => game.system))];
         const uniqueDevelopers = [...new Set(gameData.map(game => game.developer))];
@@ -42,26 +44,27 @@ function Games() {
   const applyFilters = () => {
     let updatedGames = games;
   
-    // Filter by genre
+    // Apply genre filter
     if (filter.genre) {
       updatedGames = updatedGames.filter(game => game.genre === filter.genre);
     }
   
-    // Filter by system
+    // Apply system filter
     if (filter.system) {
       updatedGames = updatedGames.filter(game => game.system === filter.system);
     }
   
-    // Filter by developer
+    // Apply developer filter
     if (filter.developer) {
       updatedGames = updatedGames.filter(game => game.developer === filter.developer);
     }
   
-    // Update the filteredGames state
+    // Update the filteredGames state with the filtered list
     setFilteredGames(updatedGames);
   };
 
   const resetFilters = () => {
+    // Reset all filters and show all games
     setFilter({
       releaseDate: '',
       ratingOrder: '',
@@ -75,7 +78,7 @@ function Games() {
   return (
     <Box className="games-container">
       <Box className="filter-bar">
-        {/* Genre dropdown */}
+        {/* Dropdown for selecting game genre */}
         <FormControl variant="filled" sx={{ m: 0.1, minWidth: 100 }}>
           <InputLabel>Genre</InputLabel>
           <Select
@@ -89,7 +92,7 @@ function Games() {
             ))}
           </Select>
         </FormControl>
-        {/* System dropdown */}
+        {/* Dropdown for selecting game system */}
         <FormControl variant="filled" sx={{ m: -.5, minWidth: 100, minHeight: 0.5 }}>
           <InputLabel>System</InputLabel>
           <Select
@@ -103,7 +106,7 @@ function Games() {
             ))}
           </Select>
         </FormControl>
-        {/* Developer dropdown */}
+        {/* Dropdown for selecting game developer */}
         <FormControl variant="filled" sx={{ m: -.5, minWidth: 120, minHeight: 0.5 }}>
           <InputLabel>Developer</InputLabel>
           <Select
@@ -117,14 +120,17 @@ function Games() {
             ))}
           </Select>
         </FormControl>
+        {/* Button to apply selected filters */}
         <Button variant="contained" color="primary" onClick={applyFilters}>
           Apply Filters
         </Button>
+        {/* Button to reset all filters */}
         <Button variant="outlined" onClick={resetFilters}>
           Reset Filters
         </Button>
       </Box>
       <Box className="game-cards-container">
+        {/* Display game cards for filtered games */}
         {filteredGames.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
