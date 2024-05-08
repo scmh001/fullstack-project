@@ -1,35 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+// ReviewForm component definition
 function ReviewForm({ gameId, userId, userName, updateGameStats }) {
+  // Initial values for the form fields
   const initialValues = {
     rating: '',
     comments: ''
   };
+
+  // State to store the game statistics ID
   const [gameStatId, setGameStatId] = useState(null);
 
+  // useEffect hook to fetch game statistics when gameId or userId changes
   useEffect(() => {
-    // Fetch game statistics for the current user and game
+    // API call to fetch game statistics for the current user and game
     fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`)
       .then((res) => res.json())
       .then((data) => {
-        // If game statistics exist, update state with the fetched data
+        // Update state with the fetched game statistics ID, or null if not found
         if (data.game_stats_id) {
           setGameStatId(data.game_stats_id);
         } else {
-          // If no game statistics exist, set default state
           setGameStatId(null);
         }
       });
   }, [gameId, userId]); // Dependencies array for useEffect
 
+  // Function to handle form submission
   const handleSubmit = (values, { resetForm }) => {
+    // Prepare review data to be sent to the server
     const reviewData = {
       game_id: gameId,
       user_id: userId,
       ...values
     };
+
+    // Check if game statistics already exist
     if (gameStatId !== null) {
+      // If they exist, update the existing statistics
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
         headers: {
@@ -40,10 +49,10 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
         .then((res) => res.json())
         .then((data) => {
           setGameStatId(data.game_stats_id);
-          // Call the updateGameStats function with the updated stats
-          updateGameStats();
+          updateGameStats(); // Update game stats in the parent component
         });
     } else {
+      // If no statistics exist, create new statistics
       fetch(`http://localhost:8080/game-statistics`, {
         method: 'POST',
         headers: {
@@ -54,13 +63,13 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
         .then((res) => res.json())
         .then((data) => {
           setGameStatId(data.game_stats_id);
-          // Call the updateGameStats function with the updated stats
-          updateGameStats();
+          updateGameStats(); // Update game stats in the parent component
         });
     }
-    resetForm();
+    resetForm(); // Reset form fields after submission
   };
 
+  // Function to validate form inputs
   const validate = (values) => {
     const errors = {};
     if (!values.rating) {
@@ -72,6 +81,7 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
     return errors;
   };
 
+  // Render the form using Formik
   return (
     <Formik
       initialValues={initialValues}

@@ -40,7 +40,7 @@ const LoginSignup = ({updateUser, user}) => {
   // Function to handle form submission
   const handleSubmit = (values) => {
     // Determine the URL based on whether the user is signing up or logging in
-    const url = isSignup? 'http://localhost:8080/users' : 'http://localhost:8080/login';
+    const url = isSignup ? 'http://localhost:8080/users' : 'http://localhost:8080/login';
     fetch(url, {
         method: 'POST',
         headers: {
