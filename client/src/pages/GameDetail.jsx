@@ -15,23 +15,6 @@ function GameDetail({ user }) {
   const [game, setGame] = useState(null);
   // State to store game statistics
   const [gameStats, setGameStats] = useState([]);
-  const [gameStatId, setGameStatId] = useState(null);
-
-  // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
-  useEffect(() => {
-    // Fetch game statistics for the current user and game
-    fetch(`http://localhost:8080/game-statistics/${id}/${user.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // If game statistics exist, update state with the fetched data
-        if (data.game_stats_id) {
-          setGameStatId(data.game_stats_id);
-        } else {
-          // If no game statistics exist, set default state
-          setGameStatId(null);
-        }
-      });
-  }, []); // Dependencies array for useEffect
 
   // useEffect hook to fetch game details and statistics on component mount or when id changes
   useEffect(() => {
@@ -58,9 +41,7 @@ function GameDetail({ user }) {
       .then((data) => setGameStats(data))
       .catch((error) => console.error(error));
   };
-const updateGameStatId = (gameStatId) => {
-  setGameStatId(gameStatId)
-}
+
   // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
     return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
@@ -70,8 +51,8 @@ const updateGameStatId = (gameStatId) => {
   return (
     <Box sx={{ p: 2 }}>
       <Typography variant="h4" gutterBottom>{game.game_name}</Typography>
-      <Grid container spacing={5}>
-        <Grid item xs={12} md={6}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={5}>
           <Card>
             <CardMedia
               component="img"
@@ -92,14 +73,14 @@ const updateGameStatId = (gameStatId) => {
         <Grid item xs={12} md={5}>
           {user && (
             <Box>
-              <FavoriteButton gameId={game.id} userId={user.id} gameStatId={gameStatId} updateGameStatId={updateGameStatId} />
-              <WishlistButton gameId={game.id} userId={user.id} gameStatId={gameStatId} updateGameStatId={updateGameStatId}/>
+              <FavoriteButton gameId={game.id} userId={user.id} />
+              <WishlistButton gameId={game.id} userId={user.id} />
             </Box>
           )}
           {user && game && (
-            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} gameStatId={gameStatId} updateGameStatId={updateGameStatId}/>
+            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
           )}
-          <Box sx={{ mt: 2 }}>
+          <Box sx={{ mt: 7 }}>
             {gameStats.length > 0 ? (
               gameStats.map((stat) => (
                 <GameReviewCard key={stat.game_stats_id} gameStats={stat} />

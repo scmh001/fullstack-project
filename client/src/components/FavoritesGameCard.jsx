@@ -1,37 +1,10 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography, IconButton } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, IconButton, Grid } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
-
-// Custom styles for the component using Material-UI's makeStyles hook
-const useStyles = makeStyles((theme) => ({
-  card: {
-    maxWidth: '100vw', // Set the maximum width to 100% of the viewport width
-    height: '80vh', // Set the height to 80% of the viewport height
-    display: 'flex',
-    flexDirection: 'column',
-    
-  },
-  media: {
-    height: '60%', // Allocate 60% of the card height to the image for better visibility
-    width: '100%', // Ensure the image spans the full width of the card
-    objectFit: 'cover', // Cover the area without distorting the aspect ratio
-    borderRadius: '4px', // Optional: add rounded corners to the image
-  },
-  content: {
-    height: '40%', // Allocate the remaining 40% of the card height to content
-    overflow: 'auto' // Add scroll to content if it overflows
-  },
-  typography: {
-    fontSize: '2rem', // Increase font size for all Typography components within this card
-  }
-}));
 
 // Component for displaying a favorite game card
 const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
-  const classes = useStyles();
-
   // Function to handle the removal of a game from favorites
   const handleDelete = () => {
     fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
@@ -51,29 +24,48 @@ const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
   };
 
   return (
-    <Card className={classes.card}>
-      <IconButton aria-label="delete" onClick={handleDelete}>
-        <DeleteIcon />
-      </IconButton>
+    <Card sx={{
+      maxWidth: '100vw',
+      height: '80vh',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      <Grid container justifyContent="flex-end">
+        <IconButton aria-label="delete" onClick={handleDelete} sx={{ m: 1 }}>
+          <DeleteIcon />
+        </IconButton>
+      </Grid>
       <CardMedia
-        className={classes.media}
+        component="img"
+        sx={{
+          height: '60%',
+          width: '100%',
+          objectFit: 'cover',
+          borderRadius: '4px',
+        }}
         image={game.image}
         title={game.game_name}
       />
-      <CardContent className={classes.content}>
-        <Link to={`/games/${game.id}`}>
-          <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
+      <CardContent sx={{
+        height: '50%',
+        overflow: 'auto',
+        '& .MuiTypography-root': {
+          fontSize: '2rem',
+        }
+      }}>
+        <Link to={`/games/${game.id}`} style={{ textDecoration: 'none' }}>
+          <Typography gutterBottom variant="h5" component="h2">
             {game.game_name}
           </Typography>
         </Link>
-        <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
+        <Typography variant="body2" color="textSecondary" component="p">
           Rating: {game.rating ? game.rating : 'N/A'} ⭐
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
+        <Typography variant="body2" color="textSecondary" component="p">
           Genre: {game.genre}
         </Typography>
         {game.comments && game.comments.slice(0, 3).map((comment, index) => (
-          <Typography key={index} variant="body2" color="textSecondary" component="p" className={classes.typography}>
+          <Typography key={index} variant="body2" color="textSecondary" component="p">
             Comment {index + 1}: {comment}
           </Typography>
         ))}
