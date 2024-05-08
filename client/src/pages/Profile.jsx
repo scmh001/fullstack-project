@@ -60,16 +60,17 @@ function Profile({ user }) {
       <h1>Your Profile</h1>
 
       <h2>Your Favorites</h2>
-      <div className="favorites-container">
         {/* Map through the first three favorites and render a FavoritesGameCard for each */}
         {favorites && favorites.length > 0 ? (
-          favorites.slice(0, 3).map((game) => (
+        <div className="favorites-container">
+          {favorites.slice(0, 3).map((game) => (
             <FavoritesGameCard key={game.id} game={game} user={user} handleUnfavorite={handleUnfavorite} />
-          ))
+          ))}
+          </div>
         ) : (
           <p>No favorites currently.</p>
         )}
-      </div>
+      
 
 
       <h2>My Reviews</h2>

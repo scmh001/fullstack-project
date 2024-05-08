@@ -7,7 +7,7 @@ function MostPopular() {
 
     useEffect(() => {
         // Fetch games sorted by rating in descending order from the server
-        fetch('http://localhost:8080/games?sort=rating&order=desc')
+        fetch('http://localhost:8080/games-by-rating')
         .then(res => res.json())
         .then(gameData => {
             // Update state with the fetched games

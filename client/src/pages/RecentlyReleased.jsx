@@ -21,8 +21,8 @@ function RecentlyReleased() {
     }, []); // Empty dependency array means this effect runs only once after the initial render
 
     return (
-        <Box className="games-container"> // Container for the games
-            <Box className="game-cards-container"> // Container for the game cards
+        <Box className="games-container"> {/* Container the games */}
+            <Box className="game-cards-container"> {/* Container for the game cards*/}
                 {games.map((game) => (
                     <GameCard key={game.name} game={game} /> // Rendering a GameCard for each game
                 ))}
