@@ -14,9 +14,9 @@ class User(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String, nullable=False)
     
     game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
-    games = association_proxy('game_statistics', 'game')
+    games = association_proxy('game_statistics', 'game') # many to many relationship through game statistics
     
-    serialize_rules = ('-game_statistics',)
+    serialize_rules = ('-game_statistics',) #serializing for recursion depth
 
     @validates('username')
     def validates_username(self, key, username):
@@ -26,7 +26,7 @@ class User(db.Model, SerializerMixin):
             existing_user = User.query.filter_by(username=username).first()
             if existing_user and existing_user.id != self.id:
                 raise ValueError("Username already exists.")
-        except IntegrityError:
+        except IntegrityError: #throws errors for db side constraints 
             raise ValueError("Username already exists.")
         return username
     
@@ -41,15 +41,15 @@ class User(db.Model, SerializerMixin):
     def password_hash(self):
         return self._password_hash
     
-    @password_hash.setter
+    @password_hash.setter #setter function for private variable 
     def password_hash(self, password):
         password_hash = bcrypt.generate_password_hash(
-            password.encode('utf-8'))
-        self._password_hash = password_hash.decode('utf-8')
+            password.encode('utf-8')) #encrypts the password passed in
+        self._password_hash = password_hash.decode('utf-8') #sets the password to the decoded password
 
     def authenticate(self, password):
         return bcrypt.check_password_hash(
-            self._password_hash, password.encode('utf-8')
+            self._password_hash, password.encode('utf-8') #checks to see if encoded passed in password is the same as password_hash
         )
 class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
@@ -67,9 +67,9 @@ class Game(db.Model, SerializerMixin):
     image = db.Column(db.String)
     
     game_statistics = db.relationship('GameStatistics', back_populates='game')
-    users = association_proxy('game_statistics', 'user')
+    users = association_proxy('game_statistics', 'user') # many to many relationship through game statistics 
     
-    serialize_rules = ('-game_statistics',)
+    serialize_rules = ('-game_statistics',) #serializing for recursion depth 
     
 class GameStatistics(db.Model, SerializerMixin):
     __tablename__ = 'gameStatistics'
@@ -98,4 +98,4 @@ class GameStatistics(db.Model, SerializerMixin):
             raise ValueError("Game ID cannot be blank.")
         return game_id
 
-    # serialize_rules = ('-user', '-game',)
+   
