@@ -74,9 +74,17 @@ class Games(Resource):
     
 api.add_resource(Games, '/games')
 
+class GamesByRating(Resource):
+    def get(self):
+        games = [game.to_dict() for game in Game.query.order_by(Game.rating.desc()).all()]
+
+        return make_response(games)
+    
+api.add_resource(GamesByRating, '/games-by-rating')
+
 class TopGames(Resource):
     def get(self):
-        games = [game.to_dict() for game in Game.query.order_by(Game.rating).limit(5).all()]
+        games = [game.to_dict() for game in Game.query.order_by(Game.rating.desc()).limit(5).all()]
 
         return make_response(games)
     
