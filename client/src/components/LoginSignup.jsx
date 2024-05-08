@@ -29,14 +29,6 @@ const LoginSignup = ({updateUser, user}) => {
   // Hook to navigate programmatically
   const navigate = useNavigate()
 
-  // Uncomment to check for token in local storage on component mount
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     // Perform validation check or automatically log in
-  //   }
-  // }, []);
-
   // Function to handle form submission
   const handleSubmit = (values) => {
     // Determine the URL based on whether the user is signing up or logging in
