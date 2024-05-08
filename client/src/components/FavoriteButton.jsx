@@ -4,12 +4,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'; // For unfa
 import FavoriteIcon from '@mui/icons-material/Favorite'; // For favorite icon
 
 // FavoriteButton component definition with props gameId and userId
-function FavoriteButton({ gameId, userId }) {
+function FavoriteButton({ gameId, userId, gameStatId, updateGameStatId }) {
 
   // State to track if the game is favorited
   const [isFavorited, setIsFavorited] = useState(false);
-  // State to store the game statistics ID
-  const [gameStatId, setGameStatId] = useState(null);
 
   // useEffect hook to fetch game statistics on component mount and when gameId or userId changes
   useEffect(() => {
@@ -20,11 +18,11 @@ function FavoriteButton({ gameId, userId }) {
         if (data.game_stats_id) {
           // Set the favorited state and game statistics ID from the fetched data
           setIsFavorited(data.favorited);
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
         } else {
           // Reset states if no data is found
           setIsFavorited(false);
-          setGameStatId(null);
+          updateGameStatId(null);
         }
       });
   }, [gameId, userId]);
@@ -62,7 +60,7 @@ function FavoriteButton({ gameId, userId }) {
         .then((data) => {
           // Set the favorited state and game statistics ID from the newly created data
           setIsFavorited(true);
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
         });
     }
   };
