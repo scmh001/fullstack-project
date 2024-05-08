@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 // ReviewForm component definition
-function ReviewForm({ gameId, userId, userName, updateGameStats }) {
+function ReviewForm({ gameId, userId, userName, updateGameStats, gameStatId, updateGameStatId }) {
   // Initial values for the form fields
   const initialValues = {
     rating: '',
     comments: ''
   };
-
-  // State to store the game statistics ID
-  const [gameStatId, setGameStatId] = useState(null);
 
   // useEffect hook to fetch game statistics when gameId or userId changes
   useEffect(() => {
@@ -20,9 +17,9 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
       .then((data) => {
         // Update state with the fetched game statistics ID, or null if not found
         if (data.game_stats_id) {
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
         } else {
-          setGameStatId(null);
+          updateGameStatId(null);
         }
       });
   }, [gameId, userId]); // Dependencies array for useEffect
@@ -37,7 +34,7 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
     };
 
     // Check if game statistics already exist
-    if (gameStatId !== null) {
+    if (gameStatId) {
       // If they exist, update the existing statistics
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
@@ -48,7 +45,6 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
       })
         .then((res) => res.json())
         .then((data) => {
-          setGameStatId(data.game_stats_id);
           updateGameStats(); // Update game stats in the parent component
         });
     } else {
@@ -62,7 +58,7 @@ function ReviewForm({ gameId, userId, userName, updateGameStats }) {
       })
         .then((res) => res.json())
         .then((data) => {
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
           updateGameStats(); // Update game stats in the parent component
         });
     }

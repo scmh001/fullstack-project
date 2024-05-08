@@ -15,6 +15,23 @@ function GameDetail({ user }) {
   const [game, setGame] = useState(null);
   // State to store game statistics
   const [gameStats, setGameStats] = useState([]);
+  const [gameStatId, setGameStatId] = useState(null);
+
+  // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
+  useEffect(() => {
+    // Fetch game statistics for the current user and game
+    fetch(`http://localhost:8080/game-statistics/${id}/${user.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        // If game statistics exist, update state with the fetched data
+        if (data.game_stats_id) {
+          setGameStatId(data.game_stats_id);
+        } else {
+          // If no game statistics exist, set default state
+          setGameStatId(null);
+        }
+      });
+  }, []); // Dependencies array for useEffect
 
   // useEffect hook to fetch game details and statistics on component mount or when id changes
   useEffect(() => {
@@ -41,7 +58,9 @@ function GameDetail({ user }) {
       .then((data) => setGameStats(data))
       .catch((error) => console.error(error));
   };
-
+const updateGameStatId = (gameStatId) => {
+  setGameStatId(gameStatId)
+}
   // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
     return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
@@ -73,12 +92,12 @@ function GameDetail({ user }) {
         <Grid item xs={12} md={5}>
           {user && (
             <Box>
-              <FavoriteButton gameId={game.id} userId={user.id} />
-              <WishlistButton gameId={game.id} userId={user.id} />
+              <FavoriteButton gameId={game.id} userId={user.id} gameStatId={gameStatId} updateGameStatId={updateGameStatId} />
+              <WishlistButton gameId={game.id} userId={user.id} gameStatId={gameStatId} updateGameStatId={updateGameStatId}/>
             </Box>
           )}
           {user && game && (
-            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
+            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} gameStatId={gameStatId} updateGameStatId={updateGameStatId}/>
           )}
           <Box sx={{ mt: 2 }}>
             {gameStats.length > 0 ? (

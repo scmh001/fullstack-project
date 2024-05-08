@@ -4,12 +4,10 @@ import StarIcon from '@mui/icons-material/Star'; // Import Material-UI icon for 
 import StarBorderIcon from '@mui/icons-material/StarBorder'; // Import Material-UI icon for unstarred
 
 // Define a functional component WishlistButton that takes gameId and userId as props
-function WishlistButton({ gameId, userId }) {
+function WishlistButton({ gameId, userId, gameStatId, updateGameStatId}) {
   
   // State to track if the game is wishlisted
   const [isWishlisted, setIsWishlisted] = useState(false);
-  // State to store the game statistics ID
-  const [gameStatId, setGameStatId] = useState(null);
 
   // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
   useEffect(() => {
@@ -20,11 +18,11 @@ function WishlistButton({ gameId, userId }) {
         // If game statistics exist, update state with the fetched data
         if (data.game_stats_id) {
           setIsWishlisted(data.wish_listed);
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
         } else {
           // If no game statistics exist, set default state
           setIsWishlisted(false);
-          setGameStatId(null);
+          updateGameStatId(null);
         }
       });
   }, [gameId, userId]); // Dependencies array for useEffect
@@ -59,7 +57,7 @@ function WishlistButton({ gameId, userId }) {
         .then((data) => {
           // Update state with new game statistics data
           setIsWishlisted(true);
-          setGameStatId(data.game_stats_id);
+          updateGameStatId(data.game_stats_id);
         });
     }
   };
