@@ -11,11 +11,13 @@ const useStyles = makeStyles((theme) => ({
     height: '80vh', // Set the height to 80% of the viewport height
     display: 'flex',
     flexDirection: 'column',
+    
   },
   media: {
-    height: '100%', // Allocate 100% of the card height to the image
+    height: '60%', // Allocate 60% of the card height to the image for better visibility
     width: '100%', // Ensure the image spans the full width of the card
     objectFit: 'cover', // Cover the area without distorting the aspect ratio
+    borderRadius: '4px', // Optional: add rounded corners to the image
   },
   content: {
     height: '40%', // Allocate the remaining 40% of the card height to content

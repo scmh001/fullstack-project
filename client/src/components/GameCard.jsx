@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const GameCard = ({ game }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 265 }}>
       <CardMedia
         component="img"
         height="280"
