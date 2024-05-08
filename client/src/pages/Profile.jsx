@@ -57,7 +57,7 @@ function Profile({ user }) {
   // Render the Profile component
   return (
     <div>
-      <h1>Your Profile</h1>
+      {/* <h1>Your Profile</h1> */}
 
       <h2>Your Favorites</h2>
       <div className="favorites-container">
