@@ -49,7 +49,7 @@ function App() {
           <Route path="/wishlist" element={<WishList user={user}/>} />
           <Route path="/mostpopular" element={<MostPopular user={user}/>} />
           <Route path="/recentlyreleased" element={<RecentlyReleased user={user}/>} />
-          <Route path="/profile" element={<Profile user={user}/>} />
+          <Route path="/profile" element={<Profile user={user} updateUser={updateUser}/>} />
           <Route path="/signin" element={<SignIn updateUser={updateUser} user={user}/>} />
         </Routes>
       </div>
