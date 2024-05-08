@@ -1,6 +1,8 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm import validates
+from sqlalchemy.exc import IntegrityError
 
 from config import db, bcrypt
 
@@ -8,13 +10,32 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable =False)
+    username = db.Column(db.String, nullable =False, unique = True)
     _password_hash = db.Column(db.String, nullable=False)
     
     game_statistics = db.relationship('GameStatistics', back_populates='user', cascade='all, delete-orphan')
     games = association_proxy('game_statistics', 'game')
     
     serialize_rules = ('-game_statistics',)
+
+    @validates('username')
+    def validates_username(self, key, username):
+        if not username:
+            raise ValueError("Username cannot be left blank.")
+        try:
+            existing_user = User.query.filter_by(username=username).first()
+            if existing_user and existing_user.id != self.id:
+                raise ValueError("Username already exists.")
+        except IntegrityError:
+            raise ValueError("Username already exists.")
+        return username
+    
+    @validates('_password_hash')
+    def validates_password_hash(self, key, _password_hash):
+        if not _password_hash:
+            raise ValueError("Password cannot be left blank.")
+        return _password_hash
+
 
     @hybrid_property
     def password_hash(self):
@@ -64,6 +85,17 @@ class GameStatistics(db.Model, SerializerMixin):
     
     user = db.relationship('User', back_populates = 'game_statistics')
     game = db.relationship('Game', back_populates='game_statistics')
+
+    @validates('user_id')
+    def validates_user_id(self, key, user_id):
+        if not user_id:
+            raise ValueError("User ID cannot be blank.")
+        return user_id
     
+    @validates('game_id')
+    def validates_game_id(self, key, game_id):
+        if not game_id:
+            raise ValueError("Game ID cannot be blank.")
+        return game_id
 
     # serialize_rules = ('-user', '-game',)
