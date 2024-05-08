@@ -31,38 +31,35 @@ function WishlistButton({ gameId, userId }) {
 
   // Function to handle wishlist button click
   const handleWishlist = () => {
-    if (gameStatId !== null) {
-      fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ wish_listed: !isWishlisted }),
-      })
-        .then((res) => res.json())
-        .then((data) => setIsWishlisted(data.wish_listed));
-    } else {
-      // Check if favorited state is true, if so, set it to false
-      const favorited = isFavorited ? false : null;
-      fetch(`http://localhost:8080/game-statistics`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          user_id: userId,
-          game_id: gameId,
-          wish_listed: true,
-        
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setIsWishlisted(true);
-          setGameStatId(data.game_stats_id);
-        });
-    }
-  };
+  if (gameStatId !== null) {
+    fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ wish_listed: !isWishlisted }),
+    })
+      .then((res) => res.json())
+      .then((data) => setIsWishlisted(data.wish_listed));
+  } else {
+    fetch(`http://localhost:8080/game-statistics`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        game_id: gameId,
+        wish_listed: true,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setIsWishlisted(true);
+        setGameStatId(data.game_stats_id);
+      });
+  }
+};
 
   // Render the wishlist button with dynamic text and icon based on isWishlisted state
   return (
