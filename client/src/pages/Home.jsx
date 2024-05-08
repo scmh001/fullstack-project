@@ -56,7 +56,7 @@ function Home() {
     <div className='home-page'>
       <div className='banner'>
         <h1>Discover and Review Games</h1>
-        <p>Track games you've played. Save those you want to play. Tell your friends what's good.</p>
+        <p>Track games you've played. Save games you want to play. Share your opinions. </p>
       </div>
       <div className="image-game-cards-container">
         {/* iterates over top games and creates game image card for each */}

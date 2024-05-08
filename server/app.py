@@ -169,25 +169,16 @@ class GameStatsByUserAndGameIDs(Resource):
             return make_response({"error": "Statistics not found"}, 404)
         else:
             try:
-                if 'favorited' in request.json:
+                for attr in request.json:
+                    setattr(gamestats, attr, request.json.get(attr))
                 
-                    gamestats.favorited = request.json['favorited']
-                elif 'wish_listed' in request.json:
-                
-                    gamestats.wish_listed = request.json['wish_listed']
-                elif 'comments' in request.json:
-                
-                    gamestats.comments = request.json['comments']
-                elif 'rating' in request.json:
-                
-                    gamestats.rating = request.json['rating']
-            
                 db.session.add(gamestats)
                 db.session.commit()
 
                 return make_response(gamestats.to_dict(), 202)
             except:
                 return make_response({"errors": ["validation errors"]}, 400)
+           
 
 api.add_resource(GameStatsByUserAndGameIDs, '/game-statistics/<int:game_id>/<int:user_id>')
 

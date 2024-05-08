@@ -57,12 +57,16 @@ function GameDetail({ user }) {
   const updateGameStats = () => {
     fetch(`http://localhost:8080/game-statistic/${id}`)
       .then((res) => res.json())
-      .then((data) => setGameStats(data))
+      .then((data) => {
+        setGameStats(data)
+        console.log(data)
+      })
       .catch((error) => console.error(error));
   };
-const updateGameStatId = (gameStatId) => {
-  setGameStatId(gameStatId)
-}
+
+  const updateGameStatId = (gameStatId) => {
+    setGameStatId(gameStatId)
+  };
   // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
     return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
