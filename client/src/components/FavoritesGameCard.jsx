@@ -4,16 +4,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 
-// Custom styles for the component
+// Custom styles for the component using Material-UI's makeStyles hook
 const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: '100vw', // Set the maximum width to 100% of the viewport width
-    height: '80vh', // Set the height to 100% of the viewport height
+    height: '80vh', // Set the height to 80% of the viewport height
     display: 'flex',
     flexDirection: 'column',
   },
   media: {
-    height: '100%', // Allocate 60% of the card height to the image
+    height: '100%', // Allocate 100% of the card height to the image
     width: '100%', // Ensure the image spans the full width of the card
     objectFit: 'cover', // Cover the area without distorting the aspect ratio
   },
@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto' // Add scroll to content if it overflows
   },
   typography: {
-    // Increase font size for all Typography components within this card
-    fontSize: '2rem',
+    fontSize: '2rem', // Increase font size for all Typography components within this card
   }
 }));
 
+// Component for displaying a favorite game card
 const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
   const classes = useStyles();
 
@@ -41,7 +41,7 @@ const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
     })
     .then((res) => res.json())
     .then((data) => {
-      handleUnfavorite(data.id);
+      handleUnfavorite(data.id); // Callback to update the parent component's state
     })
     .catch((error) => {
       console.error('Error deleting game from favorites:', error);
@@ -59,11 +59,11 @@ const FavoritesGameCard = ({ game, user, handleUnfavorite }) => {
         title={game.game_name}
       />
       <CardContent className={classes.content}>
-      <Link to={`/games/${game.id}`}>
-        <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
-          {game.game_name}
-        </Typography>
-      </Link>
+        <Link to={`/games/${game.id}`}>
+          <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
+            {game.game_name}
+          </Typography>
+        </Link>
         <Typography variant="body2" color="textSecondary" component="p" className={classes.typography}>
           Rating: {game.rating ? game.rating : 'N/A'} ⭐
         </Typography>

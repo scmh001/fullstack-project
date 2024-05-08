@@ -3,28 +3,36 @@ import Button from '@mui/material/Button'; // Import Button from Material-UI
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'; // For unfavorite icon
 import FavoriteIcon from '@mui/icons-material/Favorite'; // For favorite icon
 
+// FavoriteButton component definition with props gameId and userId
 function FavoriteButton({ gameId, userId }) {
 
+  // State to track if the game is favorited
   const [isFavorited, setIsFavorited] = useState(false);
+  // State to store the game statistics ID
   const [gameStatId, setGameStatId] = useState(null);
 
+  // useEffect hook to fetch game statistics on component mount and when gameId or userId changes
   useEffect(() => {
-    // Fetch game statistics for the current user and game
+    // API call to fetch game statistics for the current user and game
     fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.game_stats_id) {
+          // Set the favorited state and game statistics ID from the fetched data
           setIsFavorited(data.favorited);
           setGameStatId(data.game_stats_id);
         } else {
+          // Reset states if no data is found
           setIsFavorited(false);
           setGameStatId(null);
         }
       });
   }, [gameId, userId]);
 
+  // Function to handle favorite/unfavorite actions
   const handleFavorite = () => {
     if (gameStatId) {
+      // If gameStatId exists, update the favorited status using PATCH method
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
         headers: {
@@ -34,9 +42,11 @@ function FavoriteButton({ gameId, userId }) {
       })
         .then((res) => res.json())
         .then((data) => {
+          // Update the favorited state based on the response
           setIsFavorited(data.favorited);
         });
     } else {
+      // If gameStatId does not exist, create a new game statistic using POST method
       fetch(`http://localhost:8080/game-statistics`, {
         method: 'POST',
         headers: {
@@ -50,12 +60,14 @@ function FavoriteButton({ gameId, userId }) {
       })
         .then((res) => res.json())
         .then((data) => {
+          // Set the favorited state and game statistics ID from the newly created data
           setIsFavorited(true);
           setGameStatId(data.game_stats_id);
         });
     }
   };
 
+  // Render a button with dynamic properties based on the favorited state
   return (
     <div className="favorite-container">
       <Button
