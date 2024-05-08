@@ -62,7 +62,7 @@ The Trello board link for task management and collaboration:
 https://trello.com/b/PZhjos8k/flatiron-phase-4-group-project
 
 ## Collaborators
-Michael
-Shukri
-Kristen
-Jasen
+* Kristen Grace 🔗[GitHub Profile Link](https://github.com/kgrace61) 🔗 [LinkedIn Link](www.linkedin.com/in/kristengrace61)
+* Shukri Hussein 🔗[GitHub Profile Link](https://github.com/scmh001) 🔗 [LinkedIn Link](https://www.linkedin.com/in/shukrihussein/)
+* Jasen Miyamoto 🔗[GitHub Profile Link](https://github.com/jasentm) 🔗[LinkedIn Link](https://www.linkedin.com/in/jasen-miyamoto-ba2619284/)
+* Michael DiPasquale 🔗[GitHub Profile Link](https://github.com/mdipasqu13) 🔗[LinkedIn Link](https://www.linkedin.com/in/michael-dipasquale313/)
