@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import GameReviewCard from '../components/GameReviewCard';
@@ -16,6 +17,7 @@ function GameDetail({ user }) {
   // State to store game statistics
   const [gameStats, setGameStats] = useState([]);
   const [gameStatId, setGameStatId] = useState(null);
+  const [deleteReview, setDeleteReview] = useState(false);
 
   // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
   useEffect(() => {
@@ -49,7 +51,7 @@ function GameDetail({ user }) {
 
     // Scroll to the top of the page when the component is rendered
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [id, deleteReview]);
 
   // Function to update game statistics
   const updateGameStats = () => {
@@ -61,6 +63,11 @@ function GameDetail({ user }) {
 const updateGameStatId = (gameStatId) => {
   setGameStatId(gameStatId)
 }
+  const handleDeleteReview = (gameStatId) => {
+    setGameStats(gameStats.filter((gameStat) => gameStat.id !== gameStatId))
+    setDeleteReview(prev => !prev)
+  }
+
   // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
     return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
@@ -102,7 +109,7 @@ const updateGameStatId = (gameStatId) => {
           <Box sx={{ mt: 2 }}>
             {gameStats.length > 0 ? (
               gameStats.map((stat) => (
-                <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
+                <GameReviewCard key={stat.game_stats_id} gameId={game.id} userId={user.id} gameStats={stat} handleDeleteReview={handleDeleteReview}/>
               ))
             ) : (
               <Typography>No reviews available.</Typography>
@@ -118,3 +125,4 @@ const updateGameStatId = (gameStatId) => {
 }
 
 export default GameDetail;
+

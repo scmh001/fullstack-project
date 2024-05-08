@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 // Component to display game review information including rating, user, and comments
-function GameReviewCard({ gameStats }) {
+function GameReviewCard({ gameStats, handleDeleteReview, gameId, userId }) {
   // Function to render star icons based on the rating
   const renderStars = (rating) => {
     const stars = [];
@@ -18,6 +18,29 @@ function GameReviewCard({ gameStats }) {
     return stars;
   };
 
+  const handleDelete = () => {
+      fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ comments: null, rating: null })
+      })
+        .then((res) => {
+          if(res.ok) {
+            return res.json()
+          }else {
+            console.error(`Error deleting review`);
+          }
+        }).then((data) => {
+          handleDeleteReview(data.game_stats_id)
+        })
+        .catch((error) => {
+          console.error('Error deleting review', error)
+        })
+
+  };
+ 
   return (
     // Card component to encapsulate the review content
     <Card sx={{ marginBottom: 2 }}>
@@ -39,6 +62,9 @@ function GameReviewCard({ gameStats }) {
             <Typography variant="body2" color="text.secondary">
               Comment: {gameStats.comments}
             </Typography>
+            <Button onClick={handleDelete} variant="contained" color="error" sx={{ marginTop: 2 }}>
+              Delete
+            </Button>
           </Box>
         )}
       </CardContent>
