@@ -7,25 +7,34 @@ import ReviewForm from '../components/ReviewForm';
 import { Box, Typography, Button, Card, CardContent, CardMedia, Grid, CircularProgress } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+// Define the GameDetail functional component with props
 function GameDetail({ user }) {
+  // Retrieve the game ID from the URL parameters
   const { id } = useParams();
+  // State to store the game details
   const [game, setGame] = useState(null);
+  // State to store game statistics
   const [gameStats, setGameStats] = useState([]);
 
+  // useEffect hook to fetch game details and statistics on component mount or when id changes
   useEffect(() => {
+    // Fetch game details from the server
     fetch(`http://localhost:8080/games/${id}`)
       .then((res) => res.ok ? res.json() : console.error('Something went wrong...'))
       .then((selectedGame) => setGame(selectedGame))
       .catch((error) => console.error(error));
 
+    // Fetch game statistics from the server
     fetch(`http://localhost:8080/game-statistic/${id}`)
       .then((res) => res.json())
       .then((data) => setGameStats(data))
       .catch((error) => console.error(error));
 
+    // Scroll to the top of the page when the component is rendered
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Function to update game statistics
   const updateGameStats = () => {
     fetch(`http://localhost:8080/game-statistic/${id}`)
       .then((res) => res.json())
@@ -33,10 +42,12 @@ function GameDetail({ user }) {
       .catch((error) => console.error(error));
   };
 
+  // Render a loading spinner if game or gameStats data is not yet available
   if (!game || !gameStats) {
     return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
   }
 
+  // Main component render
   return (
     <Box sx={{ p: 2 }}>
       <Typography variant="h4" gutterBottom>{game.game_name}</Typography>
