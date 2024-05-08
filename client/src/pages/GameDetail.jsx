@@ -4,7 +4,8 @@ import GameReviewCard from '../components/GameReviewCard';
 import FavoriteButton from '../components/FavoriteButton';
 import WishlistButton from '../components/WishlistButton';
 import ReviewForm from '../components/ReviewForm';
-import './GameDetail.css';
+import { Box, Typography, Button, Card, CardContent, CardMedia, Grid, CircularProgress } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function GameDetail({ user }) {
   const { id } = useParams();
@@ -13,13 +14,7 @@ function GameDetail({ user }) {
 
   useEffect(() => {
     fetch(`http://localhost:8080/games/${id}`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return console.error('Something went wrong...');
-        }
-      })
+      .then((res) => res.ok ? res.json() : console.error('Something went wrong...'))
       .then((selectedGame) => setGame(selectedGame))
       .catch((error) => console.error(error));
 
@@ -39,44 +34,56 @@ function GameDetail({ user }) {
   };
 
   if (!game || !gameStats) {
-    return <div>Loading...</div>;
+    return <Box display="flex" justifyContent="center"><CircularProgress /></Box>;
   }
 
   return (
-    <div className="game-detail-container">
-      <h1 className="h1-dp">{game.game_name}</h1>
-      <div className="details-container">
-        <img className="details-image" src={game.image} alt={game.game_name} />
-        <div className="details-list-dp">
-          <p>Genre: {game.genre}</p>
-          <p>System: {game.system}</p>
-          <p>Developer: {game.developer}</p>
-          <p>Release Date: {game.release_date}</p>
-          <p>Maturity Level: {game.maturity_level}</p>
-        </div>
-      </div>
-      {user && (
-        <div className="favorite-wishlist-container">
-          <FavoriteButton gameId={game.id} userId={user.id} />
-          <WishlistButton gameId={game.id} userId={user.id} />
-        </div>
-      )}
-      {user && game && (
-        <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
-      )}
-      <div className="reviews-container-detailpage">
-        {gameStats && gameStats.length > 0 ? (
-          gameStats.map((stat) => (
-            <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
-          ))
-        ) : (
-          <p>No reviews available.</p>
-        )}
-      </div>
-      <Link className="link-back" to="/games">
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h4" gutterBottom>{game.game_name}</Typography>
+      <Grid container spacing={5}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardMedia
+              component="img"
+              height="700"
+              image={game.image}
+              alt={game.game_name}
+            />
+            <CardContent>
+              <Typography variant="body2">Genre: {game.genre}</Typography>
+              <Typography variant="body2">System: {game.system}</Typography>
+              <Typography variant="body2">Developer: {game.developer}</Typography>
+              <Typography variant="body2">Release Date: {game.release_date}</Typography>
+              <Typography variant="body2">Maturity Level: {game.maturity_level}</Typography>
+              <Typography variant="body2">Description: {game.description}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          {user && (
+            <Box>
+              <FavoriteButton gameId={game.id} userId={user.id} />
+              <WishlistButton gameId={game.id} userId={user.id} />
+            </Box>
+          )}
+          {user && game && (
+            <ReviewForm gameId={game.id} userId={user.id} userName={user.username} updateGameStats={updateGameStats} />
+          )}
+          <Box sx={{ mt: 2 }}>
+            {gameStats.length > 0 ? (
+              gameStats.map((stat) => (
+                <GameReviewCard key={stat.game_stats_id} gameStats={stat} />
+              ))
+            ) : (
+              <Typography>No reviews available.</Typography>
+            )}
+          </Box>
+        </Grid>
+      </Grid>
+      <Button variant="contained" startIcon={<ArrowBackIcon />} component={Link} to="/games">
         Back
-      </Link>
-    </div>
+      </Button>
+    </Box>
   );
 }
 

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button'; // Import Button from Material-UI
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'; // For unfavorite icon
+import FavoriteIcon from '@mui/icons-material/Favorite'; // For favorite icon
 
 function FavoriteButton({ gameId, userId }) {
 
@@ -55,12 +58,14 @@ function FavoriteButton({ gameId, userId }) {
 
   return (
     <div className="favorite-container">
-      <button className="favorite-button" onClick={handleFavorite}>
-        <span role="img" aria-label="heart">
-          {isFavorited ? '💖' : '🤍'}
-        </span>{' '}
+      <Button
+        variant="contained"
+        color={isFavorited ? "secondary" : "primary"}
+        startIcon={isFavorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        onClick={handleFavorite}
+      >
         {isFavorited ? 'Unfavorite' : 'Favorite'}
-      </button>
+      </Button>
     </div>
   );
 }
