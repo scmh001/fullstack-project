@@ -13,6 +13,7 @@ function Home() {
 
 
   useEffect(() => {
+    //fetches top 5 games from back end
     fetch('http://localhost:8080/top-games')
       .then(res => {
         if (res.ok) {
@@ -22,7 +23,7 @@ function Home() {
         }
       })
       .then(data => {
-        setTopGames(data);
+        setTopGames(data); //sets state for games from backend 
       })
       .catch(error => {
         console.error('Failed to fetch games:', error);
@@ -39,7 +40,7 @@ function Home() {
       })
       .then(data => {
         console.log('Fetched recent reviews data:', data);
-        setRecentReviews(data);
+        setRecentReviews(data); // sets state of reviews gotten from backend 
       })
       .catch(error => {
         console.error('Failed to fetch recent reviews:', error);
@@ -58,34 +59,25 @@ function Home() {
         <p>Track games you've played. Save those you want to play. Tell your friends what's good.</p>
       </div>
       <div className="image-game-cards-container">
+        {/* iterates over top games and creates game image card for each */}
         {topGames.map(game => (
           <ImageGameCard key={game.id} game={game} />
         ))}
       </div>
       <div className='links-container'>
         <div className='link-card'>
-          {//TODO make link to new page that populates based on highest review??
-          }
           <Link to={'/mostpopular'}>
             <img src='https://i.imgur.com/Zc9EmpV.jpeg' alt='most-popular' />
           </Link>
         </div>
         <div className='link-card'>
-          {//TODO make link to new page that populates based on most recently released??
-          }
           <Link to={'/recentlyreleased'}>
             <img src='https://i.imgur.com/EowlAak.jpg' alt='recently-released' />
           </Link>
         </div>
-        {/* <div className='link-card'>
-          {//TODO make link to new page that populates based on if hasn't been released yet??
-          }
-          <Link to={'/games'}>
-            <img src='https://i.imgur.com/cYIKKKu.jpeg' alt='coming-soon' />
-          </Link>
-        </div> */}
       </div>
       <div className="game-card-container">
+        {/* iterates over reviews and creates review cards for each */}
         {recentReviews.map(review => (
           <div key={review.game_stats_id} className="game-card">
             <HomeGameReviewCard gameStats={review} />

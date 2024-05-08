@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const WishListGameCard = ({ game, user, handleUnwishlist }) => {
   const handleDelete = () => {
+    {/* patch request to change whether or not a game is wishlisted */}
     fetch(`http://localhost:8080/game-statistics/${game.id}/${user.id}`, {
       method: 'PATCH',
       headers: {
