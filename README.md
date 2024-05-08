@@ -16,6 +16,12 @@ Gamespace is a social network tailored for gamers that includes a variety of fea
 * Top Games: A regularly updated list of top-rated and most-discussed games.
 
 
+## 🚀 Usage
+
+* cd into server -> pipenv install -> pipenv shell -> python app.py
+* cd into client -> npm install -> npm install --force -> npm run dev
+
+
 
 ## Advanced Features (Stretch Goals)
 * Releases This Month: A feature to highlight games released in the current month.
