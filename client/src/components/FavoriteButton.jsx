@@ -21,8 +21,6 @@ function FavoriteButton({ gameId, userId }) {
   }, [gameId, userId]);
 
   const handleFavorite = () => {
-    // If a GameStatistics instance exists, update the favorited status
-    // If not, create a new GameStatistics instance with favorited set to true
     if (gameStatId) {
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
         method: 'PATCH',
@@ -33,7 +31,7 @@ function FavoriteButton({ gameId, userId }) {
       })
         .then((res) => res.json())
         .then((data) => {
-            setIsFavorited(data.favorited)
+          setIsFavorited(data.favorited);
         });
     } else {
       fetch(`http://localhost:8080/game-statistics`, {
@@ -44,7 +42,7 @@ function FavoriteButton({ gameId, userId }) {
         body: JSON.stringify({
           user_id: userId,
           game_id: gameId,
-          favorited: true
+          favorited: true,
         }),
       })
         .then((res) => res.json())

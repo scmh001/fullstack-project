@@ -28,21 +28,21 @@ function WishlistButton({ gameId, userId }) {
 
   // Function to handle wishlist button click
   const handleWishlist = () => {
-    // If a GameStatistics instance exists, update the wish_listed status
     if (gameStatId !== null) {
       fetch(`http://localhost:8080/game-statistics/${gameId}/${userId}`, {
-        method: 'PATCH', // Use PATCH method to update existing data
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ wish_listed: !isWishlisted }), // Toggle wish_listed status
+        body: JSON.stringify({ wish_listed: !isWishlisted }),
       })
         .then((res) => res.json())
-        .then((data) => setIsWishlisted(data.wish_listed)); // Update state with new wish_listed status
+        .then((data) => setIsWishlisted(data.wish_listed));
     } else {
-      // If not, create a new GameStatistics instance with wish_listed set to true
+      // Check if favorited state is true, if so, set it to false
+      const favorited = isFavorited ? false : null;
       fetch(`http://localhost:8080/game-statistics`, {
-        method: 'POST', // Use POST method to create new data
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -50,11 +50,11 @@ function WishlistButton({ gameId, userId }) {
           user_id: userId,
           game_id: gameId,
           wish_listed: true,
+        
         }),
       })
         .then((res) => res.json())
         .then((data) => {
-          // Update state with new game statistics data
           setIsWishlisted(true);
           setGameStatId(data.game_stats_id);
         });

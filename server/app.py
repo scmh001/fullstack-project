@@ -150,14 +150,24 @@ class GameStatsByUserAndGameIDs(Resource):
             return make_response({'error': ['Game statistics not found']}, 404)
     
     def patch(self, game_id, user_id):
-        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id==user_id).first()
+        gamestats = GameStatistics.query.filter(GameStatistics.game_id == game_id, GameStatistics.user_id == user_id).first()
         if not gamestats:
             return make_response({"error": "Statistics not found"}, 404)
         else:
             try:
-                for attr in request.json:
-                    setattr(gamestats, attr, request.json.get(attr))
+                if 'favorited' in request.json:
                 
+                    gamestats.favorited = request.json['favorited']
+                elif 'wish_listed' in request.json:
+                
+                    gamestats.wish_listed = request.json['wish_listed']
+                elif 'comments' in request.json:
+                
+                    gamestats.comments = request.json['comments']
+                elif 'rating' in request.json:
+                
+                    gamestats.rating = request.json['rating']
+            
                 db.session.add(gamestats)
                 db.session.commit()
 
