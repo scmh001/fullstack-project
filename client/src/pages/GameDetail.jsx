@@ -20,6 +20,7 @@ function GameDetail({ user }) {
   // useEffect hook to fetch game statistics on component mount or when gameId or userId changes
   useEffect(() => {
     // Fetch game statistics for the current user and game
+    if (user && user.id) {
     fetch(`http://localhost:8080/game-statistics/${id}/${user.id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -31,6 +32,7 @@ function GameDetail({ user }) {
           setGameStatId(null);
         }
       });
+    }
   }, []); // Dependencies array for useEffect
 
   // useEffect hook to fetch game details and statistics on component mount or when id changes

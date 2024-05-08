@@ -29,7 +29,7 @@ function HomeGameReviewCard({ gameStats }) {
           {/* Conditionally rendering the game's rating if it exists */}
           {gameStats.rating && (
             <Typography variant="subtitle1" color="text.secondary" component="div">
-              Rating: {gameStats.rating} // Displaying the rating
+              Rating: {gameStats.rating} { /* Displaying the rating */}
             </Typography>
           )}
           {/* Displaying the game's comments */}
