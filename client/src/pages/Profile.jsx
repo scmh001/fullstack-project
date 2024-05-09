@@ -106,8 +106,10 @@ function Profile({ user, updateUser }) {
   ) : (
     <p>No reviews yet.</p>
   )}
-</div>
-    <button onClick={handleDeleteUser}>Delete Profile</button>
+</div >
+<div className="delete-button-container">
+    <button className="delete-button" onClick={handleDeleteUser}>Delete Profile</button>
+    </div>
     </div>
   );
 }

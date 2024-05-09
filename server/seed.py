@@ -30,37 +30,13 @@ def create_games():
     db.session.commit()
 
 
-fake = Faker()
-
-def create_users(num_users):
-    users = []
-    for _ in range(num_users):
-        username = fake.email()
-        password = fake.password()
-        user = User(username=username)
-        user.password_hash = password
-        users.append(user)
-    db.session.add_all(users)
-    db.session.commit()
+# fake = Faker()
 
 with app.app_context():
     db.drop_all()
     db.create_all()
 
-    create_users(3) # Create 3 users
+  
     create_games()
     # Create game statistics
-    users = User.query.all()
-    games = Game.query.all()
-    for user in users:
-        for game in games:
-            if fake.boolean(chance_of_getting_true=50):
-                rating = fake.random_int(min=1, max=5)
-                favorited = fake.boolean(chance_of_getting_true=25)
-                wish_listed = fake.boolean(chance_of_getting_true=25)
-                comments = fake.sentence() if fake.boolean(chance_of_getting_true=50) else None
-                gamestat = GameStatistics(user=user, game=game, rating=rating,
-                                          favorited=favorited, wish_listed=wish_listed,
-                                          comments=comments)
-                db.session.add(gamestat)
-    db.session.commit()
+    

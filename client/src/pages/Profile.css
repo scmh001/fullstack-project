@@ -13,3 +13,29 @@
   .favorites-container > *:last-child {
     margin-right: 0; 
   }
+
+  /* Center the button */
+.delete-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  margin-bottom: 2vh;
+}
+
+/* Style the button */
+.delete-button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  background-color: #ff4d4d; /* Red color */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ff2020; /* Darker red on hover */
+}

@@ -58,6 +58,9 @@ function Home() {
         <h1>Discover and Review Games</h1>
         <p>Track games you've played. Save games you want to play. Share your opinions. </p>
       </div>
+      <div className='top-games'>
+        <h2 >TOP GAMES</h2>
+        </div>
       <div className="image-game-cards-container">
         {/* iterates over top games and creates game image card for each */}
         {topGames.map(game => (
@@ -75,6 +78,9 @@ function Home() {
             <img src='https://i.imgur.com/EowlAak.jpg' alt='recently-released' />
           </Link>
         </div>
+      </div>
+      <div className='recent-reviews-container'>
+        <h2 className='recent-reviews'>RECENT REVIEWS</h2>
       </div>
       <div className="game-card-container">
         {/* iterates over reviews and creates review cards for each */}
